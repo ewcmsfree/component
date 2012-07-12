@@ -1,0 +1,105 @@
+package com.ewcms.component.query.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.ewcms.component.query.vo.Article;
+
+@Repository
+public class QueryDAO implements QueryDAOable {
+	
+	private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+    
+	private DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+	
+	@Override
+	public List<Article> findArtilce(String title,Integer channelId, String beginDate, String endDate, Boolean isContent) {
+		Boolean isIf = false;
+		
+		String sql = "Select r.id, a.title, a.author, r.published, r.url, s.name From doc_articlermc As r Left Join site_channel As s On r.channel_id = s.id Left Join doc_article As a On r.article_id = a.id Left Join doc_content As c On a.id=c.article_id Where @isIf@ And r.status='RELEASE' ";
+
+		List<Object> params = new ArrayList<Object>();
+		
+		if (title != null && !title.trim().equals("")){
+			isIf = true;
+			sql += " And a.title Like '%" + title + "%' ";
+		}
+		
+		if (isContent != null && isContent){
+			isIf = true;
+			sql += " And c.detail Like '%" + title + "%' ";
+		}
+		
+		if (channelId != null && channelId.longValue() > 0){
+			isIf = true;
+			sql += " And s.id=" + channelId + " ";
+		}
+		
+		if (beginDate != null && !beginDate.trim().equals("")){
+			Date _beginDate;
+			try {
+				_beginDate = DATE_FORMAT.parse(beginDate);
+				sql += " And r.published >= '" +  _beginDate + "' ";
+				isIf = true;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (endDate != null && !endDate.trim().equals("")){
+			Date _endDate;
+			try {
+				_endDate = DATE_FORMAT.parse(endDate);
+				sql += " And r.published <= '" +  _endDate + "' ";
+				isIf = true;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (isIf){
+			sql = sql.replace("@isIf@", "1=1");
+		}else{
+			sql = sql.replace("@isIf@", "1<>1");
+		}
+		
+		sql += " Order By r.published Desc";
+		
+		return jdbcTemplate.query(sql, params.toArray(), new RowMapper<Article>() {
+            @Override
+            public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return articleRowMapper(rs);
+            }
+        });
+	}
+	
+	 private Article articleRowMapper(ResultSet rs) throws SQLException {
+		 Article vo = new Article();
+	     vo.setTitle(rs.getString("title"));
+	     vo.setAuthor(rs.getString("author"));
+	     if (rs.getDate("published") != null){
+	    	 vo.setPublished(DATE_FORMAT.format(rs.getDate("published")));
+	     }
+	     vo.setChannelName(rs.getString("name"));
+	     vo.setUrl(rs.getString("url"));
+	     return vo;
+	 }
+}
