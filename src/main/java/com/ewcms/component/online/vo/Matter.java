@@ -39,7 +39,9 @@ import java.util.List;
  */
 public class Matter implements Serializable {
 
-    private Integer id;
+	private static final long serialVersionUID = 473196717799783359L;
+
+	private Integer id;
     private String name;
     private String acceptedWay;
     private String handleSite;

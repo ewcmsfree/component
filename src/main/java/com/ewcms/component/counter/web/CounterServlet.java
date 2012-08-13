@@ -22,7 +22,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class CounterServlet extends HttpServlet {
 
-    private static final String JS_TYPE = "text/javascript";
+	private static final long serialVersionUID = 6989327982902762679L;
+
+	private static final String JS_TYPE = "text/javascript";
     private static final String HEADER_ENCODING = "encoding";
     private static final String DEFAULT_ENCODING = "UTF-8";
     private static final String HTMLID_PARAMETER_NAME = "article_id";

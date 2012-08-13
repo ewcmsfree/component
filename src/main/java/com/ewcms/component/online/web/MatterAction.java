@@ -20,7 +20,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MatterAction extends ActionSupport{
 
-    private Working working;
+	private static final long serialVersionUID = 2326960346830541551L;
+
+	private Working working;
     private Matter matter;
     private Integer organId;
     private Integer workingId;

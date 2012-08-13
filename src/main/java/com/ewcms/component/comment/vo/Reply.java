@@ -4,8 +4,6 @@
  */
 package com.ewcms.component.comment.vo;
 
-import java.sql.Timestamp;
-
 /**
  *
  * @author wangwei

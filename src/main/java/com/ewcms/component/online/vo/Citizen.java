@@ -19,7 +19,9 @@ import java.io.Serializable;
  */
 public class Citizen implements Serializable {
 
-    private Integer id;
+	private static final long serialVersionUID = 5582792327038996505L;
+
+	private Integer id;
     private String name;
 
     public Integer getId() {

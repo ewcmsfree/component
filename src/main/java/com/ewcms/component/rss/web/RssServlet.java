@@ -25,7 +25,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class RssServlet extends HttpServlet {
 
-    private static final String XML_TYPE = "text/xml";
+	private static final long serialVersionUID = 5977480428740059838L;
+
+	private static final String XML_TYPE = "text/xml";
     private static final String DEFAULT_ENCODING = "UTF-8";
     private static final Integer DEFAULT_ROW = 12;
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

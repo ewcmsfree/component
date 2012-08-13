@@ -18,11 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class SpeakAction extends LoginAction {
 
-    private static final String refreshHtml;
+	private static final long serialVersionUID = 1944810699535509931L;
+
+	private static final String refreshHtml;
 
     private Integer interactionId;
     private String content;
-    private String eventOP;
 
     static{
         StringBuilder builder = new StringBuilder();
@@ -65,13 +66,8 @@ public class SpeakAction extends LoginAction {
         return AuthUtil.getUser();
     }
 
-    public void setEventOP(String eventOP){
-        this.eventOP = eventOP;
-    }
-
     @Override
     public String execute() {
-        
         if (isLogin()) {
             if (!this.validateCheckcode()) {
                 this.addActionError("验证码错误！");

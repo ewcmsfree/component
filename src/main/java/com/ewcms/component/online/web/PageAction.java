@@ -15,7 +15,9 @@ import java.util.List;
  */
 public class PageAction extends ActionSupport {
 
-    protected int pageNumber = 0;
+	private static final long serialVersionUID = -1428739857990085101L;
+
+	protected int pageNumber = 0;
     protected Page page;
     protected int row = 10;
 
@@ -27,7 +29,8 @@ public class PageAction extends ActionSupport {
         return this.page;
     }
 
-    protected List pageList(final List all, final Page p) {
+    @SuppressWarnings("rawtypes")
+	protected List pageList(final List all, final Page p) {
         int number = p.getPage() - 1;
         int size = p.getPageSize();
         int from = number * size;

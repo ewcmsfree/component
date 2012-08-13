@@ -4,8 +4,6 @@
  */
 package com.ewcms.component.auth.vo;
 
-import java.sql.Date;
-
 /**
  *
  * @author wangwei

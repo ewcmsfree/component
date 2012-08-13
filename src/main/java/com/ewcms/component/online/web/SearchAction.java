@@ -20,7 +20,9 @@ import org.springframework.stereotype.Controller;
 @Controller("com.ewcms.component.online.web.SearchAction")
 public class SearchAction extends PageAction {
 
-    private static final int DEFAULT_ROW = 10;
+	private static final long serialVersionUID = 1836374198039253085L;
+
+	private static final int DEFAULT_ROW = 10;
     private List<Working> workings;
     private String key = "" ;
     
@@ -47,7 +49,8 @@ public class SearchAction extends PageAction {
         return service.getCitizenAll();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public String execute() {
         row = DEFAULT_ROW;
         List<Working> workingAll;

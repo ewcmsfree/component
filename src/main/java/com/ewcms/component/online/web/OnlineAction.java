@@ -20,7 +20,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class OnlineAction extends ActionSupport {
 
-    private List<Working> workings;
+	private static final long serialVersionUID = 6914636421075953659L;
+
+	private List<Working> workings;
     private List<Organ> organs;
     @Autowired
     private OnlineService service;

@@ -21,7 +21,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class JavaScriptServlet extends HttpServlet {
 
-    private static final String JS_TYPE = "text/javascript";
+	private static final long serialVersionUID = -2571397979920003307L;
+
+	private static final String JS_TYPE = "text/javascript";
     private static final String HEADER_ENCODING = "encoding";
     private static final String DEFAULT_ENCODING = "UTF-8";
     private static final String CALLBACK_PARAMETER_NAME = "callback";

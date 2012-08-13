@@ -20,7 +20,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class UserInfoAction extends ActionSupport {
 
-    private static final Calendar calendar = Calendar.getInstance();
+	private static final long serialVersionUID = 4958456838084817166L;
+
+	private static final Calendar calendar = Calendar.getInstance();
     private static final int MAX_YEAR = 100;
     private static final int MAX_MONTH = 12;
     private static final int MAX_DAY = 31;

@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ArticleAction extends ActionSupport {
 
-    private Working working;
+	private static final long serialVersionUID = -4584114686737430118L;
+	
+	private Working working;
     private Integer organId;
     private Integer workingId;
     private Integer childId;

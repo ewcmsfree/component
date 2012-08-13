@@ -19,7 +19,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class WorkingAction extends PageAction {
 
-    private static final int DEFAULT_ROW = 12;
+	private static final long serialVersionUID = 5072257413099687428L;
+
+	private static final int DEFAULT_ROW = 12;
     private Integer workingId;
     private Integer parentId;
     private Working working;
@@ -75,7 +77,8 @@ public class WorkingAction extends PageAction {
         return parents;
     }
     
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public String execute() {
         row = DEFAULT_ROW;
         parents = service.getWorkingChilren(null);

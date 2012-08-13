@@ -20,7 +20,9 @@ import java.io.Serializable;
  */
 public class MatterAnnex implements Serializable {
 
-    private Integer id;
+	private static final long serialVersionUID = -3109110630978806022L;
+
+	private Integer id;
     private String url;
     private String name;
 

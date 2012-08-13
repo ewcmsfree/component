@@ -26,7 +26,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class ImageCaptchaServlet extends HttpServlet {
 
-    private static final String IMG_JPEG_TYPE = "image/jpeg";
+	private static final long serialVersionUID = 7662324564551839056L;
+
+	private static final String IMG_JPEG_TYPE = "image/jpeg";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

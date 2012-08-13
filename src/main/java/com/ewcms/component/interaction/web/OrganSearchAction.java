@@ -16,7 +16,9 @@ import java.util.List;
  */
 public class OrganSearchAction extends IndexAction {
 
-    private int id;
+	private static final long serialVersionUID = 5108118647149530322L;
+
+	private int id;
     private String name;
     private boolean hasOrgan = true;
 

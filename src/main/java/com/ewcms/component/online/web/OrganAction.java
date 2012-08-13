@@ -21,7 +21,9 @@ import org.springframework.stereotype.Controller;
 @Controller("com.ewcms.component.online.web.OrganAction")
 public class OrganAction extends PageAction {
 
-    private static final int DEFAULT_ROW = 12;
+	private static final long serialVersionUID = -4256197746683119957L;
+
+	private static final int DEFAULT_ROW = 12;
     private List<Organ> organs;
     private List<Working> matters;
     private Organ organ;
@@ -54,7 +56,8 @@ public class OrganAction extends PageAction {
         return service.getCitizenAll();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public String execute() {
         row = DEFAULT_ROW;
         organs = service.findOrganForWorking();

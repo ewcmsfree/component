@@ -73,8 +73,8 @@ public class InteractionService implements InteractionServiceable {
     }
 
     @Override
-    public List<Interaction> findInteraction(int page, int row) {
-        return interactionDAO.findInteraction(page, row);
+    public List<Interaction> findInteraction(int page, int row, Integer type) {
+        return interactionDAO.findInteraction(page, row, type);
     }
 
     @Override
@@ -148,18 +148,18 @@ public class InteractionService implements InteractionServiceable {
     }
 
     @Override
-    public String mainJSON(){
+    public String mainJSON(Integer type){
         StringBuilder builder = new StringBuilder();
         builder.append("{");
-        builder.append("\"interactions\":").append(interactionJSON()).append(",");
-        builder.append("\"ratios\":").append(replayRatioJSON());
+        builder.append("\"interactions\":").append(interactionJSON(type)).append(",");
+        builder.append("\"ratios\":").append(replayRatioJSON(type));
         builder.append("}");
 
         return builder.toString();
     }
 
-    private String interactionJSON() {
-        List<Interaction> list = interactionDAO.findInteraction(0, 9);
+    private String interactionJSON(Integer type) {
+        List<Interaction> list = interactionDAO.findInteraction(0, 9, type);
         StringBuilder builder = new StringBuilder();
         builder.append("[");
         for(Interaction interaction : list){
@@ -188,7 +188,7 @@ public class InteractionService implements InteractionServiceable {
         return "建议";
     }
 
-    private String replayRatioJSON() {
+    private String replayRatioJSON(Integer type) {
         List<Organ> list = interactionDAO.findInteractionBackOrder(4, true);
         StringBuilder builder = new StringBuilder();
         builder.append("[");

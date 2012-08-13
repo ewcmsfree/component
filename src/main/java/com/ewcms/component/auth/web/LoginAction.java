@@ -22,7 +22,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class LoginAction extends ActionSupport {
 
-    private String username;
+	private static final long serialVersionUID = -3059121355544960298L;
+
+	private String username;
     private String password;
     private String checkcode;
     private String goToUrl;

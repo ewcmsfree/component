@@ -23,7 +23,7 @@ public interface InteractionServiceable {
 
     public List<Interaction> findInteractionByUsername(String username, int page, int row);
 
-    public List<Interaction> findInteraction(int page, int row);
+    public List<Interaction> findInteraction(int page, int row, Integer type);
 
     public List<Interaction> findInteractionByReplay(boolean replay, int page, int rows);
 
@@ -57,5 +57,5 @@ public interface InteractionServiceable {
 
     public Organ getOrgan(Integer id);
 
-    public String mainJSON();
+    public String mainJSON(Integer type);
 }

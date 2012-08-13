@@ -18,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class UserAction extends PageAction {
 
-    private List<Advisor> advisors;
+	private static final long serialVersionUID = -3873722630471555850L;
+
+	private List<Advisor> advisors;
     @Autowired
     private OnlineService service;
 
@@ -30,7 +32,8 @@ public class UserAction extends PageAction {
         return AuthUtil.getUser();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public String execute(){
         User user = getUser();
         List<Advisor> all = service.findAdvisorByUsernam(user.getUsername());

@@ -22,7 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 public class RegisterAction extends ActionSupport{
 
-    private static final String JSON_FROMT = "{\"username\":\"%s\",\"success\":%s,\"checkcode\":%s}";
+	private static final long serialVersionUID = -5952422332095263724L;
+
+	private static final String JSON_FROMT = "{\"username\":\"%s\",\"success\":%s,\"checkcode\":%s}";
      
     private String username;
     private String password;

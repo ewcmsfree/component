@@ -23,7 +23,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class UserAction extends ActionSupport {
 
-    private static final int DEFAULT_ROW = 10;
+	private static final long serialVersionUID = -399069331003536690L;
+
+	private static final int DEFAULT_ROW = 10;
     private int pageNumber = 0;
     private Page page;
     private List<Interaction> interactions;

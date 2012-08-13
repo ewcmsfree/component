@@ -20,13 +20,16 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class InteractionAction extends LoginAction {
 
-    private Integer type;
+	private static final long serialVersionUID = 375273455337685071L;
+
+	private Integer type;
     private String title;
     private Integer organId;
     private String organName;
     private String content;
     private boolean noOrgan = false;
     private boolean success = false;
+    
     @Autowired
     private InteractionServiceable interactionService;
 

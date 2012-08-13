@@ -21,10 +21,13 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class JavaScriptServlet extends HttpServlet {
 
-    private static final String JS_TYPE = "text/javascript";
+	private static final long serialVersionUID = 2333929237116837188L;
+
+	private static final String JS_TYPE = "text/javascript";
     private static final String HEADER_ENCODING = "encoding";
     private static final String DEFAULT_ENCODING = "UTF-8";
     private static final String CALLBACK_PARAMETER_NAME = "callback";
+    private static final String INTERACTION_TYPE = "type";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,15 +38,22 @@ public class JavaScriptServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String encoding = getParameterValue(request, HEADER_ENCODING);
         encoding = (encoding == null ? DEFAULT_ENCODING : encoding);
-         initResponseHeader(response, encoding);
-
+        initResponseHeader(response, encoding);
+        
+        Integer type = 1;
+        String interaction_type = getParameterValue(request, INTERACTION_TYPE);
+        try{
+        	type = Integer.valueOf(interaction_type);
+        }catch(Exception e){
+        }
+        
         String callback = getParameterValue(request, CALLBACK_PARAMETER_NAME);
         String value;
         if (callback == null) {
             value = "alert('请设置显示浏览次数回调函数');";
         } else {
             InteractionServiceable service = getInteractionService();
-            String json =service.mainJSON();
+            String json =service.mainJSON(type);
             value = String.format("%s(%s);", callback, json);
         }
         Writer writer = response.getWriter();

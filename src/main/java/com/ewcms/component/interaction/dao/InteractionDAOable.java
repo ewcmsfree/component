@@ -29,7 +29,7 @@ public interface InteractionDAOable {
 
     public List<Interaction> findInteractionByUsername(String username, int page, int row);
 
-    public List<Interaction> findInteraction(int page, int row);
+    public List<Interaction> findInteraction(int page, int row, Integer type);
 
     public List<Interaction> findInteractionByReplay(boolean replay, int page, int row);
 

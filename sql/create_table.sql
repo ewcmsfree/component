@@ -39,24 +39,24 @@
 --------------------------------------------------------------------------------
 --删除存在的表(Drop already exists table and sequence)
 --------------------------------------------------------------------------------
---DROP TABLE component_counter;
---DROP TABLE component_counter_log;
---DROP TABLE component_comment_counter;
---DROP TABLE component_comment;
---DROP TABLE component_comment_reply;
---DROP TABLE component_auth_user;
---DROP TABLE component_auth_userinfo;
---DROP TABLE plugin_interaction;
---DROP TABLE plugin_interaction_speak;
---DROP TABLE plugin_interaction_backratio;
---DROP TABLE plugin_online_advisory;
+DROP TABLE component_counter;
+DROP TABLE component_counter_log;
+DROP TABLE component_comment_counter;
+DROP TABLE component_comment;
+DROP TABLE component_comment_reply;
+DROP TABLE component_auth_user;
+DROP TABLE component_auth_userinfo;
+DROP TABLE plugin_interaction;
+DROP TABLE plugin_interaction_speak;
+DROP TABLE plugin_interaction_backratio;
+DROP TABLE plugin_online_advisory;
 
---DROP Sequence seq_component_counter_log_id;
---DROP Sequence seq_component_comment_id;
---DROP Sequence seq_component_comment_reply_id;
---DROP Sequence seq_plugin_interaction_id;
---DROP Sequence seq_plugin_interaction_speak_id;
---DROP Sequence seq_plugin_online_advisory_id;
+DROP Sequence seq_component_counter_log_id;
+DROP Sequence seq_component_comment_id;
+DROP Sequence seq_component_comment_reply_id;
+DROP Sequence seq_plugin_interaction_id;
+DROP Sequence seq_plugin_interaction_speak_id;
+DROP Sequence seq_plugin_online_advisory_id;
 --------------------------------------------------------------------------------
 --创建序列(create sequence)
 --------------------------------------------------------------------------------
@@ -75,20 +75,20 @@ CREATE SEQUENCE seq_component_comment_reply_id
     INCREMENT BY 1
     CACHE 10;
 
---CREATE SEQUENCE seq_plugin_interaction_id
---     START WITH 1
---    INCREMENT BY 1
---    CACHE 10;
+CREATE SEQUENCE seq_plugin_interaction_id
+     START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
 
---CREATE SEQUENCE seq_plugin_interaction_speak_id
---     START WITH 1
---    INCREMENT BY 1
---    CACHE 10;
+CREATE SEQUENCE seq_plugin_interaction_speak_id
+     START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
 
---CREATE SEQUENCE seq_plugin_online_advisory_id
---     START WITH 1
---    INCREMENT BY 1
---    CACHE 10;
+CREATE SEQUENCE seq_plugin_online_advisory_id
+     START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
 
 -------------------------------------------------------------------------------
 --component_counter:访问次数表
@@ -114,7 +114,7 @@ CREATE TABLE component_counter_log (
     article_id int NOT NULL,
     ip varchar(25) NOT NULL,
     date timestamp without time zone NOT NULL DEFAULT now(),
-   CONSTRAINT pk_component_counter_log PRIMARY KEY (id)
+    CONSTRAINT pk_component_counter_log PRIMARY KEY (id)
 );
 
 -------------------------------------------------------------------------------
@@ -232,24 +232,24 @@ CREATE TABLE component_auth_userinfo (
 --organ_id:部门编号
 --ip:ip地址
 --date:日期
---CREATE TABLE plugin_interaction (
---    id int NOT NULL DEFAULT nextval('seq_plugin_interaction_id'),
---    username varchar(20) NOT NULL,
---    name varchar(20) NOT NULL,
---    title varchar(40) NOT NULL,
---    content text NOT NULL,
---    replay text,
---    type int NOT NULL,
---    state int NOT NULL DEFAULT 0,
---    checked boolean NOT NULL DEFAULT false,
---    organ_id int NOT NULL,
---    organ_name varchar(255) NOT NULL,
---    ip varchar(20),
---    counter integer NOT NULL DEFAULT 0,
---    date timestamp without time zone NOT NULL DEFAULT now(),
---    replay_date timestamp without time zone,
---    CONSTRAINT pk_plugin_interaction PRIMARY KEY (id)
---);
+CREATE TABLE plugin_interaction (
+    id int NOT NULL DEFAULT nextval('seq_plugin_interaction_id'),
+    username varchar(20) NOT NULL,
+    name varchar(20) NOT NULL,
+    title varchar(40) NOT NULL,
+    content text NOT NULL,
+    replay text,
+    type int NOT NULL,
+    state int NOT NULL DEFAULT 0,
+    checked boolean NOT NULL DEFAULT false,
+    organ_id int NOT NULL,
+    organ_name varchar(255) NOT NULL,
+    ip varchar(20),
+    counter integer NOT NULL DEFAULT 0,
+    date timestamp without time zone NOT NULL DEFAULT now(),
+    replay_date timestamp without time zone,
+    CONSTRAINT pk_plugin_interaction PRIMARY KEY (id)
+);
 
 --------------------------------------------------------------------------------
 --plugin_interaction_speak:政名互动
@@ -262,17 +262,17 @@ CREATE TABLE component_auth_userinfo (
 --verify:审核
 --organ_id:部门编号
 
---CREATE TABLE plugin_interaction_speak (
---    id int NOT NULL DEFAULT nextval('seq_plugin_interaction_speak_id'),
---    username varchar(20) NOT NULL,
---    name varchar(20) NOT NULL,
---    content text NOT NULL,
---    interaction_id int NOT NULL,
---    checked boolean NOT NULL DEFAULT false,
---    ip varchar(20),
---    date timestamp without time zone NOT NULL DEFAULT now(),
---    CONSTRAINT pk_plugin_interaction_speak PRIMARY KEY (id)
---);
+CREATE TABLE plugin_interaction_speak (
+    id int NOT NULL DEFAULT nextval('seq_plugin_interaction_speak_id'),
+    username varchar(20) NOT NULL,
+    name varchar(20) NOT NULL,
+    content text NOT NULL,
+    interaction_id int NOT NULL,
+    checked boolean NOT NULL DEFAULT false,
+    ip varchar(20),
+    date timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT pk_plugin_interaction_speak PRIMARY KEY (id)
+);
 
 --------------------------------------------------------------------------------
 --plugin_interaction_backratio:部门回复率
@@ -281,12 +281,12 @@ CREATE TABLE component_auth_userinfo (
 --ratio:回帖比率
 --no_ratio:未回帖率
 
---CREATE TABLE plugin_interaction_backratio (
---    id int NOT NULL,
---    ratio int NOT NULL,
---    no_ratio int NOT NULL,
---    CONSTRAINT pk_plugin_interaction_backratio PRIMARY KEY (id)
---);
+CREATE TABLE plugin_interaction_backratio (
+    id int NOT NULL,
+    ratio int NOT NULL,
+    no_ratio int NOT NULL,
+    CONSTRAINT pk_plugin_interaction_backratio PRIMARY KEY (id)
+);
 
 --component_online_advisory:在线咨询
 
@@ -300,21 +300,21 @@ CREATE TABLE component_auth_userinfo (
 --matter_id:咨询事项编号
 --ip:ip地址
 --date:日期
---CREATE TABLE plugin_online_advisory(
---    id int NOT NULL DEFAULT nextval('seq_plugin_online_advisory_id'),
---    username varchar(20) NOT NULL,
---    name varchar(20) NOT NULL,
---    title varchar(40) NOT NULL,
---    content text NOT NULL,
---    replay text,
---    state int NOT NULL DEFAULT 0,
---    organ_id int NOT NULL, 
---    matter_id int NOT NULL,
---    ip varchar(20),
---    date timestamp without time zone NOT NULL DEFAULT now(),
---    replay_date timestamp without time zone,
---    CONSTRAINT pk_plugin_online_advisory PRIMARY KEY (id)
---);
+CREATE TABLE plugin_online_advisory(
+    id int NOT NULL DEFAULT nextval('seq_plugin_online_advisory_id'),
+    username varchar(20) NOT NULL,
+    name varchar(20) NOT NULL,
+    title varchar(40) NOT NULL,
+    content text NOT NULL,
+    replay text,
+    state int NOT NULL DEFAULT 0,
+    organ_id int NOT NULL, 
+    matter_id int NOT NULL,
+    ip varchar(20),
+    date timestamp without time zone NOT NULL DEFAULT now(),
+    replay_date timestamp without time zone,
+    CONSTRAINT pk_plugin_online_advisory PRIMARY KEY (id)
+);
 --------------------------------------------------------------------------------
 --外键(FK)
 --------------------------------------------------------------------------------

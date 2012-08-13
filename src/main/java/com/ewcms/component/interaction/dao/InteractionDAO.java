@@ -175,11 +175,16 @@ public class InteractionDAO implements InteractionDAOable {
     }
 
     @Override
-    public List<Interaction> findInteraction(int page, int row) {
+    public List<Interaction> findInteraction(int page, int row, Integer type) {
         String sql = "Select * "
                 + "From plugin_interaction "
-                + "Where checked = true "
-                + "Order By date desc Limit ? OffSet ?";
+                + "Where checked = true ";
+                
+        if (type != 0 && type.intValue() <= 3 && type.intValue() >= 1){
+        	sql += " And type = " + type + " ";
+        }
+                
+        sql += "Order By date desc Limit ? OffSet ?";
 
         int offset = page * row;
         Object[] params = new Object[]{row, offset};

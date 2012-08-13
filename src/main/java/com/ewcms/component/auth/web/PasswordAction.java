@@ -18,7 +18,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class PasswordAction extends ActionSupport{
 
-    private String password;
+	private static final long serialVersionUID = -3772450138816131164L;
+
+	private String password;
     private String newpassword;
     @Autowired
     private AuthServiceable authService;

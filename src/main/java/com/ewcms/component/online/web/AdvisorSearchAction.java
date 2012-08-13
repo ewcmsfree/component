@@ -6,7 +6,6 @@ package com.ewcms.component.online.web;
 
 import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Advisor;
-import com.ewcms.component.online.vo.Matter;
 import com.ewcms.component.online.vo.Working;
 import com.ewcms.component.vo.Page;
 import java.util.List;
@@ -20,7 +19,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AdvisorSearchAction extends PageAction {
 
-    private Integer organId;
+	private static final long serialVersionUID = 6887179447170182042L;
+
+	private Integer organId;
     private Integer workingId;
     private String title;
     private List<Advisor> advisors;
@@ -63,7 +64,8 @@ public class AdvisorSearchAction extends PageAction {
         return service.getWorkingPosition(workingId);
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public String execute() {
         Integer matterId = service.getMatterId(workingId);
         if (matterId != null) {

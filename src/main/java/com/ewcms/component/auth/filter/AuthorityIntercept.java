@@ -17,8 +17,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AuthorityIntercept extends AbstractInterceptor {
 
-    public static final String GOING_TO_URL_KEY = "GOING_TO";
-
+	private static final long serialVersionUID = 3050468747468548800L;
+	
+	public static final String GOING_TO_URL_KEY = "GOING_TO";
+	
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
         ActionContext ctx = invocation.getInvocationContext();

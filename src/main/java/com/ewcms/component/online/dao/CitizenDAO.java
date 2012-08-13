@@ -4,11 +4,7 @@
  */
 package com.ewcms.component.online.dao;
 
-import com.ewcms.component.online.vo.Article;
-import com.ewcms.component.online.vo.Organ;
 import com.ewcms.component.online.vo.Citizen;
-import com.ewcms.component.online.vo.Matter;
-import com.ewcms.component.online.vo.Working;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -34,7 +30,7 @@ public class CitizenDAO {
 
     public Citizen get(int id) {
 
-        String sql = "Select * From doc_citizen Where id=?";
+        String sql = "Select * From content_citizen Where id=?";
 
         List<Citizen> list = jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Citizen>() {
 
@@ -48,7 +44,7 @@ public class CitizenDAO {
     }
 
     public List<Citizen> getAll() {
-        String sql = "Select * From doc_citizen Order By id Asc";
+        String sql = "Select * From content_citizen Order By id Asc";
 
         return jdbcTemplate.query(sql, new RowMapper<Citizen>() {
 

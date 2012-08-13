@@ -5,7 +5,6 @@
 
 package com.ewcms.component.hot.web;
 
-import com.ewcms.component.hot.dao.HotDAO;
 import com.ewcms.component.hot.service.HotService;
 import java.io.IOException;
 import java.io.Writer;
@@ -22,7 +21,10 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * @author wangwei
  */
 public class JavaScriptServlet extends HttpServlet {
-      private static final String JS_TYPE = "text/javascript";
+
+	private static final long serialVersionUID = 873893292368831401L;
+
+	private static final String JS_TYPE = "text/javascript";
     private static final String HEADER_ENCODING = "encoding";
     private static final String DEFAULT_ENCODING = "UTF-8";
     private static final String CALLBACK_PARAMETER_NAME = "callback";

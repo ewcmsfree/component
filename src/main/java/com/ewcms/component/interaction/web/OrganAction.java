@@ -33,7 +33,7 @@ public class OrganAction {
     }
 
     public void query() {
-        List children = getChildren();
+        List<Organ> children = getChildren();
         String json = builderJson(children);
         Struts2Util.renderJson(json);
     }

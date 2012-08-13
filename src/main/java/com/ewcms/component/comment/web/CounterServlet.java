@@ -22,7 +22,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class CounterServlet extends HttpServlet {
 
-    private static final String JSON_TYPE = "application/json";
+	private static final long serialVersionUID = -702727997072029888L;
+
+	private static final String JSON_TYPE = "application/json";
     private static final String HEADER_ENCODING = "encoding";
     private static final String DEFAULT_ENCODING = "UTF-8";
     protected static final String ARTICLE_ID_PARAMETER_NAME = "article_id";

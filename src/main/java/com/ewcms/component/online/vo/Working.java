@@ -20,7 +20,9 @@ import java.util.List;
  */
 public class Working implements Serializable {
 
-    private Integer id;
+	private static final long serialVersionUID = -2176090511626720380L;
+
+	private Integer id;
     private String name;
     private Integer parentId;
     private Organ organ;

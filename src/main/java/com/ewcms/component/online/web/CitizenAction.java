@@ -20,7 +20,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class CitizenAction extends PageAction {
 
-    private static final int DEFAULT_ROW = 12;
+	private static final long serialVersionUID = 9165624150125156068L;
+
+	private static final int DEFAULT_ROW = 12;
     private Integer citizenId;
     private List<Working> matters;
     private List<Article> articles;
@@ -76,7 +78,8 @@ public class CitizenAction extends PageAction {
         return citizen;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public String execute() {
         row = DEFAULT_ROW;
         if (citizenId == null) {

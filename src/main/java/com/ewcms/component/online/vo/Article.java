@@ -13,7 +13,9 @@ import java.sql.Date;
  */
 public class Article implements Serializable{
 
-    private Integer id;
+	private static final long serialVersionUID = -6523341308880140391L;
+	
+	private Integer id;
     private String title;
     private String url;
     private Date published;

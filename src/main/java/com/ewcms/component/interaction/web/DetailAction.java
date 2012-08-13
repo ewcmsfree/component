@@ -24,13 +24,17 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class DetailAction extends LoginAction {
 
-    private final static int DEFAULT_ROW = 5;
+	private static final long serialVersionUID = -7399532780425670238L;
+
+	private final static int DEFAULT_ROW = 5;
     private Integer id;
     private boolean counter = true;
     private Interaction interaction;
     private int pageNumber = 0;
     private int row = DEFAULT_ROW;
     private Page page;
+    private Integer type;
+    
     @Autowired
     private InteractionServiceable interactionService;
 
@@ -58,7 +62,15 @@ public class DetailAction extends LoginAction {
         return page;
     }
 
-    public List<Organ> getBackRatios() {
+    public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public List<Organ> getBackRatios() {
         return interactionService.findInteractionBackOrder(8, true);
     }
 

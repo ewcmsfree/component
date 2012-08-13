@@ -17,7 +17,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SearchAction extends IndexAction {
 
-    private String title;
+	private static final long serialVersionUID = 1619837012285739558L;
+
+	private String title;
 
     public String getTitle() {
         return title;

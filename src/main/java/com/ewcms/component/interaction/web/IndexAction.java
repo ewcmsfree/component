@@ -21,7 +21,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IndexAction extends ActionSupport {
 
-    private final static int DEFAULT_ROW = 20;
+	private static final long serialVersionUID = -1880649265523336141L;
+
+	private final static int DEFAULT_ROW = 13;
 
     public enum FindType {
 
@@ -84,7 +86,7 @@ public class IndexAction extends ActionSupport {
 
     private List<Interaction> findInteractions(FindType findType) {
         if (findType == FindType.ALL) {
-            return interactionService.findInteraction(pageNumber, row);
+            return interactionService.findInteraction(pageNumber, row, getType());
         }
         if (findType == FindType.REPLAY) {
             return interactionService.findInteractionByReplay(true, pageNumber, row);

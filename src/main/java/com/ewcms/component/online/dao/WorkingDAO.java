@@ -34,7 +34,7 @@ public class WorkingDAO {
     }
 
     public List<Working> getPosition(Integer id) {
-        List list = new ArrayList<Working>();
+        List<Working> list = new ArrayList<Working>();
         Working working = get(id);
         for (; working != null && working.getParentId() != null;) {
             list.add(0, working);
@@ -75,11 +75,15 @@ public class WorkingDAO {
 
     public List<Article> findArticle(int id) {
 
-        String sql = "Select url,title,published From plugin_workingbody_articlermc t1,doc_articlermc t2,doc_article t3 "
-                + "Where t1.articlermc_id = t2.id And t2.article_id = t3.id And status ='RELEASE' And t1.workingbody_id = ? "
-                + "Order By t2.published";
+//        String sql = "Select url,title,published From plugin_workingbody_articlemain t1,content_article_main t2,content_article t3 "
+//                + "Where t1.articlemain_id = t2.id And t2.article_id = t3.id And t3.status ='RELEASE' And t1.workingbody_id = ? "
+//                + "Order By t3.published";
+    	String sql = "Select url,title,published From " +
+    			"plugin_workingbody_articlemain t1 left join content_article_main t2 on t1.articlemain_id=t2.id " +
+    			"left join content_article t3 on t2.article_id=t3.id " +
+    			"Where t3.status ='RELEASE' And t1.workingbody_id = ?  Order By t3.published ";
+    	
         List<Article> articles = jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Article>() {
-
             @Override
             public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Article article = new Article();
@@ -190,7 +194,7 @@ public class WorkingDAO {
         });
     }
 
-    public List getRootChildren() {
+    public List<Working> getRootChildren() {
         String sql = "Select id,name From plugin_workingbody "
                 + "Where parent_id In "
                 + "(Select id From plugin_workingbody Where parent_id is null) "

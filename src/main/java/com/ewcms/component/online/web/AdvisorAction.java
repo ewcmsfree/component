@@ -22,7 +22,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AdvisorAction extends LoginAction {
 
-    private Integer workingId;
+	private static final long serialVersionUID = 5026276432881452389L;
+
+	private Integer workingId;
     private Integer organId;
     private Advisor advisor;
     @Autowired

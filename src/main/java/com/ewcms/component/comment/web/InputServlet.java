@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class InputServlet extends CounterServlet {
 
-    private static final String CONTENT_PARAM_NAME = "content";
+	private static final long serialVersionUID = 957219574506649946L;
+
+	private static final String CONTENT_PARAM_NAME = "content";
     private static final String USER_PARAM_NAME = "user";
     
      @Override
