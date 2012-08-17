@@ -1,409 +1,366 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
-    <head>
-        <title>中国瑞昌网为您服务！</title>
-        <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
-        <style type="text/css">
-            <!--
-            body {
-                margin-top: 0px;
-                background: url(/images/xy2009_20.jpg) center top repeat-x;
-            }
-            -->
-        </style>
-        <link href="<s:url value="/css/ruichang.css"/>" rel="stylesheet" type="text/css" />
-        <style type="text/css">
-            <!--
-            .style9 {color: #CC0000}
-            .style13 {font-size: 9pt}
-            .style15 {color: #FFFFFF}
-            .style21 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; }
-            .style34 {font-family: Arial, Helvetica, sans-serif}
-            .style40 {color: #336600}
-            .style41 {color: #FF0000}
-            -->
-        </style>
-        <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
-        <script lang="JavaScript" type="text/JavaScript">
-                $(function(){
-                   
-                });
-                function jumpPage(obj){
-                    var page = obj.options[obj.selectedIndex].text -1 ;
-                    window.location = ' <s:url action="index"/>?type=<s:property value="type"/>&pageNumber=' + page ;
-                }
-                function findAll(){
-                    window.location = '<s:url action="index"/>?type=0' ;
-                }
-                function findReplay(){
-                    window.location = '<s:url action="index"/>?type=1' ;
-                }
-                function findNoReplay(){
-                    window.location = '<s:url action="index"/>?type=2' ;
-                }
-        </script>
-    </head>
-    <body>
-        <s:include value="../top.jsp"/>
-    	<div id="whole_bg">
-  			<div id="content">
-            <s:include value="../header.jsp"/>
-            <table width="1000" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="750" valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td height="53" background="images/zmhd_icon.jpg"><div align="right">
-                                        <table width="130" border="0" cellpadding="0" cellspacing="0" class="hui">
-                                            <tr>
-                                                <td height="25"><div align="left"><img src="../images/bullet_02.gif" width="7" height="7"><a class="hui" href="<s:url action="interaction"/>" target="_blank"><span class="style9">我要写信</span></a></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td height="1" background="../images/xuxian.gif"></td>
-                                            </tr>
-                                            <tr>
-                                                <td height="25"><div align="left"><img src="../images/bullet_02.gif" width="7" height="7"><a class="hui" href="<s:url action="interaction" namespace="/user"/>" target="_blank"><span class="style9">我的信件箱</span></a></div></td>
-                                            </tr>
-                                        </table>
-                                    </div></td>
-                            </tr>
-                        </table>
-                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td height="5"></td>
-                            </tr>
-                        </table>
-                        <br>
-                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <s:if test="type == 0">
-                                    <td width="110" height="40" valign="bottom"><a href="<s:url action="index"/>?type=0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image41','','images/qbwt1.jpg',1)"><img src="images/qbwt2.jpg" name="Image41" width="110" height="40" border="0"></a></td>
-                                        </s:if>
-                                        <s:else>
-                                    <td width="110" height="40" valign="bottom"><a href="<s:url action="index"/>?type=0" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image41','','images/qbwt2.jpg',1)"><img src="images/qbwt1.jpg" name="Image41" width="110" height="40" border="0"></a></td>
-                                        </s:else>
-                                        <s:if test="type == 1">
-                                    <td width="130" valign="bottom"><a a href="<s:url action="index"/>?type=1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image40','','images/ydf2.jpg',1)"><img src="images/ydf1.jpg" name="Image40" width="130" height="40" border="0"></a></td>
-                                        </s:if>
-                                        <s:else>
-                                    <td width="130" valign="bottom"><a href="<s:url action="index"/>?type=1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image40','','images/ydf1.jpg',1)"><img src="images/ydf2.jpg" name="Image40" width="130" height="40" border="0"></a></td>
-                                        </s:else>
-                                        <s:if test="type == 2">
-                                    <td width="130" valign="bottom"><a href="<s:url action="index"/>?type=2" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image42','','images/dhf2.jpg',1)"><img src="images/dhf1.jpg" name="Image42" width="130" height="40" border="0"></a></td>
-                                        </s:if>
-                                        <s:else>
-                                    <td width="130" valign="bottom"><a href="<s:url action="index"/>?type=2" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image42','','images/dhf1.jpg',1)"><img src="images/dhf2.jpg" name="Image42" width="130" height="40" border="0"></a></td>
-                                        </s:else>
-                                <td width="350" class="di_line"><div align="center" class="hui">&nbsp;</div></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="zyd_line"><div align="center">
-                                        <br>
-                                        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td width="60" height="40"><div align="center" class="zongcolor"><strong>编号</strong></div></td>
-                                                <td width="50"><div align="center" class="zongcolor"><strong>类型</strong></div></td>
-                                                <td><div align="center" class="zongcolor"><strong>内容</strong></div></td>
-                                                <td width="110"><div align="center" class="zongcolor"><strong>受理单位</strong></div></td>
-                                                <td width="40"><div align="center" class="zongcolor"><strong>状态</strong></div></td>
-                                                <td width="70"><div align="center" class="zongcolor"><strong>日期</strong></div></td>
-                                            </tr>
-                                        </table>
-                                        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td height="1" bgcolor="#F1D68D"></td>
-                                            </tr>
-                                        </table>
-                                        <table width="95%"  border="0" cellpadding="0" cellspacing="0">
-                                            <s:iterator value="interactions">
-                                                <tr bgcolor="#F9F9F9">
-                                                    <td width="60" height="40" bgcolor="#F9F9F9" class="xu_di_line">
-                                                        <div align="center" class="hui"><img src="../images/bullet_01.gif" width="14" height="10"/>
-                                                            <s:property value="formatId"/>
-                                                        </div>
-                                                    </td>
-                                                    <td width="50" class="xu_di_line">
-                                                        <div align="center" class="hui">
-                                                            [<s:if test = "type==1">咨询</s:if><s:if test = "type==2">投诉</s:if><s:if test = "type==3">建议</s:if>]
-                                                        </div>
-                                                    </td>
-                                                    <td class="xu_di_line">
-                                                        <div align="left" class="news">
-                                                            <s:url action="detail" id="detailUrl">
-                                                                <s:param name="id" value="%{id}"/>
-                                                            </s:url>
-                                                            <a href="<s:property value="detailUrl"/>" target="_blank"><span class="news"><s:property value="title"/></span></a>
-                                                        </div>
-                                                    </td>
-                                                    <td width="110" class="xu_di_line"><div align="center" class="hui">
-                                                            <a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank">
-                                                                <s:property value="organ.name"/>
-                                                            </a></div>
-                                                    </td>
-                                                    <td width="40" class="xu_di_line"><div align="center" class="hui style40"><s:property value="state.title"/></div></td>
-                                                    <td width="70" class="xu_di_line"><div align="center" class="hui"><s:date format="yyyy-MM-dd" name="date"/></div></td>
-                                                </tr>
-                                            </s:iterator>
-                                        </table>
-                                        <br>
-                                        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td height="30" bgcolor="#F2F2F2" class="li_line"><div align="center" class="hui">
-                                                        共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
-                                                        <s:if test="page.pagePrev == -1">
-                                                            上一页
-                                                        </s:if>
-                                                        <s:else>
-                                                            <s:url action="index" id="pageUrl" escapeAmp="false">
-                                                                <s:param name="type" value="%{type}"/>
-                                                                <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
-                                                            </s:url>
-                                                            <a href="<s:property value="pageUrl"/>">上一页</a>
-                                                        </s:else>
-                                                        <s:iterator value="page.pageList">
-                                                            <s:if test = "page.page == top">
-                                                                <strong><s:property value="top"/></strong>
-                                                            </s:if>
-                                                            <s:else>
-                                                                <s:url action="index" id="pageUrl" escapeAmp="false">
-                                                                    <s:param name="type" value="%{type}"/>
-                                                                    <s:param name="pageNumber" value="%{top-1}"/>
-                                                                </s:url>
-                                                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
-                                                            </s:else>&nbsp;
-                                                        </s:iterator>
-                                                        <s:if test="page.pageNext == -1">
-                                                            下一页
-                                                        </s:if>
-                                                        <s:else>
-                                                            <s:url action="index" id="pageUrl" escapeAmp="false">
-                                                                <s:param name="type" value="%{type}"/>
-                                                                <s:param name="pageNumber" value="%{page.pageNext-1}"/>
-                                                            </s:url>
-                                                            <a href="<s:property value="pageUrl"/>">下一页</a>
-                                                        </s:else>&nbsp;转到
-                                                        <select name="select" class="hui" onchange="jumpPage(this)">
-                                                            <s:iterator value="page.pageListAll">
-                                                                <s:if test = "page.page == top">
-                                                                    <option selected><s:property value="top"/></option>
-                                                                </s:if>
-                                                                <s:else>
-                                                                    <option><s:property value="top"/></option>
-                                                                </s:else>
-                                                            </s:iterator>
-                                                        </select>页
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <br>
-                                    </div></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td width="5"></td>
-                    <td width="280" valign="top" bgcolor="fdf9ee" class="cheng_line"><div align="center">
-                            <s:form name="searchForm" action="search" method="post">
-                                <table border="0" cellpadding="0" cellspacing="0" width="280">
-                                    <tr>
-                                        <td><img src="images/images/spacer.gif" alt="" name="undefined_2" width="280" height="1" border="0"></td>
-                                        <td><img src="images/images/spacer.gif" alt="" name="undefined_2" width="1" height="1" border="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td background="images/images/zmhd_kuang_r1_c1JS.jpg">　　　　　　　　　　　</td>
-                                        <td><img src="images/images/spacer.gif" alt="" name="undefined_2" width="1" height="54" border="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td background="images/images/zmhd_kuang_r2_c1.jpg"><div align="center">
-                                                <table width="80%"  border="0" cellspacing="2" cellpadding="2">
-                                                    <tr>
-                                                        <td class="hui">关键字：</td>
-                                                        <td><input type="text" name="title" size="12" id="search_input_id"></td>
-                                                        <td><img src="images/search.gif" width="51" height="35" onclick="document.searchForm.submit();"/></td>
-                                                    </tr>
-                                                </table>
-                                            </div></td>
-                                        <td><img src="images/images/spacer.gif" alt="" width="1" height="51" border="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img name="zmhd_kuang_r3_c1" src="images/images/zmhd_kuang_r3_c1.jpg" width="280" height="24" border="0" alt=""></td>
-                                        <td><img src="images/images/spacer.gif" alt="" name="undefined_2" width="1" height="24" border="0"></td>
-                                    </tr>
-                                </table>
-                            </s:form>
-                            <table width="100%"  border="0" cellspacing="4" cellpadding="0">
-                                <tr>
-                                    <td><div align="center"><a href="http://218.65.14.14/xunyang/news/checkxinL.asp"><img src="images/ldxx_icon.jpg" width="265" height="58" border="0"></a></div></td>
-                                </tr>
-                                <tr>
-                                    <td><div align="center"><a href="http://wsxf.jx-xinfang.gov.cn/email_index.asp?subid=007003008022094026026008022094023031006094019030" target="_blank"><img src="images/wsxf_icon.jpg" width="265" height="58" border="0"></a></div></td>
-                                </tr>
-                            </table>
-                            <br>
-                            <table width="96%"  border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td class="szy_line"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td height="25" bgcolor="#FFFFFF" id="mndividk1" onMouseOver="ChangeFoldern(this,'mndividk','2','','images/an_bg.jpg','szy_line','li_line');" style="cursor:hand;"><div align="center" class="style9 hui"><strong>最新访谈</strong></div></td>
-                                                <td width="1" bgcolor="#CCCCCC"></td>
-                                                <td background="images/an_bg.jpg" id="mndividk2" onMouseOver="ChangeFoldern(this,'mndividk','2','','images/an_bg.jpg','szy_line','li_line');" style="cursor:hand;"><div align="center" class="hui style9">访谈回顾</div></td>
-                                            </tr>
-                                        </table></td>
-                                </tr>
-                                <tr>
-                                    <td bgcolor="#FFFFFF" class="szy_line"><div align="center">
-                                            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                    <td height="5"></td>
-                                                </tr>
-                                            </table>
-                                            <img src="/images/zxft.jpg" width="180" height="144"></div></td>
-                                </tr>
-                                <tr>
-                                    <td bgcolor="#FFFFFF" class="xzy_line">
-                                        <table width="100%"  border="0" cellspacing="2" cellpadding="2" id="tmndividk1" style="display: ">
-                                            <tr>
-                                                <td>
-                                                    <div align="left">
-                                                        <div align="left" class="zongcolor"><span class=style30 style9><strong>访谈主题：</strong></span>领导干部经济责任审计</div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td height="1" background="/images/xuxian.gif"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><DIV align=left class="zongcolor"><SPAN class=style30><STRONG>访谈时间：</STRONG></SPAN>2010-12-22 15:00:00--2010-12-22 15:30:00</DIV></td>
-                                            </tr>
-                                            <tr>
-                                                <td height="1" background="/images/xuxian.gif"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><DIV align=left class="zongcolor"><SPAN class=style30><STRONG>访谈嘉宾：</STRONG></SPAN>凌海</DIV></td>
-                                            </tr>
-                                            <tr>
-                                                <td height="1" background="/images/xuxian.gif"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="zongcolor"><a href="http://218.65.14.14:8080/xychat/xuserlogin.jsp?cid=24" target="_blank" class="zongcolor">点击进入直播间</a></td>
-                                            </tr>
-                                        </table></td>
-                                </tr>
-                            </table>
-                            <table width="100%"  border="0" cellspacing="2" cellpadding="2" id="tmndividk2" style="display:none">
-                                <tr>
-                                    <td height="22"><div align="left">・<A class=hui title='有关创业服务年活动网民在线问答' href="http://218.65.14.8:8080/xychat/userlogin.do?id=23&username=&password=" target=_blank>有关创业服务年活动网民在…</A></div></td>
-                                </tr>
-                                <tr>
-                                    <td height="22" ><div align="left">・<A class=hui title='如何策应“三产活市、城建兴区”战略发展瑞昌经济（六）' href="http://218.65.14.8:8080/xychat/userlogin.do?id=21&username=&password=" target=_blank>如何策应“三产活市、城建…</A></div></td>
-                                </tr>
-                                <tr>
-                                    <td height="22"><div align="left">・<A class=hui title='如何策应“三产活市、城建兴区”战略发展瑞昌经济（五）' href="http://218.65.14.8:8080/xychat/userlogin.do?id=18&username=&password=" target=_blank>如何策应“三产活市、城建…</A></div></td>
-                                </tr>
-                                <tr>
-                                    <td height="22" ><div align="left">・<A class=hui title='如何策应“三产活市、城建兴区”战略发展瑞昌经济（四）' href="http://218.65.14.8:8080/xychat/userlogin.do?id=17&username=&password=" target=_blank>如何策应“三产活市、城建…</A></div></td>
-                                </tr>
-                                <tr>
-                                    <td height="22"><div align="left">・<A class=hui title='如何策应“三产活市、城建兴区”战略发展瑞昌经济（三）' href="http://218.65.14.8:8080/xychat/userlogin.do?id=16&username=&password=" target=_blank>如何策应“三产活市、城建…</A></div></td>
-                                </tr>
-                                <tr>
-                                    <td height="22"><div align="left">・<A class=hui title='如何策应“三产活市、城建兴区”战略发展瑞昌经济（二）' href="http://218.65.14.8:8080/xychat/userlogin.do?id=15&username=&password=" target=_blank>如何策应“三产活市、城建…</A></div></td>
-                                </tr>
-                            </table>
-                            <table width="90%"  border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="30" class="red_bt"><div align="left">部门回复率排行</div></td>
-                                </tr>
-                                <tr>
-                                    <td height="1" bgcolor="#FFCC66"></td>
-                                </tr>
-                            </table>
-                            <table width="90%"  border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="5"></td>
-                                </tr>
-                            </table>
-                            <table width="70%"  border="0" cellspacing="0" cellpadding="3">
-                                <s:iterator value="backRatios">
-                                    <tr>
-                                        <td height="15" width="200">
-                                            <div align="left" >
-                                                <a href="<s:url action="organsearch"/>?id=<s:property value="id"/>" target="_blank" class="hui">
-                                                    <s:property value="name"/>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td class="hui">
-                                            <s:property value="backRatio"/>%
-                                        </td>
-                                    </tr>
-                                </s:iterator>
-                            </table>
-                            <br>
-                            <table width="90%"  border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="30" class="red_bt"><div align="left">部门未回复率排行</div></td>
-                                </tr>
-                                <tr>
-                                    <td height="1" bgcolor="#FFCC66"></td>
-                                </tr>
-                            </table>
-                            <table width="90%"  border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="5"></td>
-                                </tr>
-                            </table>
-                            <table width="70%"  border="0" cellspacing="0" cellpadding="3">
-                                <s:iterator value="noBackRatios">
-                                    <tr>
-                                        <td height="15" width="200">
-                                            <div align="left" class="hui">
-                                                <a href="<s:url action="organsearch"/>?id=<s:property value="id"/>" target="_blank" class="hui">
-                                                    <s:property value="name"/>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td class="hui">
-                                            <s:property value="noBackRatio"/>%
-                                        </td>
-                                    </tr>
-                                </s:iterator>
-                            </table>
-                            <br>
-                            <table width="90%"  border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="30" class="red_bt"><div align="left">热点问题</div></td>
-                                </tr>
-                                <tr>
-                                    <td height="1" bgcolor="#FFCC66"></td>
-                                </tr>
-                            </table>
-                            <table width="95%"  border="0" cellpadding="2" cellspacing="0" class="hui">
-                                <s:iterator value="hots"  status="st">
-                                    <tr>
-                                        <td><img src="../images/num/no<s:property value="#st.index+1"/>b.jpg" width="13" height="13"/></td>
-                                        <td height="25">
-                                            <div align="left">
-                                                <a href="<s:url action="detail"/>?id=<s:property value="id"/>" target="_blank" class="hui">
-                                                    <s:if test="title.length()>20">
-                                                        <s:property value="title.substring(0,20)"/>…
-                                                    </s:if>
-                                                    <s:else>
-                                                        <s:property value="title"/>
-                                                    </s:else>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </s:iterator>
-                            </table>
-                            <br>
-                        </div></td>
-                </tr>
-            </table>
-            </div>
-            <br>
-            <s:include value="../footer.jsp"/>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中国瑞昌网欢迎您！</title>
+    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function(){
+    	if ($('#currentTable').val() == '1'){
+    		$('#dmndividb1').addClass('current');
+    		$('#dmndividb2').removeClass('current');
+    		$('#dmndividb3').removeClass('current');
+    		$('#tdmndividb1').css('display','');
+    		$('#tdmndividb2').css('display','none');
+    		$('#tdmndividb3').css('display','none');
+    	}else if ($('#currentTable').val() == '2'){
+    		$('#dmndividb1').removeClass('current');
+    		$('#dmndividb2').addClass('current');
+    		$('#dmndividb3').removeClass('current');
+    		$('#tdmndividb1').css('display','none');
+    		$('#tdmndividb2').css('display','');
+    		$('#tdmndividb3').css('display','none');
+    	}else if ($('#currentTable').val() == '3'){
+    		$('#dmndividb1').removeClass('current');
+    		$('#dmndividb2').removeClass('current');
+    		$('#dmndividb3').addClass('current');
+    		$('#tdmndividb1').css('display','none');
+    		$('#tdmndividb2').css('display','none');
+    		$('#tdmndividb3').css('display','');
+    	}
+    	$('#dmndividb1').bind('mouseover',function(){
+    		$('#currentTable').val('1');
+    		ChangeFoldern(this,'dmndividb','3','current','');
+    	});
+    	$('#dmndividb2').bind('mouseover',function(){
+    		$('#currentTable').val('2');
+    		ChangeFoldern(this,'dmndividb','3','current','');
+    	});
+    	$('#dmndividb3').bind('mouseover',function(){
+    		$('#currentTable').val('3');
+    		ChangeFoldern(this,'dmndividb','3','current','');
+    	});
+      });
+      function jumpPageXc(obj){
+          var page = obj.options[obj.selectedIndex].text - 1 ;
+          window.location = '<s:url action="index"/>?type=0&pageNumberXc=' + page ;
+      }
+      function jumpPageTs(obj){
+          var page = obj.options[obj.selectedIndex].text - 1 ;
+          window.location = '<s:url action="index"/>?type=0&pageNumberTs=' + page ;
+      }
+      function jumpPageZx(obj){
+          var page = obj.options[obj.selectedIndex].text - 1 ;
+          window.location = '<s:url action="index"/>?type=0&pageNumberZx=' + page ;
+      }
+      function MM_jumpMenu(targ,selObj,restore){ //v3.0
+        eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+        if (restore) selObj.selectedIndex=0;
+      }
+    </script>
+  </head>
+  <body>
+    <!--顶部信息栏-->
+    <s:include value="../top.jsp"/>
+    <!--顶部信息栏结束-->
+    <div id="whole_bg">
+      <div id="content">
+        <s:include value="../header.jsp"/>
+        <!--内容-->
+        <div class="side_box1 letter_side_h">
+          <iframe src="http://218.65.14.6/mstd/fangtanqiantao/index.html" width="300" height="850" frameborder="0" scrolling="no"> 
+            <a href="http://218.65.14.6/mstd/fangtanqiantao/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+          </iframe>
         </div>
-    </body>
+        <div class="zwgk_mainbox letter_main">
+          <div class="current_position">
+            <p><span><strong>当前位置：</strong><a href="/">首页</a>＞政民互动</span></p>
+            <p class="mail"><a href="<s:url action='interaction'/>">我要写信</a></p>
+            <span class="srh1">
+              <s:form action="search" name="zmhdsearchform" method="post">
+                <input class="srh_t" name="title" type="text" value="信件检索" size="20" onclick="this.value=''"/>
+                <input type="submit" value="搜索"/>
+              </s:form>
+            </span>
+          </div>
+          <div class="letter_box">
+            <ul class="letter_menu">
+              <li class="blank"></li>
+              <li id="dmndividb1" style="cursor:hand;" class="current"><a href="<s:url action='list'/>?currentTable=3">建言献策</a></li>
+              <li id="dmndividb2" style="cursor:hand;"><a href="<s:url action='list'/>?currentTable=1">在线咨询</a></li>
+              <li id="dmndividb3" style="cursor:hand;"><a href="<s:url action='list'/>?currentTable=2">投诉监督</a></li>
+              <s:hidden id="currentTable" name="currentTable"/>
+            </ul>
+            <div class="clearfloat"></div>
+            <div class="list_tab">
+              <table width="100%" id="tdmndividb1" style="display: " border="0" cellpadding="0" cellspacing="3">
+                <tr>
+                  <th>编号</th>
+                  <th>内容</th>
+                  <th>受理单位</th>
+                  <th>状态</th>
+                  <th>日期</th>
+                </tr>
+                <s:iterator value="interactionXcs">
+                  <tr>
+                    <td><s:property value="formatId"/></td>
+                    <td class="ct">
+                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
+                    </td>
+                    <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
+                    <td><s:property value="state.title"/></td>
+                    <td><s:date format="yyyy-MM-dd" name="date"/></td>
+                  </tr>
+                </s:iterator>
+                <tr>
+                  <td colspan="5">
+                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="30" bgcolor="#F2F2F2">
+                          <div align="center">
+                                                                           共<s:property value="pageXc.pageCount"/>页&nbsp;当前为第<s:property value="pageXc.page"/>页&nbsp;
+                            <s:if test="pageXc.pagePrev == -1">上一页</s:if>
+                            <s:else>
+                              <s:url action="index" id="pageUrl" escapeAmp="false">
+                                <s:param name="type" value="%{type}"/>
+                                <s:param name="pageNumberXc" value="%{pageXc.pagePrev-1}"/>
+                                <s:param name="currentTable" value="1"/>
+                              </s:url>
+                              <a href="<s:property value="pageUrl"/>">上一页</a>
+                            </s:else>
+                            <s:iterator value="pageXc.pageList">
+                              <s:if test = "pageXc.page == top"><strong><s:property value="top"/></strong></s:if>
+                              <s:else>
+                                <s:url action="index" id="pageUrl" escapeAmp="false">
+                                  <s:param name="type" value="%{type}"/>
+                                  <s:param name="pageNumberXc" value="%{top-1}"/>
+                                  <s:param name="currentTable" value="1"/>
+                                </s:url>
+                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
+                              </s:else>&nbsp;
+                            </s:iterator>
+                            <s:if test="pageXc.pageNext == -1">下一页</s:if>
+                            <s:else>
+                              <s:url action="index" id="pageUrl" escapeAmp="false">
+                                <s:param name="type" value="%{type}"/>
+                                <s:param name="pageNumberXc" value="%{pageXc.pageNext-1}"/>
+                                <s:param name="currentTable" value="1"/>
+                              </s:url>
+                              <a href="<s:property value="pageUrl"/>">下一页</a>
+                            </s:else>&nbsp;转到
+                            <select name="select" class="hui" onchange="jumpPageXc(this)">
+                              <s:iterator value="pageXc.pageListAll">
+                                <s:if test = "pageXc.page == top"><option selected><s:property value="top"/></option></s:if>
+                                <s:else><option><s:property value="top"/></option></s:else>
+                              </s:iterator>
+                            </select>页
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" id="tdmndividb2" style="display:none" border="0" cellpadding="0" cellspacing="3">
+                <tr>
+                  <th>编号</th>
+                  <th>内容</th>
+                  <th>受理单位</th>
+                  <th>状态</th>
+                  <th>日期</th>
+                </tr>
+                <s:iterator value="interactionZxs">
+                  <tr>
+                    <td><s:property value="formatId"/></td>
+                    <td class="ct">
+                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
+                    </td>
+                    <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
+                    <td><s:property value="state.title"/></td>
+                    <td><s:date format="yyyy-MM-dd" name="date"/></td>
+                  </tr>
+                </s:iterator>
+                <tr>
+                  <td colspan="5">
+                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="30" bgcolor="#F2F2F2">
+                          <div align="center">
+                                                                           共<s:property value="pageZx.pageCount"/>页&nbsp;当前为第<s:property value="pageZx.page"/>页&nbsp;
+                            <s:if test="pageZx.pagePrev == -1">上一页</s:if>
+                            <s:else>
+                              <s:url action="index" id="pageUrl" escapeAmp="false">
+                                <s:param name="type" value="%{type}"/>
+                                <s:param name="pageNumberZx" value="%{pageZx.pagePrev-1}"/>
+                                <s:param name="currentTable" value="2"/>
+                              </s:url>
+                              <a href="<s:property value="pageUrl"/>">上一页</a>
+                            </s:else>
+                            <s:iterator value="pageZx.pageList">
+                              <s:if test = "pageZx.page == top"><strong><s:property value="top"/></strong></s:if>
+                              <s:else>
+                                <s:url action="index" id="pageUrl" escapeAmp="false">
+                                  <s:param name="type" value="%{type}"/>
+                                  <s:param name="pageNumberZx" value="%{top-1}"/>
+                                  <s:param name="currentTable" value="2"/>
+                                </s:url>
+                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
+                              </s:else>&nbsp;
+                            </s:iterator>
+                            <s:if test="pageZx.pageNext == -1">下一页</s:if>
+                            <s:else>
+                              <s:url action="index" id="pageUrl" escapeAmp="false">
+                                <s:param name="type" value="%{type}"/>
+                                <s:param name="pageNumberZx" value="%{pageZx.pageNext-1}"/>
+                                <s:param name="currentTable" value="2"/>
+                              </s:url>
+                              <a href="<s:property value="pageUrl"/>">下一页</a>
+                            </s:else>&nbsp;转到
+                            <select name="select" class="hui" onchange="jumpPageZx(this)">
+                              <s:iterator value="pageZx.pageListAll">
+                                <s:if test = "pageZx.page == top"><option selected><s:property value="top"/></option></s:if>
+                                <s:else><option><s:property value="top"/></option></s:else>
+                              </s:iterator>
+                            </select>页
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" id="tdmndividb3" style="display:none" border="0" cellpadding="0" cellspacing="3">
+                <tr>
+                  <th>编号</th>
+                  <th>内容</th>
+                  <th>受理单位</th>
+                  <th>状态</th>
+                  <th>日期</th>
+                </tr>
+                <s:iterator value="interactionTss">
+                  <tr>
+                    <td><s:property value="formatId"/></td>
+                    <td class="ct">
+                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
+                    </td>
+                    <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
+                    <td><s:property value="state.title"/></td>
+                    <td><s:date format="yyyy-MM-dd" name="date"/></td>
+                  </tr>
+                </s:iterator>
+                <tr>
+                  <td colspan="5">
+                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="30" bgcolor="#F2F2F2">
+                          <div align="center">
+                                                                           共<s:property value="pageTs.pageCount"/>页&nbsp;当前为第<s:property value="pageTs.page"/>页&nbsp;
+                            <s:if test="pageTs.pagePrev == -1">上一页</s:if>
+                            <s:else>
+                              <s:url action="index" id="pageUrl" escapeAmp="false">
+                                <s:param name="type" value="%{type}"/>
+                                <s:param name="pageNumberTs" value="%{pageTs.pagePrev-1}"/>
+                                <s:param name="currentTable" value="3"/>
+                              </s:url>
+                              <a href="<s:property value="pageUrl"/>">上一页</a>
+                            </s:else>
+                            <s:iterator value="pageTs.pageList">
+                              <s:if test = "pageTs.page == top"><strong><s:property value="top"/></strong></s:if>
+                              <s:else>
+                                <s:url action="index" id="pageUrl" escapeAmp="false">
+                                  <s:param name="type" value="%{type}"/>
+                                  <s:param name="pageNumberTs" value="%{top-1}"/>
+                                  <s:param name="currentTable" value="3"/>
+                                </s:url>
+                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
+                              </s:else>&nbsp;
+                            </s:iterator>
+                            <s:if test="pageTs.pageNext == -1">下一页</s:if>
+                            <s:else>
+                              <s:url action="index" id="pageUrl" escapeAmp="false">
+                                <s:param name="type" value="%{type}"/>
+                                <s:param name="pageNumberTs" value="%{pageTs.pageNext-1}"/>
+                                <s:param name="currentTable" value="3"/>
+                              </s:url>
+                              <a href="<s:property value="pageUrl"/>">下一页</a>
+                            </s:else>&nbsp;转到
+                            <select name="select" class="hui" onchange="jumpPageTs(this)">
+                              <s:iterator value="pageTs.pageListAll">
+                                <s:if test = "pageTs.page == top"><option selected><s:property value="top"/></option></s:if>
+                                <s:else><option><s:property value="top"/></option></s:else>
+                              </s:iterator>
+                            </select>页
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="ph_box">
+              <div class="sonbox1">
+                <h6><span><a href="#">更多</a></span>［热点问题］</h6>
+                <ul class="list10">
+                  <s:iterator value="hots" status="st">
+                    <li>
+                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
+                    </li>
+                  </s:iterator>
+                </ul>
+              </div>
+              <div class="sonbox2">
+                <h6><span><a href="#">更多</a></span>［网上调查］</h6>
+                <ul class="list10">
+                  <li><a href="#">省市人大代表视察九江市森防火察九江市森</a></li>
+                  <li><a href="#">九江市"两违"整治督查组开明察</a></li>
+                  <li><a href="#">九电四期356吨主变压器成功装56吨主变压器</a></li>
+                  <li><a href="#">环保部督查组来九江市督查污查组来九江市督 </a></li>
+                  <li><a href="#">九电四期356吨主变压器成(图)</a></li>
+                  <li><a href="#">省市人大代表视察九江市森林防大代表视察九江市 </a></li>
+                  <li><a href="#">钟利贵主持召开九江市四席会利贵主持召开九江</a></li>
+                  <li><a href="#">省市人大代表视察九江市森林防察九江市森</a></li>
+                  <li><a href="#">省市人大代表视察九江市森防火察九江市森</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="clearfloat"></div>
+        </div>
+        <div id="ranking_list">
+          <p class="close"><a href="#">关闭</a></p>
+          <p class="com_name">部门信件回复排行</p>
+          <table width="100%" border="0" align="center">
+            <tr>
+              <th scope="col">单位名称</th>
+              <th scope="col">回复件数</th>
+            </tr>
+            <s:iterator value="backCount" status="st">
+              <tr>
+                <td align="center"><s:property value="name"/></td>
+                <td align="center"><s:property value="backRatio"/></td>
+              </tr>
+            </s:iterator>
+          </table>
+        </div>
+        <!--内容结束-->
+        <!--脚注信息-->
+        <div class="clearfloat"></div>
+        <s:include value="../footer.jsp"/>
+      </div>
+      <script type="text/javascript">
+        swfobject.registerObject("FlashID"); 
+      </script>
+    </div>
+  </body>
 </html>

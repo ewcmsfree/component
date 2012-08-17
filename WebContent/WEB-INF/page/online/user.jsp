@@ -40,8 +40,8 @@
     </head>
     <body>
         <div style="height: 35px">;</div>
-        <div align="center">
-            <div style="width:1008px;" class="cheng_line" align="center" style="padding: 0;">
+        <div align="center" id="whole_bg">
+            
                 <table width="1008" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
                     <tr>
                         <td height="60" bgcolor="#F3F3F3" style="padding: 1px;">
@@ -203,7 +203,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            
                 <table width="1000"  border="0" class="hui">
                     <tr>
                         <td><div align="center" class="hui">主办：中共瑞昌市人民政府<strong>　</strong></div></td>
@@ -220,5 +220,6 @@
                     </tr>
                 </table>
         </div>
+		</div>
     </body>
 </html>

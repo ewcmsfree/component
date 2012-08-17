@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>登录中国瑞昌网</title>
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
@@ -54,7 +55,7 @@
         </style>
     </head>
     <body>
-        <div align="center" style="padding-top: 40px;">
+        <div align="center" id="whole_bg" style="padding-top: 40px;">
             <table width="700px" border="0" cellpadding="0" cellspacing="4" bgcolor="#EAEAEA">
                 <tr>
                     <td bgcolor="#F6F6F6">

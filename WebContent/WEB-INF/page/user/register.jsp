@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>中国瑞昌网——会员注册</title>
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
@@ -8,6 +9,7 @@
         <script type="text/javascript" src="<s:url value="/source/js/register.js"/>"></script>
         <link rel="stylesheet" type="text/css" href='<s:url value="/source/css/base.css"/>'/>
         <link rel="stylesheet" type="text/css" href='<s:url value="/source/css/register.css"/>'/>
+		<link href="<s:url value="/css/ruichang.css"/>" rel="stylesheet" type="text/css" />
         <style type="text/css">
             <!--
             .style2 {color: #FF0000}
@@ -41,7 +43,7 @@
         </style>
     </head>
     <body>
-        <div align="center">
+        <div align="center" id="whole_bg">
             <div style="height: 45px"></div>
             <div class="main" align="left">
                 <form id="register_form">

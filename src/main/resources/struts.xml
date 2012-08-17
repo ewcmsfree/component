@@ -9,6 +9,9 @@
         <action name="index" class="com.ewcms.component.interaction.web.IndexAction">
             <result name="success">/WEB-INF/page/interaction/index.jsp</result>
         </action>
+        <action name="list" class="com.ewcms.component.interaction.web.ListAction">
+            <result name="success">/WEB-INF/page/interaction/list.jsp</result>
+        </action>
         <action name="organsearch" class="com.ewcms.component.interaction.web.OrganSearchAction">
             <result name="success">/WEB-INF/page/interaction/organsearch.jsp</result>
         </action>

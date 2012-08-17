@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @import url("whole.css");
 /*导航栏及以上样式*/
 #whole_bg { background: #FFF; margin: 0px auto; width: 1006px; overflow:hiden;}
@@ -410,7 +410,7 @@ h6 span a{ font-size:12px; color:#333; font-weight: normal; }
 .ph_box .list10 li{ height:28px; line-height:28px; background: url(../images/biao3.gif) no-repeat 0px center; padding-left:10px; }
 .ph_box .list10 li a{ color:#666; }
 .ph_box .list10 li a:hover{ color:#C00; }
-#ranking_list{ width:120px; background:#FFF; position:absolute; top: 0px; right: 0px; border: 1px solid #DDD; color:#666; }
+#ranking_list{ width:120px; Z-INDEX: 9999; background:#FFFFFF; POSITION: absolute; TOP: 0px; RIGHT: 0px; border: 1px solid #DDD; color:#666; }
 #ranking_list .close{ text-align:right; padding-right:2px; color:#999; }
 #ranking_list .com_name{ height:25px; line-height:25px; text-align:center; background: #F5F5F5; border-top: 1px solid #CCC; color:#C00; }
 #letter_detail .title{ font-family: System; font-size: 22px; font-weight: bold; color: #06F; text-align:center; margin-bottom:10px; }

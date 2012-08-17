@@ -1,306 +1,183 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
-        <title>中国瑞昌网为您服务！</title>
-        <style type="text/css">
-            <!--
-            body {
-                margin-top: 0px;
-                background: url(/images/xy2009_20.jpg) center top repeat-x;
-            }
-            -->
-        </style>
-        <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
-        <style type="text/css">
-            <!--
-            .style9 {color: #CC0000}
-            .style13 {font-size: 9pt}
-            .style15 {color: #FFFFFF}
-            .style21 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; }
-            .style34 {font-family: Arial, Helvetica, sans-serif}
-            .style38 {
-                color: #990000;
-                font-weight: bold;
-            }
-            .style39 {
-                color: #3300ff;
-                font-weight: bold;
-            }
-            -->
-            .btn_submit {text-align:center;background-color: #99ffff;font-size:13px;font-weight: bold;cursor:pointer;padding: 3px 5px;}
-        </style>
-        <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
-        <script type="text/JavaScript">
-            <!--
-            function MM_preloadImages() { //v3.0
-                var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-                    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-                        if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-                }
-                //-->
-                function jumpPage(obj){
-                    var page = obj.options[obj.selectedIndex].text -1 ;
-                    window.location = ' <s:url action="advisorSearch"/>?matterId=<s:property value="matterId"/>&organId=<s:property value="organId"/>&title=<s:property value="title" escape="false"/>&pageNumber=' + page ;
-                }
-        </script>
-    </head>
-    <body>
-        <s:include value="../top.jsp"/>
-    	<div id="whole_bg">
-  			<div id="content">
-            <s:include value="../header.jsp"/>
-            <table width="1000" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="715" valign="top">
-                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td height="53" background="images/wsbs_icon.jpg"><div align="right"></div></td>
-                            </tr>
-                        </table>
-                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td height="5"><div align="right"></div></td>
-                            </tr>
-                        </table>
-                        <table width="100%"  border="0" cellspacing="2" cellpadding="2">
-                            <tr>
-                                <td height="25"   class="red_xudi_line"><div align="left" class="hui">
-                                        当前位置：
-                                        <s:iterator  value="position"  status="st">
-                                            <s:property value="name"/><s:if test="!#st.isLast()">&gt;&gt;</s:if>
-                                        </s:iterator></div></td>
-                            </tr>
-                        </table>
-                        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td><div align="center" class="news_tt">
-                                        <div align=center class="news_bt"><strong><s:property value="working.name"/></strong></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="10"></td>
-                            </tr>
-                            <tr>
-                                <td height="30"><div align="center">
-                                        <table  border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <s:if test="working.matter!=null">
-                                                    <td width="106" height="28" background="../images/anniu_link.jpg">
-                                                        <div align="center">
-                                                            <s:url action = "matter" id="url" escapeAmp="false">
-                                                                <s:param name="workingId" value="workingId"/>
-                                                                <s:param name="organId" value="organId"/>
-                                                            </s:url>
-                                                            <a class="zongcolor" href="<s:property value="url"/>">办事指南</a>
-                                                        </div>
-                                                    </td>
-                                                    <s:if test="!working.matter.matterAnnexs.isEmpty()">
-                                                        <td width="106" background="../images/anniu_link.jpg">
-                                                            <div align="center">
-                                                                <s:url action = "matterannex" id="annexUrl" escapeAmp="false">
-                                                                    <s:param name="workingId" value="workingId"/>
-                                                                    <s:param name="organId" value="organId"/>
-                                                                </s:url>
-                                                                <a class="zongcolor" href="<s:property value="annexUrl"/>">表格下载</a>
-                                                            </div>
-                                                        </td>
-                                                    </s:if>
-                                                </s:if>
-                                                <s:iterator value="working.children" id="child">
-                                                    <td width="106" background="../images/anniu_link.jpg">
-                                                        <div align="center">
-                                                            <s:url action = "article" id="annexUrl" escapeAmp="false">
-                                                                <s:param name="workingId" value="workingId"/>
-                                                                <s:param name="organId" value="organId"/>
-                                                                <s:param name="childId" value="#child.id"/>
-                                                            </s:url>
-                                                            <a class="zongcolor" href="<s:property value="annexUrl"/>">
-                                                                <s:property value="name"/>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </s:iterator>
-                                                <s:if test="working.matter!=null">
-                                                    <td width="106" background="../images/anniu_link.jpg">
-                                                        <div align="center" class="zongcolor">
-                                                            <s:url action = "advisor" id="annexUrl" escapeAmp="false">
-                                                                <s:param name="workingId" value="workingId"/>
-                                                                <s:param name="organId" value="organId"/>
-                                                            </s:url>
-                                                            <a class="zongcolor" href="<s:property value="annexUrl"/>">网上咨询</a>
-                                                        </div>
-                                                    </td>
-                                                    <td width="106" background="../images/anniu_link.jpg"><div align="center" class="zongcolor  style38">网上查询</div></td>
-                                                </s:if>
-                                            </tr>
-                                        </table>
-                                        <br>
-                                    </div></td>
-                            </tr>
-                            <tr>
-                                <td height="1" bgcolor="#CCCCCC"></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="di_line" align="center" >
-                                    <s:form action="advisorSearch" method="post">
-                                        <table border="0" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td valign="middle" class="hui">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;标题：<s:textfield name="title" size="20"/>
-                                                </td>
-                                                <td  width="60" align="center" valign="middle">
-                                                    <img src="images/search.gif" width="51" height="35" onclick="document.forms[0].submit();"/>
-                                                </td>
-                                                <td>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="<s:url action="advisor" namespace="/user"/>" class="hui style39" target="_blank">我的咨询</a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <s:hidden name="workingId"/>
-                                        <s:hidden name="organId"/>
-                                    </s:form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="top" align="center">
-                                    <br/>
-                                    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td width="60" height="40"><div align="center" class="zongcolor"><strong>编号</strong></div></td>
-                                            <td><div align="center" class="zongcolor"><strong>标题</strong></div></td>
-                                            <td width="130"><div align="center" class="zongcolor"><strong>咨询用户</strong></div></td>
-                                            <td width="40"><div align="center" class="zongcolor"><strong>状态</strong></div></td>
-                                            <td width="100"><div align="center" class="zongcolor"><strong>日期</strong></div></td>
-                                        </tr>
-                                    </table>
-                                    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td height="1" bgcolor="#F1D68D"></td>
-                                        </tr>
-                                    </table>
-                                    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
-                                        <s:iterator value="advisors">
-                                            <tr bgcolor="#F9F9F9">
-                                                <td width="60" height="40" bgcolor="#F9F9F9" class="xu_di_line">
-                                                    <div align="center" class="hui"><img src="../images/bullet_01.gif" width="14" height="10"/>
-                                                        <s:property value="id"/>
-                                                    </div>
-                                                </td>
-                                                <td class="xu_di_line"><div align="left" class="news"><s:property value="title"/></div></td>
-                                                <td width="130" class="xu_di_line"><div align="center" class="hui"><s:property value="name"/></div></td>
-                                                <s:if test="state == 0">
-                                                    <td width="40" class="xu_di_line"><div align="center" class="hui style40">待处理</div></td>
-                                                </s:if>
-                                                <s:else>
-                                                    <td width="40" class="xu_di_line"><div align="center" class="hui style40">回复</div></td>
-                                                </s:else>
-                                                <td width="100" class="xu_di_line"><div align="center" class="hui"><s:date format="yyyy-MM-dd" name="date"/></div></td>
-                                            </tr>
-                                        </s:iterator>
-                                    </table>
-                                    <br>
-                                    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td height="30" bgcolor="#F2F2F2" class="li_line"><div align="center" class="hui">
-                                                    共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
-                                                    <s:if test="page.pagePrev == -1">
-                                                        上一页
-                                                    </s:if>
-                                                    <s:else>
-                                                        <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                                                            <s:param name="matterId" value="matterId"/>
-                                                            <s:param name="organId" value="organId"/>
-                                                            <s:param name="title" value="%{title}"/>
-                                                            <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
-                                                        </s:url>
-                                                        <a href="<s:property value="pageUrl"/>">上一页</a>
-                                                    </s:else>
-                                                    <s:iterator value="page.pageList">
-                                                        <s:if test = "page.page == top">
-                                                            <strong><s:property value="top"/></strong>
-                                                        </s:if>
-                                                        <s:else>
-                                                            <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                                                                <s:param name="matterId" value="matterId"/>
-                                                                <s:param name="organId" value="organId"/>
-                                                                <s:param name="title" value="%{title}"/>
-                                                                <s:param name="pageNumber" value="%{top-1}"/>
-                                                            </s:url>
-                                                            <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
-                                                        </s:else>&nbsp;
-                                                    </s:iterator>
-                                                    <s:if test="page.pageNext == -1">
-                                                        下一页
-                                                    </s:if>
-                                                    <s:else>
-                                                        <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                                                            <s:param name="matterId" value="matterId"/>
-                                                            <s:param name="organId" value="organId"/>
-                                                            <s:param name="title" value="%{title}"/>
-                                                            <s:param name="pageNumber" value="%{page.pageNext-1}"/>
-                                                        </s:url>
-                                                        <a href="<s:property value="pageUrl"/>">下一页</a>
-                                                    </s:else>&nbsp;转到
-                                                    <select name="select" class="hui" onchange="jumpPage(this)">
-                                                        <s:iterator value="page.pageListAll">
-                                                            <s:if test = "page.page == top">
-                                                                <option selected><s:property value="top"/></option>
-                                                            </s:if>
-                                                            <s:else>
-                                                                <option><s:property value="top"/></option>
-                                                            </s:else>
-                                                        </s:iterator>
-                                                    </select>页
-                                                </div></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="60" align="left" valign="top"><div align="right"> </div></td>
-                            </tr>
-                            <tr>
-                                <td height="30" bgcolor="#F5F5F5" class="li_line">
-                                    <div align="center">
-                                        <table height=20 cellspacing=0 cellpadding=0 border=0 class="hui">
-                                            <tr>
-                                                <td width=30><div align="right"><img src="../images/cont_dot_pr.gif" width="18" height="18"></div></td>
-                                                <td class=song12b width=53>
-                                                    <font class=hui style="CURSOR: hand" onClick=javascript:window.print()>打印本页</font>
-                                                </td>
-                                                <td width=30><div align="right"><img src="../images/cont_dot_cl.gif" width="18" height="18"></div></td>
-                                                <td class=song12b width=70>
-                                                    <font class=hui style="CURSOR: hand" onClick=javascript:window.close()>关闭本窗口</font>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table></td>
-                    <td width="5"></td>
-                    <td width="280" valign="top" bgcolor="fdf9ee" class="cheng_line">
-                         <s:include value="right.jsp">
-                            <s:param name="searchUrl"><s:url action="search"/></s:param>
-                        </s:include>
-                    </td>
-                </tr>
-            </table>
-            </div>
-            <br>
-            <s:include value="../footer.jsp"/>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中国瑞昌网欢迎您！</title>
+    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      function MM_jumpMenu(targ,selObj,restore){ //v3.0
+        eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+        if (restore) selObj.selectedIndex=0;
+      }
+      function jumpPage(obj){
+          var page = obj.options[obj.selectedIndex].text -1 ;
+          window.location = ' <s:url action="advisorSearch"/>?matterId=<s:property value="matterId"/>&organId=<s:property value="organId"/>&title=<s:property value="title" escape="false"/>&pageNumber=' + page ;
+      }
+    </script>
+  </head>
+  <body>
+    <!--顶部信息栏-->
+    <s:include value="../top.jsp"/>
+    <!--顶部信息栏结束-->
+    <div id="whole_bg">
+      <div id="content">
+        <s:include value="../header.jsp"/>
+        <!--内容-->
+        <div class="wsbs_side">
+          <iframe src="http://218.65.14.6/zxfw/zaixianfuwuqiantaozuo/index.html" width="228" height="760" frameborder="0" scrolling="no"> 
+            <a href="http://218.65.14.6/zxfw/zaixianfuwuqiantaozuo/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+          </iframe>
         </div>
-    </body>
+        <div class="wsbs_main">
+          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url action='index'/>">在线服务</a>＞<s:property value="working.name"/></span></p></div>
+          <div class="clearfloat"></div>
+          <h5><s:property value="working.name"/></h5><!--具体办件标题-->
+          <ul class="pro">
+            <s:if test="working.matter!=null">
+            <li>
+              <s:url action="matter" id="url" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <a href="<s:property value="url"/>">办事指南</a>
+            </li>
+            </s:if>
+            <li><a href="http://218.87.91.208:8008/outportal">网上申报</a></li>
+            <s:if test="working.matter!=null">
+            <li>
+              <s:url action = "advisor" id="annexUrl" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <a href="<s:property value="annexUrl"/>">网上咨询</a>
+            </li>
+            <li><a class="current" href="#">在线查询</a></li>
+            <s:if test="!working.matter.matterAnnexs.isEmpty()">
+            <li>
+              <s:url action="matterannex" id="annexUrl" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <a href="<s:property value="annexUrl"/>">表格下载</a>
+            </li>
+            </s:if>
+            </s:if>
+          </ul><!--办件的流程-->
+          <div class="clearfloat"></div>
+          <div class="zw_box2">
+            <div class="zx_k">
+              <s:form action="advisorSearch" method="post" id="advisorSearch" name="advisorSearch">
+                <table border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td valign="middle" class="hui">
+                      &nbsp;&nbsp;&nbsp;&nbsp;标题：<s:textfield name="title" size="20"/>
+                    </td>
+                    <td  width="60" align="center" valign="middle">
+                      <img src="images/search.gif" width="51" height="35" onclick="document.advisorSearch.submit();"/>
+                    </td>
+                    <td>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<a href="<s:url action="advisor" namespace="/user"/>" class="hui style39" target="_blank">我的咨询</a>
+                    </td>
+                  </tr>
+                </table>
+                <s:hidden name="workingId"/>
+                <s:hidden name="organId"/>
+              </s:form>
+            </div>
+          </div>
+          <div class="list02">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="60" height="40"><div align="center" class="zongcolor"><strong>编号</strong></div></td>
+                <td><div align="center" class="zongcolor"><strong>标题</strong></div></td>
+                <td width="130"><div align="center" class="zongcolor"><strong>咨询用户</strong></div></td>
+                <td width="40"><div align="center" class="zongcolor"><strong>状态</strong></div></td>
+                <td width="100"><div align="center" class="zongcolor"><strong>日期</strong></div></td>
+              </tr>
+            </table>
+            <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="1" bgcolor="#F1D68D"></td>
+              </tr>
+            </table>
+            <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+              <s:iterator value="advisors">
+              <tr bgcolor="#F9F9F9">
+                <td width="60" height="40" bgcolor="#F9F9F9" class="xu_di_line">
+                  <div align="center" class="hui"><img src="../images/bullet_01.gif" width="14" height="10"/>
+                    <s:property value="id"/>
+                  </div>
+                </td>
+                <td class="xu_di_line"><div align="left" class="news"><s:property value="title"/></div></td>
+                <td width="130" class="xu_di_line"><div align="center" class="hui"><s:property value="name"/></div></td>
+                <s:if test="state == 0">
+                <td width="40" class="xu_di_line"><div align="center" class="hui style40">待处理</div></td>
+                </s:if>
+                <s:else>
+                <td width="40" class="xu_di_line"><div align="center" class="hui style40">回复</div></td>
+                </s:else>
+                <td width="100" class="xu_di_line"><div align="center" class="hui"><s:date format="yyyy-MM-dd" name="date"/></div></td>
+              </tr>
+              </s:iterator>
+            </table>
+            <br/>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                 <td height="30" bgcolor="#F2F2F2" class="li_line"><div align="center" class="hui">共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
+                 <s:if test="page.pagePrev == -1">上一页</s:if>
+                 <s:else>
+                 <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
+                   <s:param name="matterId" value="matterId"/>
+                   <s:param name="organId" value="organId"/>
+                 <s:param name="title" value="%{title}"/>
+                 <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
+                 </s:url>
+                 <a href="<s:property value="pageUrl"/>">上一页</a>
+                 </s:else>
+                 <s:iterator value="page.pageList">
+                 <s:if test = "page.page == top">
+                 <strong><s:property value="top"/></strong>
+                 </s:if>
+                 <s:else>
+                 <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
+                   <s:param name="matterId" value="matterId"/>
+                   <s:param name="organId" value="organId"/>
+                   <s:param name="title" value="%{title}"/>
+                   <s:param name="pageNumber" value="%{top-1}"/>
+                 </s:url>
+                 <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
+                 </s:else>&nbsp;
+                 </s:iterator>
+                 <s:if test="page.pageNext == -1">下一页</s:if>
+                 <s:else>
+                 <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
+                   <s:param name="matterId" value="matterId"/>
+                   <s:param name="organId" value="organId"/>
+                   <s:param name="title" value="%{title}"/>
+                   <s:param name="pageNumber" value="%{page.pageNext-1}"/>
+                 </s:url>
+                 <a href="<s:property value="pageUrl"/>">下一页</a>
+                 </s:else>&nbsp;转到
+                 <select name="select" class="hui" onchange="jumpPage(this)">
+                 <s:iterator value="page.pageListAll">
+                 <s:if test = "page.page == top">
+                   <option selected><s:property value="top"/></option>
+                 </s:if>
+                 <s:else>
+                   <option><s:property value="top"/></option>
+                 </s:else>
+                 </s:iterator>
+                 </select>页
+               </div>
+             </td>
+           </tr>
+         </table>
+          </div>     
+        </div>
+        <!--内容结束-->
+      </div>
+      <!--脚注信息-->
+      <div class="clearfloat"></div>
+      <s:include value="../footer.jsp"/>
+    </div>
+    <script type="text/javascript">
+      swfobject.registerObject("FlashID");
+    </script>
+  </body>
 </html>

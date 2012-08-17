@@ -29,13 +29,13 @@ public interface InteractionDAOable {
 
     public List<Interaction> findInteractionByUsername(String username, int page, int row);
 
-    public List<Interaction> findInteraction(int page, int row, Integer type);
+    public List<Interaction> findInteraction(int page, int row, int interType);
 
-    public List<Interaction> findInteractionByReplay(boolean replay, int page, int row);
+    public List<Interaction> findInteractionByReplay(boolean replay, int page, int row, int interType);
 
-    public int getInteractionCount();
+    public int getInteractionCount(int interType);
 
-    public int getInteractionReplayCount(boolean replay);
+    public int getInteractionReplayCount(boolean replay, int interType);
 
     public int getInteractionUsernameCount(String username);
 
@@ -60,4 +60,6 @@ public interface InteractionDAOable {
     public int findInteractionByTitleReplayCount(String[] title, boolean replay);
 
     public List<Interaction> findInteractionByOrganId(int organId);
+    
+    public List<Organ> findIteractionBackCount(int row);
 }

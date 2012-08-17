@@ -73,23 +73,23 @@ public class InteractionService implements InteractionServiceable {
     }
 
     @Override
-    public List<Interaction> findInteraction(int page, int row, Integer type) {
-        return interactionDAO.findInteraction(page, row, type);
+    public List<Interaction> findInteraction(int page, int row, int interType) {
+        return interactionDAO.findInteraction(page, row, interType);
     }
 
     @Override
-    public List<Interaction> findInteractionByReplay(boolean replay, int page, int rows) {
-        return interactionDAO.findInteractionByReplay(replay, page, rows);
+    public List<Interaction> findInteractionByReplay(boolean replay, int page, int rows, int interType) {
+        return interactionDAO.findInteractionByReplay(replay, page, rows, interType);
     }
 
     @Override
-    public int getInteractionCount() {
-        return interactionDAO.getInteractionCount();
+    public int getInteractionCount(int interType) {
+        return interactionDAO.getInteractionCount(interType);
     }
 
     @Override
-    public int getInteractionReplayCount(boolean replay) {
-        return interactionDAO.getInteractionReplayCount(replay);
+    public int getInteractionReplayCount(boolean replay,int interType) {
+        return interactionDAO.getInteractionReplayCount(replay, interType);
     }
 
     @Override
@@ -212,4 +212,9 @@ public class InteractionService implements InteractionServiceable {
 
         return builder.toString();
     }
+
+	@Override
+	public List<Organ> findIteractionBackCount(int row) {
+		return interactionDAO.findIteractionBackCount(row);
+	}
 }

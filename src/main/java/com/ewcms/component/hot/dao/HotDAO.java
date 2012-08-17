@@ -31,9 +31,9 @@ public class HotDAO {
     }
 
     public List<Hot> findHot(){
-        String sql = "Select t3.title,t2.url From component_counter t1,doc_articlermc t2,doc_article t3 "
+        String sql = "Select t3.title,t2.url From component_counter t1,content_article_main t2,content_article t3 "
                 +"Where t1.article_id = t2.article_id And t2.article_id = t3.id "
-                +"And t2.channel_id=377 And t2.ref_id is null And t2.published > (CURRENT_DATE- 30)"
+                +"And t2.reference=false And t3.published > (CURRENT_DATE- 30)"
                 +"Order by t1.counter Desc Limit 10";
 
         return jdbcTemplate.query(sql, new RowMapper<Hot>() {

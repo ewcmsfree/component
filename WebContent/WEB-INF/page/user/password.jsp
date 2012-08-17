@@ -1,12 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>中国瑞昌网—会员中心</title>
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
         <script type="text/javascript" src="<s:url value="/source/js/password.js"/>"></script>
         <link rel="stylesheet" type="text/css" href='<s:url value="/source/css/base.css"/>'/>
         <link rel="stylesheet" type="text/css" href='<s:url value="/source/css/password.css"/>'/>
+		<link href="<s:url value="/css/ruichang.css"/>" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
             $(function(){
                 password.init();
@@ -32,7 +34,7 @@
     </head>
     <body>
         <div style="height: 35px">;</div>
-        <div align="center">
+        <div align="center" id="whole_bg">
             <div style="width:1008px;" class="cheng_line" align="center" style="padding: 0;">
                 <table width="1008" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
                     <tr>
@@ -167,8 +169,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-                <table width="1000"  border="0" class="hui">
+				<table width="1000"  border="0" class="hui">
                     <tr>
                         <td><div align="center" class="hui">主办：中共瑞昌市人民政府<strong>　</strong></div></td>
                     </tr>
@@ -183,6 +184,8 @@
                             </div></td>
                     </tr>
                 </table>
+            </div>
+                
         </div>
     </body>
 </html>

@@ -23,13 +23,13 @@ public interface InteractionServiceable {
 
     public List<Interaction> findInteractionByUsername(String username, int page, int row);
 
-    public List<Interaction> findInteraction(int page, int row, Integer type);
+    public List<Interaction> findInteraction(int page, int row, int interType);
 
-    public List<Interaction> findInteractionByReplay(boolean replay, int page, int rows);
+    public List<Interaction> findInteractionByReplay(boolean replay, int page, int rows,  int interType);
 
-    public int getInteractionCount();
+    public int getInteractionCount(int interType);
 
-    public int getInteractionReplayCount(boolean replay);
+    public int getInteractionReplayCount(boolean replay, int interType);
 
     public int getInteractionUsernameCount(String username);
 
@@ -58,4 +58,6 @@ public interface InteractionServiceable {
     public Organ getOrgan(Integer id);
 
     public String mainJSON(Integer type);
+    
+    public List<Organ> findIteractionBackCount(int row);
 }
