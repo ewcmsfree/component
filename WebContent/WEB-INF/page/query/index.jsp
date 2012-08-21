@@ -10,7 +10,7 @@
     <script type="text/javascript">
        function jumpPage(obj){
          var page = obj.options[obj.selectedIndex].text -1 ;
-         window.location =  '<s:url namespace="/" action="advQuery"/>?isContent=<s:property value="isContent"/>&title=<s:property value="title"/>&beginDate=<s:property value="beginDate"/>&endDate=<s:property value="endDate"/>&pageNumber=' + page;
+         window.location =  '<s:url action="advquery"/>?isContent=<s:property value="isContent"/>&title=<s:property value="title"/>&beginDate=<s:property value="beginDate"/>&endDate=<s:property value="endDate"/>&pageNumber=' + page;
        }
     </script>
   </head>
@@ -20,7 +20,7 @@
 			<tr>
 				<td width="750" valign="top">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<s:form namespace="/" action="advQuery" method="post">
+						<s:form action="advquery" method="post">
 						<tr>
 							<td>
 								<select name="isContent" id="isContent">
