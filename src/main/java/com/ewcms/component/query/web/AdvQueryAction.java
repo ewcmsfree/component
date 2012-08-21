@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
  *
  * @author wuzhijun
  */
-@Controller
+@Controller("com.ewcms.component.query.web.AdvQueryAction")
 public class AdvQueryAction extends PageAction {
 
 	private static final long serialVersionUID = 1432726819498438699L;

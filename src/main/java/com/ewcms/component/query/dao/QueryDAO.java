@@ -34,7 +34,7 @@ public class QueryDAO implements QueryDAOable {
 	public List<Article> findArtilce(String title,Integer channelId, String beginDate, String endDate, Boolean isContent) {
 		Boolean isIf = false;
 		
-		String sql = "Select r.id, a.title, a.author, r.published, r.url, s.name From doc_articlermc As r Left Join site_channel As s On r.channel_id = s.id Left Join doc_article As a On r.article_id = a.id Left Join doc_content As c On a.id=c.article_id Where @isIf@ And r.status='RELEASE' ";
+		String sql = "Select r.id, a.title, a.author, a.published, a.url, s.name From content_article_main As r Left Join site_channel As s On r.channel_id = s.id Left Join content_article As a On r.article_id = a.id Left Join content_content As c On a.id=c.article_id Where @isIf@ And a.status='RELEASE' ";
 
 		List<Object> params = new ArrayList<Object>();
 		
@@ -57,7 +57,7 @@ public class QueryDAO implements QueryDAOable {
 			Date _beginDate;
 			try {
 				_beginDate = DATE_FORMAT.parse(beginDate);
-				sql += " And r.published >= '" +  _beginDate + "' ";
+				sql += " And a.published >= '" +  _beginDate + "' ";
 				isIf = true;
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -68,7 +68,7 @@ public class QueryDAO implements QueryDAOable {
 			Date _endDate;
 			try {
 				_endDate = DATE_FORMAT.parse(endDate);
-				sql += " And r.published <= '" +  _endDate + "' ";
+				sql += " And a.published <= '" +  _endDate + "' ";
 				isIf = true;
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -81,7 +81,7 @@ public class QueryDAO implements QueryDAOable {
 			sql = sql.replace("@isIf@", "1<>1");
 		}
 		
-		sql += " Order By r.published Desc";
+		sql += " Order By a.published Desc";
 		
 		return jdbcTemplate.query(sql, params.toArray(), new RowMapper<Article>() {
             @Override

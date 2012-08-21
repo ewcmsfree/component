@@ -1,15 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>中国瑞昌网为您服务！</title>
     <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
     <script type="text/javascript">
        function jumpPage(obj){
          var page = obj.options[obj.selectedIndex].text -1 ;
-         window.location =  '<s:url action="advquery"/>?isContent=<s:property value="isContent"/>&title=<s:property value="title"/>&beginDate=<s:property value="beginDate"/>&endDate=<s:property value="endDate"/>&pageNumber=' + page;
+         window.location =  '<s:url namespace="/" action="advQuery"/>?isContent=<s:property value="isContent"/>&title=<s:property value="title"/>&beginDate=<s:property value="beginDate"/>&endDate=<s:property value="endDate"/>&pageNumber=' + page;
        }
     </script>
   </head>
@@ -19,8 +20,7 @@
 			<tr>
 				<td width="750" valign="top">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<s:form action="advquery" method="post">
-						全文搜索
+						<s:form namespace="/" action="advQuery" method="post">
 						<tr>
 							<td>
 								<select name="isContent" id="isContent">
@@ -35,7 +35,7 @@
 						</s:form>
 						<tr>
 							<td colspan="4" class="zyd_line"><div align="center">
-									<br>
+									<br/>
 									<table width="95%" border="0" cellspacing="0" cellpadding="0">
 										<tr>
 											<td width="70%"height="40"><div align="left" class="zongcolor"><strong>标题</strong></div></td>
@@ -57,7 +57,7 @@
 											</tr>
 										</s:iterator>
 									</table>
-									<br>
+									<br/>
 									<table width="95%" border="0" cellspacing="0" cellpadding="0">
 										<tr>
 											<td height="30" bgcolor="#F2F2F2" class="li_line"><div
@@ -128,7 +128,7 @@
 											</td>
 										</tr>
 									</table>
-									<br>
+									<br/>
 								</div>
 							</td>
 						</tr>
