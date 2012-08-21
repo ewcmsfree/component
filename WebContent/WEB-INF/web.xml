@@ -84,6 +84,14 @@
         <url-pattern>/online/main.js</url-pattern>
     </servlet-mapping>
     <servlet>
+    	<servlet-name>citizenJavaScript</servlet-name>
+    	<servlet-class>com.ewcms.component.citizen.web.servlate.JavaScriptServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>citizenJavaScript</servlet-name>
+    	<url-pattern>/citizen/main.js</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>hotJavaScript</servlet-name>
         <servlet-class>com.ewcms.component.hot.web.JavaScriptServlet</servlet-class>
     </servlet>
