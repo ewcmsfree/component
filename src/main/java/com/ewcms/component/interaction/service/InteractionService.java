@@ -159,9 +159,10 @@ public class InteractionService implements InteractionServiceable {
     }
 
     private String interactionJSON(Integer type) {
-        List<Interaction> list = interactionDAO.findInteraction(0, 9, type);
         StringBuilder builder = new StringBuilder();
         builder.append("[");
+
+        List<Interaction> list = interactionDAO.findInteraction(0, 9, type);
         for(Interaction interaction : list){
             builder.append("{");
             builder.append("\"id\":").append(interaction.getId()).append(",");
@@ -189,9 +190,10 @@ public class InteractionService implements InteractionServiceable {
     }
 
     private String replayRatioJSON(Integer type) {
-        List<Organ> list = interactionDAO.findInteractionBackOrder(4, true);
         StringBuilder builder = new StringBuilder();
         builder.append("[");
+
+        List<Organ> list = interactionDAO.findInteractionBackOrder(4, true);
         for(Organ organ : list){
             builder.append("{");
             builder.append("\"organ\":\"").append(organ.getName()).append("\",");

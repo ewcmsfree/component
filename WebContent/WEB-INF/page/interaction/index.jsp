@@ -74,8 +74,8 @@
         <s:include value="../header.jsp"/>
         <!--内容-->
         <div class="side_box1 letter_side_h">
-          <iframe src="http://218.65.14.6/mstd/fangtanqiantao/index.html" width="300" height="850" frameborder="0" scrolling="no"> 
-            <a href="http://218.65.14.6/mstd/fangtanqiantao/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+          <iframe src="/mstd/fangtanqiantao/index.html" width="300" height="850" frameborder="0" scrolling="no"> 
+            <a href="/mstd/fangtanqiantao/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
           </iframe>
         </div>
         <div class="zwgk_mainbox letter_main">

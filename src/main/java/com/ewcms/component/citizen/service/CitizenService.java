@@ -26,7 +26,7 @@ public class CitizenService {
     
     public String mainJSON(){
         List<Citizen> citizens = getCitizenAll();
-        if(citizens.isEmpty()){
+        if(citizens == null || citizens.isEmpty()){
             return "[]";
         }
         

@@ -29,8 +29,8 @@
         <s:include value="../header.jsp"/>
         <!--内容-->
         <div class="wsbs_side">
-          <iframe src="http://218.65.14.6/zxfw/zaixianfuwuqiantaozuo/index.html" width="228" height="760" frameborder="0" scrolling="no"> 
-            <a href="http://218.65.14.6/zxfw/zaixianfuwuqiantaozuo/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+          <iframe src="/zxfw/zaixianfuwuqiantaozuo/index.html" width="228" height="760" frameborder="0" scrolling="no"> 
+            <a href="/zxfw/zaixianfuwuqiantaozuo/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
           </iframe>
         </div>
         <div class="wsbs_main">

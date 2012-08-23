@@ -22,7 +22,6 @@ public class HotService {
     private HotDAO dao;
 
     public String mainJSON(){
-        
         List<Hot> hots = dao.findHot();
         if(hots.isEmpty()){
             return "[]";
