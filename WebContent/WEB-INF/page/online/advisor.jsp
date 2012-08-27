@@ -67,7 +67,7 @@
             <div class="zx_k">
               <div class="formFieldError" style="margin-left: 10px;font-size: 13px;"><s:actionerror/></div>
               <div class="formMessage" style="margin-left: 10px;font-size: 14px;color: #3300ff;"><s:actionmessage/></div>
-              <s:form id="advisor" name="advisor" action="advisorEdit" method="post">
+              <s:form namespace="/online" id="advisor" name="advisor" action="advisorEdit" method="post">
                 <table  border="0" cellspacing="0" cellpadding="0" class="formtable1" align="center">
                 <s:if test="!login">
                   <tr id="username_id">

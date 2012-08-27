@@ -141,7 +141,7 @@
                                 <s:actionmessage/>
                               </div>
                               <div style="clear:both;height: 1px;"></div>
-                              <s:form id="interaction" name="interaction" action="interactionEdit" method="post">
+                              <s:form namespace="/interaction" id="interaction" name="interaction" action="interactionEdit" method="post">
                                 <table  border="0" cellspacing="0" cellpadding="0" class="formtable1" align="center">
                                   <s:if test="!login">
                                   <tr id="username_id">

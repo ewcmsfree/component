@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>中国瑞昌网—会员中心</title>
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
@@ -45,8 +46,7 @@
     <body>
         <div style="height: 35px">;</div>
         <div id="whole_bg" align="center">
-            
-                <table width="1008" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
                     <tr>
                         <td height="60" bgcolor="#F3F3F3" style="padding: 1px;">
                             <div align="left">
@@ -132,7 +132,7 @@
                                                 <td width="150px" style="padding: 8px 2px;" class="separate">
                                                     <ul style="border-right: 1px solid #ccffff;">
                                                         <li>编号：<s:property value="formatId"/></li>
-                                                        <li>类型：<s:if test = "type==1">咨询</s:if><s:if test = "type==2">投诉</s:if><s:if test = "type==3">建议</s:if></li>
+                                                        <li>类型：<s:if test = "type==1">在线咨询</s:if><s:if test = "type==2">投诉监督</s:if><s:if test = "type==3">建言献策</s:if></li>
                                                         <li>咨询对象：<s:property value="organ.name"/></li>
                                                         <li>信件状态：
                                                             <s:if test="state.ordinal() == 0">
@@ -234,7 +234,7 @@
                     </tr>
                 </table>
             
-                <table width="1000"  border="0" class="hui">
+                <table width="100%"  border="0" class="hui">
                     <tr>
                         <td><div align="center" class="hui">主办：中共瑞昌市人民政府<strong>　</strong></div></td>
                     </tr>

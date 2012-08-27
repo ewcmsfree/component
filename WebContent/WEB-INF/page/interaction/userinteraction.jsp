@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title></title>
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
@@ -104,7 +105,7 @@
             </div>
             <div style="clear: both;height: 6px;"></div>
         </div>
-        <s:form action="userinteractionEdit" method="post">
+        <s:form namespace="/user" action="userinteractionEdit" method="post">
             <table  border="0" cellspacing="0" cellpadding="0"  class="formtable1" align="center">
                 <tr style="display:none;">
                     <td width="90px" height="32px">*用户名：</td>
@@ -116,7 +117,7 @@
                 </tr>
                 <tr>
                     <td width="90px">*信件类型：</td>
-                    <td><s:radio list="#{'1':'咨询','2':'投诉','3':'建言献策'}" name = "type" value="1"/></td>
+                    <td><s:radio list="#{'1':'在线咨询','2':'投诉监督','3':'建言献策'}" name = "type" value="1"/></td>
                 </tr>
                 <tr>
                     <td width="90px">*信件标题：</td>

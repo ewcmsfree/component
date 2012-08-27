@@ -17,8 +17,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -41,15 +39,12 @@ public class InteractionDAO implements InteractionDAOable {
 		final String sql = "Insert Into plugin_interaction "
 				+ "(username,title,content,replay,type,state,checked,organ_id,ip,name,organ_name) "
 				+ "Values (?,?,?,?,?,?,?,?,?,?,?)";
-
-		KeyHolder keyHolder = new GeneratedKeyHolder();
+		
 		jdbcTemplate.update(new PreparedStatementCreator() {
-
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql,
-						new String[] { "id" });
+				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, vo.getUsername());
 				ps.setString(2, vo.getTitle());
 				ps.setString(3, vo.getContent());
@@ -64,8 +59,8 @@ public class InteractionDAO implements InteractionDAOable {
 
 				return ps;
 			}
-		}, keyHolder);
-		return keyHolder.getKey().intValue();
+		});
+		return jdbcTemplate.queryForInt("select currval('seq_plugin_interaction_id')");
 	}
 
 	@Override

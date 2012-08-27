@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -38,12 +36,11 @@ public class AdvisorDAO {
                 + "(username,name,title,content,organ_id,matter_id,ip) Values "
                 + "(?,?,?,?,?,?,?)";
 
-        KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
 
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement ps = con.prepareStatement(sql, new String[]{"id"});
+                PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, vo.getUsername());
                 ps.setString(2, vo.getName());
                 ps.setString(3, vo.getTitle());
@@ -54,8 +51,8 @@ public class AdvisorDAO {
 
                 return ps;
             }
-        }, keyHolder);
-        return keyHolder.getKey().intValue();
+        });
+        return jdbcTemplate.queryForInt("select currval('seq_plugin_online_advisory_id')");
     }
 
     public List<Advisor> findAdvisorByMatter(final Integer matterId, String title, final int limit) {

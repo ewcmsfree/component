@@ -313,6 +313,7 @@ CREATE TABLE plugin_online_advisory(
     ip varchar(20),
     date timestamp without time zone NOT NULL DEFAULT now(),
     replay_date timestamp without time zone,
+    checked boolean DEFAULT false,
     CONSTRAINT pk_plugin_online_advisory PRIMARY KEY (id)
 );
 --------------------------------------------------------------------------------

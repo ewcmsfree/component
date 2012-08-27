@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>中国瑞昌网—会员中心</title>
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
@@ -62,7 +63,7 @@
                     </tr>
                 </table>
                 <div class="separate" style="height:1px;"></div>
-                <table width="1006"  border="0" cellspacing="0" cellpadding="0">
+                <table width="100%"  border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="200" valign="top" bgcolor="#FFF5E8" class="y_line">
                             <div style="height: 30px">&nbsp;</div>
@@ -204,7 +205,7 @@
                     </tr>
                 </table>
             
-                <table width="1000"  border="0" class="hui">
+                <table width="100%"  border="0" class="hui">
                     <tr>
                         <td><div align="center" class="hui">主办：中共瑞昌市人民政府<strong>　</strong></div></td>
                     </tr>
