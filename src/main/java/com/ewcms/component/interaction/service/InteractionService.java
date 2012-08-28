@@ -163,7 +163,6 @@ public class InteractionService implements InteractionServiceable {
         if (list == null || list.isEmpty()){
         	return "[]";
         }
-        
         StringBuilder builder = new StringBuilder();
         builder.append("[");
         for(Interaction interaction : list){
