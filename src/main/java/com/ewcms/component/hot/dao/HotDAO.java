@@ -35,7 +35,7 @@ public class HotDAO {
                 +"Where t1.article_id = t2.article_id And t2.article_id = t3.id "
                 +"And t2.reference=false "
                //+"And t3.published > (CURRENT_DATE - 30)"
-                +"Order by t1.counter Desc Limit 10";
+                +"Order by t1.counter Desc Limit 3";
 
         return jdbcTemplate.query(sql, new RowMapper<Hot>() {
 
