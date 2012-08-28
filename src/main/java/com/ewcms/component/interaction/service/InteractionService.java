@@ -159,10 +159,13 @@ public class InteractionService implements InteractionServiceable {
     }
 
     private String interactionJSON(Integer type) {
+        List<Interaction> list = interactionDAO.findInteraction(0, 9, type);
+        if (list == null || list.isEmpty()){
+        	return "[]";
+        }
+        
         StringBuilder builder = new StringBuilder();
         builder.append("[");
-
-        List<Interaction> list = interactionDAO.findInteraction(0, 9, type);
         for(Interaction interaction : list){
             builder.append("{");
             builder.append("\"id\":").append(interaction.getId()).append(",");
@@ -181,18 +184,17 @@ public class InteractionService implements InteractionServiceable {
 
     private String getTypeName(final int type){
         if(type == 1){
-            return "咨询";
+            return "在线咨询";
         }
         if(type == 2){
-            return "投诉";
+            return "投诉监督";
         }
-        return "建议";
+        return "建言献策";
     }
 
     private String replayRatioJSON(Integer type) {
         StringBuilder builder = new StringBuilder();
         builder.append("[");
-
         List<Organ> list = interactionDAO.findInteractionBackOrder(4, true);
         for(Organ organ : list){
             builder.append("{");
