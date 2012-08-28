@@ -44,7 +44,7 @@
 
     </head>
     <body>
-        <div style="height: 35px">;</div>
+        <div style="height: 35px"></div>
         <div id="whole_bg" align="center">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
                     <tr>

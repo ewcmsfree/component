@@ -40,7 +40,7 @@
 
     </head>
     <body>
-        <div style="height: 35px">;</div>
+        <div style="height: 35px"></div>
         <div align="center" id="whole_bg">
             
                 <table width="1008" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">

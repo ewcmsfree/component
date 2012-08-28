@@ -6,6 +6,13 @@
 
 <struts>
     <package name="interaction"  extends="struts-default" namespace="/interaction">
+    	<action name="gwhsearch" class="com.ewcms.component.gwh.web.SearchAction">
+            <result name="success">/WEB-INF/page/gwh/search.jsp</result>
+        </action>
+        <action name="searchresult" class="com.ewcms.component.gwh.web.SearchResultAction">
+            <result name="success">/WEB-INF/page/gwh/searchresult.jsp</result>
+        </action>
+        
         <action name="index" class="com.ewcms.component.interaction.web.IndexAction">
             <result name="success">/WEB-INF/page/interaction/index.jsp</result>
         </action>
