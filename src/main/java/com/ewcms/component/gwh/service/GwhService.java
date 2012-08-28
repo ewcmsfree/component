@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 import com.ewcms.component.gwh.dao.GwhDAO;
 import com.ewcms.component.gwh.vo.ArticleVO;
 import com.ewcms.component.gwh.vo.ChannelVO;
+
 @Service
 public class GwhService implements GwhSerivceable {
+	
 	@Autowired
 	private GwhDAO gwhDAO;
+	
 	@Override
 	public List<ChannelVO> findChannelList() {
 		return gwhDAO.findChannelList();

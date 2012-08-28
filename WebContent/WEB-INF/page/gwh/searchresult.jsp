@@ -1,30 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
-    <head>
-        <title>中国瑞昌网为您服务！</title>
-        <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script> 
-        <style type="text/css">
-            <!--
-            body {
-                margin-top: 0px;
-                background: url(/images/xy2009_20.jpg) center top repeat-x;
-            }
-            -->
-        </style>
-        <link href="<s:url value="/css/ruichang.css"/>" rel="stylesheet" type="text/css" />
-        <style type="text/css">
-            <!--
-            .style9 {color: #CC0000}
-            .style13 {font-size: 9pt}
-            .style15 {color: #FFFFFF}
-            .style21 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; }
-            .style34 {font-family: Arial, Helvetica, sans-serif}
-            .style40 {color: #336600}
-            .style41 {color: #FF0000}
-            -->
-        </style>
-        <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中国瑞昌网欢迎您！</title>
+    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
         <script lang="JavaScript" type="text/JavaScript">
                 $(function(){
                    
@@ -49,8 +34,8 @@
     	<div id="whole_bg">
   			<div id="content">
             <s:include value="../header.jsp"/>
-            <a href="<s:url action="gwhsearch"/>"><span class="news">>>&nbsp;&nbsp;检索文件</span></a>
-            <hr>
+            <a href="<s:url action="gwhsearch"/>"><span class="news">＞&nbsp;&nbsp;检索文件</span></a>
+            <hr/>
 									<table width="95%" border="0" cellpadding="0" cellspacing="0">
 										<s:iterator value="articleList">
 											<tr>
@@ -58,7 +43,7 @@
 											</tr>
 										</s:iterator>
 									</table>
-									<br>
+									<br/>
 									<table width="95%" border="0" cellspacing="0" cellpadding="0">
 										<tr>
 											<td height="30" bgcolor="#F2F2F2" class="li_line"><div
@@ -132,7 +117,7 @@
 	
 	
 		</div>
-	           <br>
+	           <br/>
             <s:include value="../footer.jsp"/>
 	</div>
 </body>

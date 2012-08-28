@@ -52,6 +52,19 @@
 <div id="submenu">
   <div id="tdmndivida1" style="display: ">
      <span class="red">瑞昌市人民政府为您服务！<b>热点：</b></span>
+        <script type="text/javascript">
+          function hot_init(data){
+                var insertHtml = '';
+                var length=data.length;
+                if (length > 3) length = 3;
+                for(var i=0; i<length;i++){
+                    var hotValue= data[i];
+                    insertHtml += '·<a title="' + hotValue.title + '" href="' + hotValue.url + '" target="_blank">' + hotValue.title.substring(0,20) + ' ...</a>';
+                }
+                document.getElementById("hot_id").innerHTML = insertHtml;
+            }
+        </script>
+	<script type="text/javascript" src="/component/hot/main.js?callback=hot_init"></script>
   </div>
   <ul id="tdmndivida2" style="display:none">
     <li><a href="/renshiruichang/ruichanggaikuang" target="_blank">瑞昌概况</a></li>
