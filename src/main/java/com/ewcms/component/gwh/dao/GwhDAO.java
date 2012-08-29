@@ -2,6 +2,7 @@ package com.ewcms.component.gwh.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -45,26 +46,16 @@ public class GwhDAO {
     }
     
     public List<ArticleVO> findGwhArticleList(String beginDate,String endDate,String searchChannel,String searchRange,String searchKey){
+    	if (searchChannel == null || searchChannel.trim().length()==0) return new ArrayList<ArticleVO>();
+    	
     	if(beginDate == null || beginDate.length()==0)beginDate="1950-01-01";
     	if(endDate == null || endDate.length()==0)endDate="2050-01-01";
     	searchKey = "%"+searchKey + "%";
-    	
-    	String channelSql = " ";
-    	if (searchChannel != null && searchChannel.trim().length() > 0){
-    		channelSql = " And t2.channel_id=? ";
-    	}
-    	
     	if(searchRange.equals("1")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 "
-            		+ "where t1.id=t2.article_id " + channelSql + " and t1.title like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
-            Object[] params = null;
-            if (channelSql.length() == 0){
-            	params = new Object[]{searchKey};
-            }else{
-            	params = new Object[]{searchChannel,searchKey};
-            }
-            
+            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.title like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
 
                 @Override
@@ -78,13 +69,8 @@ public class GwhDAO {
     	if(searchRange.equals("2")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 ,content_content as t3 "
-            		+ "where t1.id=t2.article_id and t1.id=t3.article_id " + channelSql + " and t3.detail like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
-            Object[] params = null;
-            if (channelSql.length() == 0){
-            	params = new Object[]{searchKey};
-            }else{
-            	params = new Object[]{searchChannel,searchKey};
-            }
+            		+ "where t1.id=t2.article_id and t1.id=t3.article_id and t2.channel_id=? and t3.detail like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
                 @Override
                 public ArticleVO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -96,13 +82,8 @@ public class GwhDAO {
     	if(searchRange.equals("3")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 "
-            		+ "where t1.id=t2.article_id and " + channelSql + " and t1.sub_title like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
-            Object[] params = null;
-            if (channelSql.length() == 0){
-            	params = new Object[]{searchKey};
-            }else{
-            	params = new Object[]{searchChannel,searchKey};
-            }
+            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.sub_title like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
                 @Override
                 public ArticleVO mapRow(ResultSet rs, int rowNum) throws SQLException {

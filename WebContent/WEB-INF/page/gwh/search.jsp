@@ -55,7 +55,7 @@
 			<tr>
 				<td>检索范围:</td>
 				<td>
-					<s:select list="gwhChannelList" listValue="channelName" listKey="id" name="searchChannle" headerKey="" headerValue="------请选择------"></s:select>
+					<s:select list="gwhChannelList" listValue="channelName" listKey="id" name="searchChannle"></s:select>
 				</td>
 			</tr>
 			<tr>
