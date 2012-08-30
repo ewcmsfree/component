@@ -39,7 +39,7 @@
 									<table width="95%" border="0" cellpadding="0" cellspacing="0">
 										<s:iterator value="articleList">
 											<tr>
-											<td width="70%"><a href="<s:property value="url"/>" target="_blank"><span class="news"><s:property value="title"/></span></a></td>
+											<td width="70%">&nbsp;&nbsp;<a href="<s:property value="url"/>" target="_blank"><span class="news"><s:property value="title"/></span></a></td>
 											</tr>
 										</s:iterator>
 									</table>
