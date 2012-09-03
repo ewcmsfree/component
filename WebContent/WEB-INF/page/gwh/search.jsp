@@ -9,6 +9,8 @@
     <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
     <script src="../js/changdiv.js" type="text/javascript"></script>
     <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script language="JavaScript" type="text/javascript" src="<s:url value="/datepicker/WdatePicker.js"/>"></script>
+    
         <script type="text/JavaScript">
                 $(function(){
                    
@@ -40,7 +42,8 @@
 
 			<tr>
 				<td>检索时间:</td>
-				<td>从<s:textfield name="beginDate" size="20"/>至<s:textfield name="endDate" size="20"/></td>
+				<td>从<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+				至<input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></td>
 			</tr>
 			<tr>
 				<td>检索方式:</td>
