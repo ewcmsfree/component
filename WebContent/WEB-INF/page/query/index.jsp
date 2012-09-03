@@ -7,6 +7,7 @@
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>中国瑞昌网为您服务！</title>
     <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
+    <script language="JavaScript" type="text/javascript" src="<s:url value="/datepicker/WdatePicker.js"/>"></script>
     <script type="text/javascript">
        function jumpPage(obj){
          var page = obj.options[obj.selectedIndex].text -1 ;
@@ -20,7 +21,7 @@
 			<tr>
 				<td width="750" valign="top">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<s:form action="advquery" method="post">
+						<s:form action="advquery" method="post" name="advqueryform">
 						<tr>
 							<td>
 								<select name="isContent" id="isContent">
@@ -29,8 +30,8 @@
 								</select>
 								<s:textfield name="title" size="35"/>
 							</td>
-							<td>发布日期<s:textfield name="beginDate" size="20"/> 至 <s:textfield name="endDate" size="20"/></td>
-							<td><img src="images/search.gif" width="51" height="25" onclick="document.forms[0].submit();"/></td>
+							<td>发布日期<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/> 至 <input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></td>
+							<td><img src="images/search.gif" width="51" height="25" onclick="document.forms[advqueryform].submit();"/></td>
 						</tr>
 						</s:form>
 						<tr>
