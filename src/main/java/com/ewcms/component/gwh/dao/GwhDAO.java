@@ -54,7 +54,7 @@ public class GwhDAO {
     	if(searchRange.equals("1")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 "
-            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.title like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.title like ? and t1.status='RELEASE' and  t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
             Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
 
@@ -69,7 +69,7 @@ public class GwhDAO {
     	if(searchRange.equals("2")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 ,content_content as t3 "
-            		+ "where t1.id=t2.article_id and t1.id=t3.article_id and t2.channel_id=? and t3.detail like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            		+ "where t1.id=t2.article_id and t1.id=t3.article_id and t2.channel_id=? and t3.detail like ?  and t1.status='RELEASE' and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
             Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
                 @Override
@@ -82,7 +82,7 @@ public class GwhDAO {
     	if(searchRange.equals("3")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 "
-            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.sub_title like ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.sub_title like and t1.status='RELEASE' ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
             Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
                 @Override
