@@ -6,7 +6,7 @@
         <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
         <link rel="stylesheet" type="text/css" href='<s:url value="/source/css/base.css"/>'/>
         <link rel="stylesheet" type="text/css" href='<s:url value="/source/css/ewcms.css"/>'/>
-        <script language="JavaScript" type="text/JavaScript">
+        <script type="text/javaScript">
             $(function(){
                 $("#logout_id").bind("click",function(){
                     var url = '<s:url action="logout" namespace="/user"/>';
@@ -30,7 +30,7 @@
             <div style="clear: both;height: 6px;"></div>
         </div>
         <s:form action="speakEdit" method="post">
-            <table  border="0" cellspacing="0" cellpadding="0"  class="formtable" align="center">
+            <table border="0" cellspacing="0" cellpadding="0"  class="formtable" align="center">
                 <s:if test="!login">
                     <tr id="username_id">
                         <td width="60px" height="32px">*用户名：</td>

@@ -74,8 +74,8 @@
         <s:include value="../header.jsp"/>
         <!--内容-->
         <div class="side_box1 letter_side_h">
-          <iframe src="/mstd/fangtanqiantao/index.html" width="300" height="850" frameborder="0" scrolling="no"> 
-            <a href="/mstd/fangtanqiantao/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+          <iframe src="/zhengminhudong/zaixianfangtan/fangtanqiantao/index.html" width="300" height="850" frameborder="0" scrolling="no"> 
+            <a href="/zhengminhudong/zaixianfangtan/fangtanqiantao/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
           </iframe>
         </div>
         <div class="zwgk_mainbox letter_main">
@@ -157,7 +157,7 @@
                             </s:else>&nbsp;转到
                             <select name="select" class="hui" onchange="jumpPageXc(this)">
                               <s:iterator value="pageXc.pageListAll">
-                                <s:if test = "pageXc.page == top"><option selected><s:property value="top"/></option></s:if>
+                                <s:if test = "pageXc.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
                                 <s:else><option><s:property value="top"/></option></s:else>
                               </s:iterator>
                             </select>页
@@ -226,7 +226,7 @@
                             </s:else>&nbsp;转到
                             <select name="select" class="hui" onchange="jumpPageZx(this)">
                               <s:iterator value="pageZx.pageListAll">
-                                <s:if test = "pageZx.page == top"><option selected><s:property value="top"/></option></s:if>
+                                <s:if test = "pageZx.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
                                 <s:else><option><s:property value="top"/></option></s:else>
                               </s:iterator>
                             </select>页
@@ -295,7 +295,7 @@
                             </s:else>&nbsp;转到
                             <select name="select" class="hui" onchange="jumpPageTs(this)">
                               <s:iterator value="pageTs.pageListAll">
-                                <s:if test = "pageTs.page == top"><option selected><s:property value="top"/></option></s:if>
+                                <s:if test = "pageTs.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
                                 <s:else><option><s:property value="top"/></option></s:else>
                               </s:iterator>
                             </select>页
@@ -309,7 +309,7 @@
             </div>
             <div class="ph_box">
               <div class="sonbox1">
-                <h6><span><a href="#">更多</a></span>［热点问题］</h6>
+                <h6>［热点问题］</h6>
                 <ul class="list10">
                   <s:iterator value="hots" status="st">
                     <li>
@@ -320,18 +320,9 @@
                 </ul>
               </div>
               <div class="sonbox2">
-                <h6><span><a href="#">更多</a></span>［网上调查］</h6>
-                <ul class="list10">
-                  <li><a href="#">省市人大代表视察九江市森防火察九江市森</a></li>
-                  <li><a href="#">九江市"两违"整治督查组开明察</a></li>
-                  <li><a href="#">九电四期356吨主变压器成功装56吨主变压器</a></li>
-                  <li><a href="#">环保部督查组来九江市督查污查组来九江市督 </a></li>
-                  <li><a href="#">九电四期356吨主变压器成(图)</a></li>
-                  <li><a href="#">省市人大代表视察九江市森林防大代表视察九江市 </a></li>
-                  <li><a href="#">钟利贵主持召开九江市四席会利贵主持召开九江</a></li>
-                  <li><a href="#">省市人大代表视察九江市森林防察九江市森</a></li>
-                  <li><a href="#">省市人大代表视察九江市森防火察九江市森</a></li>
-                </ul>
+                <iframe src="/zhengminhudong/wangshangdiaocha/diaochaqiantao" width="340" height="300" frameborder="0" scrolling="no"> 
+            <a href="/zhengminhudong/wangshangdiaocha/diaochaqiantao">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+          </iframe>
               </div>
             </div>
           </div>

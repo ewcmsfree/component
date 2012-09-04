@@ -44,6 +44,7 @@
     </head>
     <body>
         <div align="center" id="whole_bg">
+		<div id="content">
             <div style="height: 45px"></div>
             <div class="main" align="left">
                 <form id="register_form">
@@ -143,7 +144,7 @@
                                 <div class="input_l"><span></span></div>
                                 <div class="input_r">
                                     <div id="pagreement_wapper">
-                                        <input type="checkbox" name="pagreement" checked/><span style="margin-left: 8px;">我已经看过并同意<a href="<s:url value="/pagreement.html"/>" target="_blank">《中国瑞昌网服务使用协议》</a></span>
+                                        <input type="checkbox" name="pagreement" checked="checked"/><span style="margin-left: 8px;">我已经看过并同意<a href="<s:url value="/pagreement.html"/>" target="_blank">《中国瑞昌网服务使用协议》</a></span>
                                     </div>
                                 </div>
                                 <div style="clear: both;height:5px;"></div>
@@ -174,6 +175,7 @@
                     </tr>
                 </table>
             </div>
+			</div>
         </div>
     </body>
 </html>

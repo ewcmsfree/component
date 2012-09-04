@@ -161,7 +161,7 @@
                               <select name="select" class="hui" onchange="jumpPage(this)">
                               <s:iterator value="page.pageListAll">
                                 <s:if test = "page.page == top">
-                                <option selected><s:property value="top"/></option>
+                                <option selected="selected"><s:property value="top"/></option>
                                 </s:if>
                                 <s:else>
                                 <option><s:property value="top"/></option>

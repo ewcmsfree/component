@@ -5,12 +5,13 @@
 <div id="header_inf">
     <ul>
         <li class="top_link">
-            <a name="StranLink">繁體中文</a>
+            <a name="gb2big5" id="gb2big5">繁體中文</a>
+            <script src="/js/gb2big5.js" type="text/javascript"></script>
             <a href="/component/rss.html">RSS订制</a>
             <a href="javascript:void(0);" onClick="window.external.addFavorite('http://www.ruichang.gov.cn/','中国瑞昌网')">加入收藏</a>
             <a href="javascript:void(0);" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.ruichang.gov.cn/');">设为首页</a>
             <a href="/wangzhanweihu/guanyuwomen" target="_blank">关于我们</a>
-<a href="/wangzhanweihu/wangzhandaohang" target="_blank">网站导航</a>
+            <a href="/wangzhanweihu/wangzhandaohang" target="_blank">网站导航</a>
         </li>
         <li>
             <form name="searchform" method="get" action="/search/search.jsp" target="_blank">站内检索:
@@ -23,4 +24,5 @@
             </form>
         </li>
     </ul>
-</div><!--顶部信息栏结束-->
+</div>
+<!--顶部信息栏结束-->

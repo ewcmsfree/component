@@ -75,8 +75,8 @@
             </div>
             <div class="clearfloat"></div>
             <div class="banjiangonshi">
-              <iframe src="/zxfw/banjianqiantao/index.html" width="765" height="270" frameborder="0" scrolling="no"> 
-                <a href="/zxfw/banjianqiantao/index.html">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
+              <iframe src="http://218.65.3.189:8080/rcxzfw/xzfw/index_sy.jsp" width="765" height="270" frameborder="0" scrolling="no"> 
+                <a href="http://218.65.3.189:8080/rcxzfw/xzfw/index_sy.jsp">你的浏览器不支持iframe页面嵌套，请点击这里访问页面内容。</a> 
               </iframe>
             </div>
           </div>

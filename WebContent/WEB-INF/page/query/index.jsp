@@ -98,7 +98,7 @@
 														onchange="jumpPage(this)">
 														<s:iterator value="page.pageListAll">
 															<s:if test="page.page == top">
-																<option selected>
+																<option  selected="selected">
 																	<s:property value="top" />
 																</option>
 															</s:if>

@@ -108,7 +108,7 @@
                   </s:else>&nbsp;转到
                   <select name="select" class="hui" onchange="jumppage(this)">
                   <s:iterator value="page.pageListAll">
-                  <s:if test = "page.page == top"><option selected><s:property value="top"/></option></s:if>
+                  <s:if test = "page.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
                   <s:else><option><s:property value="top"/></option></s:else>
                   </s:iterator>
                   </select>页

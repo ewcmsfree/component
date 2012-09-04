@@ -17,7 +17,7 @@
 <a href="/wangzhanweihu/banquanshuoming" target="_blank">版权说明</a>
 </li><li>|</li><li>
 <a href="/wangzhanweihu/yinsishengming" target="_blank">隐私声明</a>
-</li></ul></p>
+</li></ul>
         <p>版权所有：瑞昌市人民政府 | 组织建设：瑞昌市人民政府 | 制作维护：瑞昌市人民政府信息化工作办公室</p>
         <p>电 话：0792-4224685  邮箱：rcgov@sina.com　ICP备案编号：赣ICP备05006010号</p>
         <p>建议：电脑显示屏的分辨率1024*以上768；IE浏览器6.0以上；FlashPlayer8.0以上</p>

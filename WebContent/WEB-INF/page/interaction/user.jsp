@@ -44,8 +44,8 @@
 
     </head>
     <body>
-        <div style="height: 35px"></div>
-        <div id="whole_bg" align="center">
+        <div id="whole_bg">
+		<div id="content">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
                     <tr>
                         <td height="60" bgcolor="#F3F3F3" style="padding: 1px;">
@@ -211,7 +211,7 @@
                                                         <select name="select" class="hui" onchange="jumpPage(this)">
                                                             <s:iterator value="page.pageListAll">
                                                                 <s:if test = "page.page == top">
-                                                                    <option selected><s:property value="top"/></option>
+                                                                    <option selected="selected"><s:property value="top"/></option>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <option><s:property value="top"/></option>
@@ -250,5 +250,6 @@
                     </tr>
                 </table>
         </div>
+		</div>
     </body>
 </html>

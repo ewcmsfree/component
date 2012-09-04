@@ -56,7 +56,7 @@
             <s:if test="working.matter!=null">
             <s:if test="!matter.matterAnnexs.isEmpty()">
             <li>
-              <a class="current"">表格下载</a>
+              <a class="current">表格下载</a>
             </li>
             </s:if>
             </s:if>

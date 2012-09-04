@@ -123,6 +123,7 @@
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
+					<!-- 
 					<webResources>
 						<resource>
 							<directory>target/${project.artifactId}-${project.version}/</directory>
@@ -132,8 +133,10 @@
 							</includes>
 						</resource>
 					</webResources>
+					 -->
 				</configuration>
 			</plugin>
+			<!-- 
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>yuicompressor-maven-plugin</artifactId>
@@ -158,9 +161,11 @@
 					<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/</outputDirectory>
 					<excludes>
 						<exclude>source/js/jquery-1.4.2.min.js</exclude>
+						<exclude>source/js/dynatree/jquery.dynatree.min.js</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
+			 -->
 			<plugin>
 				<inherited>false</inherited>
 				<groupId>com.mycila.maven-license-plugin</groupId>

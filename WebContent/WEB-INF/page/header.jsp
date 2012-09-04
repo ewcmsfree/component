@@ -67,7 +67,7 @@
     </div>
     <div id="submenu">
         <div id="tdmndivida1" style="display: ">
-        <span class="red">瑞昌市人民政府为您服务！
+        <span class="red">瑞昌市人民政府为您服务！</span>
         </div>
         <ul id="tdmndivida2" style="display:none">
 
