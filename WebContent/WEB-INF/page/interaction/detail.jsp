@@ -28,7 +28,7 @@
         <div id="letter_detail">
           <p class="title"><s:property value="interaction.title"/></p>
           <p class="source">
-            <span><strong>编号：</strong><s:property value="interaction.id"/></span>
+            <span><strong>编号：</strong><s:property value="interaction.formatId"/></span>
             <span><strong>咨询人：</strong><s:property value="interaction.name"/></span>
             <span><strong>咨询类型：</strong><s:if test = "interaction.type==1">咨询</s:if><s:if test = "interaction.type==2">投诉</s:if><s:if test = "interaction.type==3">建议</s:if></span>
             <span><strong>提交时间：</strong><s:date format="yyyy-MM-dd" name="interaction.date"/></span><span>

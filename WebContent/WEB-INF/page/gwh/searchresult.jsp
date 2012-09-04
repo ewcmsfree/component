@@ -34,21 +34,18 @@
     	<div id="whole_bg">
   			<div id="content">
             <s:include value="../header.jsp"/>
-            <a href="<s:url action="gwhsearch"/>"><span class="news">＞&nbsp;&nbsp;检索文件</span></a>
+			<div class="article_box1">
+     		<div class="art_text">
+			<h3> 检索文件结果</h3>
             <hr/>
-									<table width="95%" border="0" cellpadding="0" cellspacing="0">
-										<s:iterator value="articleList">
-											<tr>
-											<td width="70%">&nbsp;&nbsp;<a href="<s:property value="url"/>" target="_blank"><span class="news"><s:property value="title"/></span></a></td>
-											</tr>
-										</s:iterator>
-									</table>
-									<br/>
-									<table width="95%" border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<td height="30" bgcolor="#F2F2F2" class="li_line"><div
-													align="center" class="hui">
-													共
+			<div class="clearfloat"></div>
+       <ul class="zw_list1 h_min2 w1">
+	   <s:iterator value="articleList">
+              <li><a href="<s:property value="url"/>" target="_blank"><s:property value="title"/></a></li>
+		</s:iterator>    
+       </ul> 
+	    <p class="page">
+		共
 													<s:property value="page.pageCount" />
 													页&nbsp;当前为第
 													<s:property value="page.page" />
@@ -110,10 +107,7 @@
 															</s:else>
 														</s:iterator>
 													</select>页
-												</div>
-											</td>
-										</tr>
-									</table>
+		</p>
 	
 	
 		</div>

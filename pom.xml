@@ -6,6 +6,12 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>component</name>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
+	
 	<repositories>
 		<repository>
 			<id>jboss</id>
@@ -117,9 +123,132 @@
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
+					<webResources>
+						<resource>
+							<directory>target/${project.artifactId}-${project.version}/</directory>
+							<includes>
+								<include>**/*.js</include>
+								<include>**/*.css</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<nosuffix>true</nosuffix>
+					<jswarn>false</jswarn>
+					<preserveAllSemiColons>true</preserveAllSemiColons>
+					<nomunge>true</nomunge>
+					<encoding>UTF-8</encoding>
+					<linebreakpos>-1</linebreakpos>
+					<failOnWarning>false</failOnWarning>
+					<sourceDirectory>${basedir}/WebContent/</sourceDirectory>
+					<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/</outputDirectory>
+					<excludes>
+						<exclude>source/js/jquery-1.4.2.min.js</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<inherited>false</inherited>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<version>1.9.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<header>${basedir}/src/etc/header.txt</header>
+					<failIfMissing>true</failIfMissing>
+					<aggregate>true</aggregate>
+					<strictCheck>true</strictCheck>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+					<excludes>
+						<exclude>pom.xml</exclude>
+						<exclude>pom-scm.xml</exclude>
+						<exclude>LICENSE.txt</exclude>
+						<exclude>**/src/main/resources/**</exclude>
+						<exclude>**/src/test/resources/**</exclude>
+						<exclude>**/src/site/**</exclude>
+						<exclude>**/sql/**</exclude>
+						<exclude>**/WebContent/**</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.mycila.maven-license-plugin
+										</groupId>
+										<artifactId>
+											maven-license-plugin
+										</artifactId>
+										<versionRange>
+											[1.9.0,)
+										</versionRange>
+										<goals>
+											<goal>format</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											net.alchim31.maven
+										</groupId>
+										<artifactId>
+											yuicompressor-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.1,)
+										</versionRange>
+										<goals>
+											<goal>compress</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 	<dependencies>
 		<dependency>

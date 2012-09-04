@@ -1,4 +1,4 @@
-
+//评论
 function comment_init(url,articleId,callback){
     var html = new Array();
     html.push('<h2><span>我要评论</span><div><a href=\"\"><div id=\"comment-count-warpper\"><div></a></div></h2>');

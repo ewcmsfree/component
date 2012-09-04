@@ -10,7 +10,6 @@
     <script src="../js/changdiv.js" type="text/javascript"></script>
     <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script language="JavaScript" type="text/javascript" src="<s:url value="/datepicker/WdatePicker.js"/>"></script>
-    
         <script type="text/JavaScript">
                 $(function(){
                    
@@ -35,15 +34,14 @@
     	<div id="whole_bg">
   			<div id="content">
             <s:include value="../header.jsp"/>
-	<s:form action="searchresult" namespace="/interaction">
-	<hr/>
-	<br/>
-		<table>
+	<s:form action="searchresult" namespace="/interaction" target="_blank">
+	<div class="article_box1">
+     <div class="art_text">
+     <table width="80%" align="center">
 
 			<tr>
 				<td>检索时间:</td>
-				<td>从<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
-				至<input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></td>
+				<td>从<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>至<input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></td>
 			</tr>
 			<tr>
 				<td>检索方式:</td>
@@ -68,10 +66,11 @@
 		</table>
 		<br/>
 		<hr/>
-		<center><input type="submit" value="提  交 "/>    <input type="reset" value="重  置 "/></center>
+		<center><input type="submit" value="提  交 "/>    <input type="reset" value="重  置 "/></center></div>
+  </div>
+		
 	</s:form>
 	</div>
-	           <br/><br/><br/><br/><br/><br/> <br/>
             <s:include value="../footer.jsp"/>
 	</div>
 </body>

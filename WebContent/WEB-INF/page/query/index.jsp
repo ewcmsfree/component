@@ -5,65 +5,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>中国瑞昌网为您服务！</title>
-    <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
+    <title>中国瑞昌网欢迎您！</title>
+    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script language="JavaScript" type="text/javascript" src="<s:url value="/datepicker/WdatePicker.js"/>"></script>
     <script type="text/javascript">
        function jumpPage(obj){
          var page = obj.options[obj.selectedIndex].text -1 ;
-         window.location =  '<s:url action="advquery"/>?isContent=<s:property value="isContent"/>&title=<s:property value="title"/>&beginDate=<s:property value="beginDate"/>&endDate=<s:property value="endDate"/>&pageNumber=' + page;
+         window.location =  '<s:url action="/component/online/advquery.do"/>?isContent=<s:property value="isContent"/>&title=<s:property value="title"/>&beginDate=<s:property value="beginDate"/>&endDate=<s:property value="endDate"/>&pageNumber=' + page;
        }
     </script>
-  </head>
-  <body>
-	<div align="center">
-		<table width="1000" border="0" cellspacing="0" cellpadding="0">
-			<tr>
-				<td width="750" valign="top">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<s:form action="advquery" method="post" name="advqueryform">
-						<tr>
-							<td>
-								<select name="isContent" id="isContent">
+    </head>
+    <body>
+        <s:include value="../top.jsp"/>
+    	<div id="whole_bg">
+  			<div id="content">
+            <s:include value="../header.jsp"/>
+	<div class="banjiangonshi">
+         <div class="current_position"><s:form namespace="/online" action="advquery" method="post" name="advqueryform" id="advqueryform"><select name="isContent" id="isContent">
 									<option value="false">标题</option>
 									<option value="true">正文和标题</option>
 								</select>
-								<s:textfield name="title" size="35"/>
-							</td>
-							<td>发布日期<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/> 至 <input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></td>
-							<td><img src="images/search.gif" width="51" height="25" onclick="document.forms[advqueryform].submit();"/></td>
-						</tr>
-						</s:form>
-						<tr>
-							<td colspan="4" class="zyd_line"><div align="center">
-									<br/>
-									<table width="95%" border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="70%"height="40"><div align="left" class="zongcolor"><strong>标题</strong></div></td>
-											<td width="20%"><div align="left" class="zongcolor"><strong>所属频道</strong></div></td>
-											<td width="10%"><div align="left" class="zongcolor"><strong>发布日期</strong></div></td>
-										</tr>
-									</table>
-									<table width="95%" border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<td height="1" bgcolor="#F1D68D"></td>
-										</tr>
-									</table>
-									<table width="95%" border="0" cellpadding="0" cellspacing="0">
-										<s:iterator value="articles">
+								<s:textfield name="title" size="35"/><span class="red"><strong>发布日期<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/> 至 </strong></span><input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/><img src="images/search.gif" width="51" height="25" onclick="document.advqueryform.submit();"/></s:form></div>
+         <div class="gs_list1">
+  <table width="100%">
+  <tr>
+    <th height="25">标题</th>
+    <th height="25">所属频道</th>
+    <th height="25">发布日期</th>
+  </tr>
+  <tr>
+ <s:iterator value="articles">
 											<tr>
-											<td width="70%"><a href="<s:property value="url"/>" target="_blank"><span class="news"><s:property value="title"/></span></a></td>
-											<td width="20%"><s:property value="channelName"/></td>
-											<td width="10%"><s:property value="published"/></td>
+											<td  height="25" align="left" bgcolor="#FAFAFA"><a href="<s:property value="url"/>" target="_blank"><span class="news"><s:property value="title"/></span></a></td>
+											<td height="25" align="center" bgcolor="#FAFAFA"><s:property value="channelName"/></td>
+											<td height="25" align="center" bgcolor="#FAFAFA"><s:property value="published"/></td>
 											</tr>
 										</s:iterator>
-									</table>
-									<br/>
-									<table width="95%" border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<td height="30" bgcolor="#F2F2F2" class="li_line"><div
-													align="center" class="hui">
-													共
+ </table>
+         </div>
+		 <p class="page">
+		 共
 													<s:property value="page.pageCount" />
 													页&nbsp;当前为第
 													<s:property value="page.page" />
@@ -125,18 +109,16 @@
 															</s:else>
 														</s:iterator>
 													</select>页
-												</div>
-											</td>
-										</tr>
-									</table>
-									<br/>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</div>
+		 </p>
+       </div>
+	   </div>
+<!--脚注信息-->
+  <div class="clearfloat"></div>
+   <!--页脚-->
+  <s:include value="../footer.jsp"/>
+</div>
+<script type="text/javascript">
+    //swfobject.registerObject("FlashID");
+</script>
 </body>
 </html>
