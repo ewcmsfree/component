@@ -40,6 +40,7 @@ public class GwhDAO {
                 return channelRowMapper(rs);
             }
         });
+        if(list == null || list.size()==0) list = new ArrayList<ChannelVO>();
         return list;
     }  
     
@@ -87,7 +88,7 @@ public class GwhDAO {
     	if(searchRange.equals("3")){
             String sql = "Select * "
                     + "From content_article as t1,content_article_main as t2 "
-            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.sub_title like and t1.status='RELEASE' ? and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
+            		+ "where t1.id=t2.article_id and t2.channel_id=? and t1.sub_title like ? and t1.status='RELEASE' and t1.published>='"+beginDate+"' and t1.published<='"+endDate +"'";
             Object[] params = new Object[]{searchChannel,searchKey};
             List<ArticleVO> list = jdbcTemplate.query(sql, params, new RowMapper<ArticleVO>() {
                 @Override

@@ -19,6 +19,6 @@ public class SearchAction extends ActionSupport {
 	private GwhSerivceable gwhService;
 	
 	public List<ChannelVO> getGwhChannelList(){
-		return gwhService.findChannelList();
+		 return gwhService.findChannelList();
 	}
 }
