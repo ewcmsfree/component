@@ -35,7 +35,11 @@ public class HotService {
         StringBuilder builder = new StringBuilder();
         builder.append("[");
         for(Hot hot : hots){
-            builder.append("{").append("\"title\":\"").append(hot.getTitle().substring(0,15)).append("\",");
+        	String title = hot.getTitle();
+        	if (title.length() >= 15){
+        		title = title.substring(0, 15);
+        	}
+            builder.append("{").append("\"title\":\"").append(title).append("\",");
             builder.append("\"url\":\"").append(hot.getUrl()).append("\"},");
         }
         builder.deleteCharAt(builder.length() -1);

@@ -43,7 +43,6 @@ public class HotDAO {
                 +"Order by t1.counter Desc Limit 3";
 
         return jdbcTemplate.query(sql, new RowMapper<Hot>() {
-
             @Override
             public Hot mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Hot hot = new Hot();
