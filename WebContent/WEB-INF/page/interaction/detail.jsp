@@ -40,10 +40,10 @@
           <p class="text_detail">
             <strong>受理状态：</strong>
             <s:if test="interaction.state.ordinal() == 1">已回复</s:if>
-            <s:else>待回复</s:else>
+            <s:else>办理中</s:else>
           </p>
           <p class="text_detail">
-            <strong><s:property value="interaction.organ.name"/>的回复(时间：<s:date format="yyyy-MM-dd" name="interaction.replayDate"/>)</strong><s:if test="interaction.state.ordinal()==1">：<div class="text_detail"><s:property value="interaction.replay" escape="false"/></div></s:if>
+            <strong>回复单位：<s:property value="interaction.organ.name"/>(时间：<s:date format="yyyy-MM-dd" name="interaction.replayDate"/>)</strong><s:if test="interaction.state.ordinal()==1">：<div class="text_detail"><s:property value="interaction.replay" escape="false"/></div></s:if>
           </p>
         </div>
       </div>

@@ -32,8 +32,8 @@
         <div class="wsbs_main">
           <div class="zw_box2">
             <div class="zx_k">
-              <form action="search" method="post" name="onlineform" id="onlineform">
-                <span>标题：</span><input name="" type="text" size="60"/>
+              <form action="search.do" method="post" name="onlineform" id="onlineform">
+                <span>标题：</span><input name="key" type="text" size="60"/>
                 <input class="cx_bt" type="submit" value="查询" />
               </form>
             </div>
@@ -41,8 +41,9 @@
 	      <div class="clearfloat"></div>
           <div class="bs_process">
             <h5>检索结果</h5>
-            <s:iterator value = "workings" id="working">
-              <p><s:property value="#working.name"/></p>
+            <s:iterator value="workings" id="working">
+              <s:url action="matter" id="matterUrl" escapeAmp="false"><s:param name="workingId" value="#working.id"/></s:url>
+              <p><a href="<s:property value="matterUrl"/>" target="_blank"><s:property value="#working.name"/></a></p>
               <ul class="bs_list">
               <s:iterator value="children" id="child" status="st">
                 <s:if test="id != null">
@@ -53,10 +54,56 @@
               </ul>
               <div class="clearfloat"></div>
             </s:iterator>
-            <ul><li class="nobg"><a href="#">办事指南</a></li><li><a href="http://218.87.91.208:8008/outportal">网上申报</a></li><li><a href="#">网上咨询</a></li><li><a href="#">在线查询</a></li><li><a href="#">表格下载</a></li></ul>
           </div>
           <div class="clearfloat"></div>
-          <p class="page"><a href="#">第一页</a><a href="#">上一页</a><a class="num" href="#">..</a><a class="num" href="#">1</a><a class="num" href="#">2</a><a class="num" href="#">3</a><a class="num" href="#">4</a><a class="num" href="#">5</a><a class="num" href="#">6</a><a class="num" href="#">7</a><a class="num" href="#">8</a><a class="num" href="#">9</a><a class="num" href="#">10</a><a class="num" href="#">..</a><a href="#">下一页</a></p>     
+                     <p class="page">
+              <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td height="30" bgcolor="#F2F2F2" class="li_line">
+                    <div align="center" class="hui">共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
+                    <s:if test="page.pagePrev == -1">上一页</s:if>
+                    <s:else>
+                    <s:url action="organ" id="pageUrl" escapeAmp="false">
+                      <s:param name="organId" value="organ.id"/>
+                      <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
+                    </s:url>
+                    <a href="<s:property value="pageUrl"/>">上一页</a>
+                    </s:else>
+                    <s:iterator value="page.pageList">
+                    <s:if test = "page.page == top">
+                    <strong><s:property value="top"/></strong>
+                    </s:if>
+                    <s:else>
+                    <s:url action="organ" id="pageUrl" escapeAmp="false">
+                      <s:param name="organId" value="organ.id"/>
+                      <s:param name="pageNumber" value="%{top-1}"/>
+                    </s:url>
+                    <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
+                    </s:else>&nbsp;
+                    </s:iterator>
+                    <s:if test="page.pageNext == -1">下一页</s:if>
+                    <s:else>
+                    <s:url action="organ" id="pageUrl" escapeAmp="false">
+                      <s:param name="organId" value="organ.id"/>
+                      <s:param name="pageNumber" value="%{page.pageNext-1}"/>
+                    </s:url>
+                    <a href="<s:property value="pageUrl"/>">下一页</a>
+                    </s:else>&nbsp;转到
+                    <select name="select" class="hui" onchange="jumpPage(this)">
+                    <s:iterator value="page.pageListAll">
+                    <s:if test = "page.page == top">
+                      <option selected="selected"><s:property value="top"/></option>
+                    </s:if>
+                    <s:else>
+                      <option><s:property value="top"/></option>
+                    </s:else>
+                    </s:iterator>
+                    </select>页
+                  </div>
+                </td>
+              </tr>
+            </table>
+           </p>
         </div>
         <!--内容结束-->
       </div>

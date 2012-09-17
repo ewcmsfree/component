@@ -529,17 +529,7 @@ var swfobject = function() {
 			- Reference: http://code.google.com/p/swfobject/wiki/SWFObject_2_0_documentation
 		*/ 
 		registerObject: function(objectIdStr, swfVersionStr, xiSwfUrlStr) {
-			if (!ua.w3cdom || !objectIdStr) {
-				return;
-			}
-			var obj = document.getElementById(objectIdStr);
-			var xi = getExpressInstall(obj);
-			var regObj = {};
-			regObj.id = objectIdStr;
-			regObj.swfVersion = swfVersionStr ? swfVersionStr : getTargetVersion(obj);
-			regObj.expressInstall = xiSwfUrlStr ? xiSwfUrlStr : ((xi != "") ? xi : false);
-			regObjArr[regObjArr.length] = regObj;
-			setVisibility(objectIdStr, false);
+			
 		},
 		
 		getObjectById: function(objectIdStr) {
