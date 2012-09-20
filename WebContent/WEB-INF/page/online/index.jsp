@@ -33,11 +33,11 @@
           <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞在线服务</span></p></div>
           <div class="scene_nav">
             <ul>
-              <li><a href="#">我要上学</a></li>
-              <li><a href="#">我要就医</a></li>
-              <li><a href="#">我要就业</a></li>
-              <li><a href="#">我要置业</a></li>
-              <li><a href="#">我要出行</a></li>
+              <li><a href="/zxfw/changjingdaohang/woyaoshangxue/">我要上学</a></li>
+              <li><a href="/zxfw/changjingdaohang/woyaojiuyi/">我要就医</a></li>
+              <li><a href="/zxfw/changjingdaohang/woyaojiuye/">我要就业</a></li>
+              <li><a href="/zxfw/changjingdaohang/woyaozhiye/">我要置业</a></li>
+              <li><a href="/zxfw/changjingdaohang/woyaochuxing/">我要出行</a></li>
             </ul>
           </div>
           <div class="clearfloat"></div>
