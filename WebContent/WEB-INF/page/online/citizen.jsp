@@ -56,11 +56,11 @@
             <h5><s:property value="citizen.name"/></h5>
             <s:iterator value="matters" id='matter'>
             <s:if test = "matter != null">
-            <p class="bs_tit"><s:property value="name"/></p>
             <s:if test="organ.name != null">
             <s:url action="organ" id="url" escapeAmp="false"><s:param name="organId" value="organ.id"/></s:url>
-            [办理部门： <a href="<s:property value="url"/>" target="_blank"><s:property value="organ.name"/></a>]
-            </s:if>
+             <p class="bs_tit"><s:property value="name"/>[办理部门： <a href="<s:property value="url"/>" target="_blank"><s:property value="organ.name"/></a>]</p>
+           
+           
             <s:url action="matter" id="matterUrl" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="id"/></s:url>
             <ul>
               <li class="nobg">
@@ -87,14 +87,8 @@
               </s:if>
             </ul>
             </s:if>
-            <s:else>
-            <ul>
-              <li>
-                <s:url action = "article" id="url" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="#matter.id"/><s:param name="childId" value="#matter.id"/></s:url>
-                <a href="<s:property value="url"/>" target="_blank"><s:property value="name"/></a>
-              </li>
-            </ul>
-            </s:else>
+             </s:if>
+             <div class="clearfloat"></div>
             </s:iterator>
           </div>
           <div class="clearfloat"></div>
