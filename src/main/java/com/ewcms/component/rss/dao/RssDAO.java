@@ -54,10 +54,10 @@ public class RssDAO {
     }
 
     public List<Item> findItemByChannel(Integer id, Integer row) {
-        String sql = "Select t2.title,t1.url,t2.summary,t1.published From doc_articlermc t1,doc_article t2 "
-                + "Where t1.article_id = t2.id And t1.channel_id = ? "
-                + "And t1.published < now() And t1.status='RELEASE' "
-                + "Order By t1.published Desc Limit ?";
+    	String sql = "Select t2.title,t2.url,t2.summary,t2.published From content_article_main t1,content_article t2 "
+    			+ " Where t1.article_id = t2.id And t1.channel_id = ? "
+    			+ " And t2.published < now() And t2.status='RELEASE' " 
+                + " Order By t2.published Desc Limit ? ";
 
         return jdbcTemplate.query(sql, new Object[]{id, row}, new RowMapper<Item>() {
 

@@ -83,12 +83,14 @@
               </ul>
               <div class="clearfloat"></div>
               </s:if>
+              <!-- 
               <s:else>
               <ul>
-                <s:url action = "article" id="url" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="#matter.id"/><s:param name="childId" value="#matter.id"/></s:url>
+                <s:url action="article" id="url" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="#matter.id"/><s:param name="childId" value="#matter.id"/></s:url>
               	<li><a href="<s:property value="url"/>"  target="_blank"><s:property value="name"/></a></li>
               </ul>
               </s:else>
+               -->
               </s:iterator>
             </div>
             <div class="clearfloat"></div>

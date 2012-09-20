@@ -236,7 +236,7 @@ CREATE TABLE plugin_interaction (
     id int NOT NULL DEFAULT nextval('seq_plugin_interaction_id'),
     username varchar(20) NOT NULL,
     name varchar(20) NOT NULL,
-    title varchar(40) NOT NULL,
+    title varchar(255) NOT NULL,
     content text NOT NULL,
     replay text,
     type int NOT NULL,
