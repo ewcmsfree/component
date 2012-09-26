@@ -45,25 +45,29 @@ public class QueryDAO implements QueryDAOable {
 		
 		if (title != null && !title.trim().equals("")){
 			isIf = true;
-			sql += " And a.title Like '%" + title + "%' ";
+			sql += " And a.title Like ? ";
+			params.add("%" + title + "%");
 		}
 		
 		if (isContent != null && isContent){
 			isIf = true;
-			sql += " And c.detail Like '%" + title + "%' ";
+			sql += " And c.detail Like ? ";
+			params.add("%" + title + "%");
 		}
 		
 		if (channelId != null && channelId.longValue() > 0){
 			isIf = true;
-			sql += " And s.id=" + channelId + " ";
+			sql += " And s.id=? ";
+			params.add(channelId);
 		}
 		
 		if (beginDate != null && !beginDate.trim().equals("")){
 			Date _beginDate;
 			try {
 				_beginDate = DATE_FORMAT.parse(beginDate);
-				sql += " And a.published >= '" +  _beginDate + "' ";
+				sql += " And a.published >= ?";
 				isIf = true;
+				params.add(_beginDate);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -73,8 +77,9 @@ public class QueryDAO implements QueryDAOable {
 			Date _endDate;
 			try {
 				_endDate = DATE_FORMAT.parse(endDate);
-				sql += " And a.published <= '" +  _endDate + "' ";
+				sql += " And a.published <= ? ";
 				isIf = true;
+				params.add(endDate);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

@@ -185,17 +185,20 @@ public class InteractionDAO implements InteractionDAOable {
 
 	@Override
 	public List<Interaction> findInteraction(int page, int row, int interType) {
+		int offset = page * row;
+		Object[] params = new Object[] { row, offset };
+		
 		String sql = "Select * " + "From plugin_interaction "
 				+ "Where checked = true ";
 
 		if (interType != 0 && interType <= 3 && interType >= 1) {
-			sql += " And type = " + interType + " ";
+			sql += " And type = ? ";
+			params = new Object[]{ interType, row, offset };
 		}
 
 		sql += "Order By date desc Limit ? OffSet ?";
 
-		int offset = page * row;
-		Object[] params = new Object[] { row, offset };
+		
 		List<Interaction> list = jdbcTemplate.query(sql, params,
 				new RowMapper<Interaction>() {
 
@@ -214,9 +217,11 @@ public class InteractionDAO implements InteractionDAOable {
 			int row, int interType) {
 		String sql = "Select * " + "From plugin_interaction "
 				+ "Where checked = true And state %s%d ";
-
+		int offset = page * row;
+		Object[] params = new Object[] { row, offset };
 		if (interType != 0 && interType <= 3 && interType >= 1) {
-			sql += " And type = " + interType + " ";
+			sql += " And type = ? ";
+			params = new Object[] {interType, row, offset };
 		}
 		sql += "Order By date desc Limit ? OffSet ?";
 
@@ -226,8 +231,7 @@ public class InteractionDAO implements InteractionDAOable {
 			sql = String.format(sql, "!=", InteractionState.BACK.ordinal());
 		}
 
-		int offset = page * row;
-		Object[] params = new Object[] { row, offset };
+
 		List<Interaction> list = jdbcTemplate.query(sql, params,
 				new RowMapper<Interaction>() {
 
@@ -244,25 +248,29 @@ public class InteractionDAO implements InteractionDAOable {
 	@Override
 	public int getInteractionCount(int interType) {
 		String sql = "Select count(id) From plugin_interaction Where checked = true";
+		Object[] params = new Object[] {};		
 		if (interType != 0 && interType <= 3 && interType >= 1) {
-			sql += " And type = " + interType + " ";
+			sql += " And type = ? ";
+			params = new Object[] {interType};
 		}
 
-		return (int) jdbcTemplate.queryForLong(sql);
+		return (int) jdbcTemplate.queryForLong(sql, params);
 	}
 
 	@Override
 	public int getInteractionReplayCount(boolean replay, int interType) {
 		String sql = "Select count(id) From plugin_interaction Where checked = true And state%s%d";
+		Object[] params = new Object[] {};	
 		if (interType != 0 && interType <= 3 && interType >= 1) {
-			sql += " And type = " + interType + " ";
+			sql += " And type = ? ";
+			params = new Object[] {interType};
 		}
 		if (replay) {
 			sql = String.format(sql, "=", InteractionState.BACK.ordinal());
 		} else {
 			sql = String.format(sql, "!=", InteractionState.BACK.ordinal());
 		}
-		return (int) jdbcTemplate.queryForLong(sql);
+		return (int) jdbcTemplate.queryForLong(sql,params);
 	}
 
 	@Override
