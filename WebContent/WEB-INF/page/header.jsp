@@ -156,8 +156,6 @@
         <li>|</li>
 <li><a href="/zxfw/shiyongxinxi" target="_blank">实用信息</a></li>
         <li>|</li>
-<li><a href="/zxfw/chaxunfuwu" target="_blank">查询服务</a></li>
-        <li>|</li>
 <li><a href="/zxfw/changjingdaohang" target="_blank">场景导航</a></li>
         <li>|</li>
         </ul>
