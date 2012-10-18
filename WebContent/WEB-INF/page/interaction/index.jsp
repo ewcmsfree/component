@@ -329,7 +329,7 @@
           <div class="clearfloat"></div>
         </div>
         <div id="ranking_list">
-          <p class="close"><a href="#">关闭</a></p>
+          <p class="close"><a href="#" onclick="closeShutManager1();">关闭</a></p>
           <p class="com_name">部门信件回复排行</p>
           <table width="100%" border="0" align="center">
             <tr>
@@ -338,7 +338,7 @@
             </tr>
             <s:iterator value="backCount" status="st">
               <tr>
-                <td align="center"><s:property value="name"/></td>
+                <td align="center"><a href="<s:url action="organsearch"/>?id=<s:property value="id"/>" target="_blank"><s:property value="name"/></a></td>
                 <td align="center"><s:property value="backRatio"/></td>
               </tr>
             </s:iterator>
@@ -355,3 +355,9 @@
     </div>
   </body>
 </html>
+<script type="text/javascript">
+        function closeShutManager1(){
+var targetObj =document.getElementById('ranking_list1');
+targetObj.style.display="none";
+}
+      </script>

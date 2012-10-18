@@ -323,10 +323,10 @@ h4 span a{ color: #666; }
 .scene_nav ul{ padding-top:130px; padding-left:200px; }
 .scene_nav ul li{ float:left; width:100px; height:25px; line-height:25px; background: url(../images/biao2.gif) no-repeat 0px center; text-indent: 1em; font-size: 14px; font-weight: bold; }
 .scene_nav ul li a{ color: #060; }
-.detail_l{ width:645px; float:left; background:#F5F5F5; height:250px; } 
+.detail_l{ width:645px; float:left; background:#F5F5F5; height:370px; } 
 .detail_l p{ background: url(../images/list_icon1.gif) no-repeat; height: 29px; line-height:31px; text-indent:4em; width: 182px; margin-top: 5px; margin-left: 20px; font-size: 14px; font-weight: bold; color: #060; margin-bottom: 5px; }
 .detail_l .bs_list li{ width:80px; float:left; text-align:center; height:25px; line-height:25px; }
-.detail_r{ width:120px; height:250px; float:right; background:#5f9200 url(../images/wsbs_lstdbg.gif) no-repeat center 0px; }
+.detail_r{ width:120px; height:370px; float:right; background:#5f9200 url(../images/wsbs_lstdbg.gif) no-repeat center 0px; }
 .detail_r ul{ margin-top:45px; margin-left:15px; }
 .detail_r ul li{ padding-left:15px; padding-bottom:5px; }
 .detail_r ul li a{ color:#FFF; }
