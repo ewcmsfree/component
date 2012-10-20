@@ -209,6 +209,12 @@
                                     </td>
                                   </tr>
                                   <tr>
+                                  	<td width="90px">联系电话：</td>
+                                  	<td>
+                                  		<s:textfield id="tel" name="tel" maxLength="15"></s:textfield>
+                                  	</td>
+                                  </tr>
+                                  <tr>
                                     <td width="90px" valign="top" style="padding-top: 20px;">*验证码：</td>
                                     <td align="left" class="formFieldError">
                                       <img id="checkcode_id" src="<s:url value="/checkcode.jpg"/>" alt="验证码"/><a href="javascript:checkcode_refresh()" id="checkcode_refresh_id">看不清,换一张</a><br/>

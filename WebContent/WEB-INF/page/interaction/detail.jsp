@@ -35,7 +35,7 @@
             <strong>受理单位：</strong><s:property value="interaction.organ.name"/></span>
           </p>
           <p class="text_detail">
-          <strong>信件内容：</strong><s:property value="interaction.content"/>
+          <strong>信件内容：</strong><s:property value="interaction.content" escape="false"/>
           </p>
           <p class="text_detail">
             <strong>受理状态：</strong>
@@ -43,7 +43,9 @@
             <s:else>办理中</s:else>
           </p>
           <p class="text_detail">
-            <strong>回复单位：<s:property value="interaction.organ.name"/>(时间：<s:date format="yyyy-MM-dd" name="interaction.replayDate"/>)</strong><s:if test="interaction.state.ordinal()==1">：<div class="text_detail"><s:property value="interaction.replay" escape="false"/></div></s:if>
+            <strong>回复单位：</strong><s:property value="interaction.organ.name"/><br />
+            <strong>回复时间：</strong><s:date format="yyyy-MM-dd" name="interaction.replayDate"/>
+            <s:if test="interaction.state.ordinal()==1"><div class="text_detail"><s:property value="interaction.replay" escape="false"/></div></s:if>
           </p>
         </div>
       </div>

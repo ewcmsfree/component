@@ -36,6 +36,7 @@ public class Interaction {
     private int counter;
     private int speakCount;
     private List<Speak> speaks;
+    private String tel;
 
     public String getContent() {
         return content;
@@ -169,7 +170,15 @@ public class Interaction {
         return format.format(id);
     }
 
-    @Override
+    public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	@Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

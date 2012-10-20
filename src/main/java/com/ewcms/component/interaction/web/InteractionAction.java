@@ -32,6 +32,7 @@ public class InteractionAction extends LoginAction {
     private Integer organId;
     private String organName;
     private String content;
+    private String tel;
     private boolean noOrgan = false;
     private boolean success = false;
     
@@ -106,7 +107,15 @@ public class InteractionAction extends LoginAction {
         return success;
     }
 
-    public List<Organ> getBackRatios() {
+    public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public List<Organ> getBackRatios() {
         return interactionService.findInteractionBackOrder(8, true);
     }
 
@@ -146,6 +155,7 @@ public class InteractionAction extends LoginAction {
         interaction.setUsername(getUser().getUsername());
         interaction.setName(getUser().getName());
         interaction.setChecked(false);
+        interaction.setTel(tel);
         interactionService.addInteraction(interaction);
         empty();
 

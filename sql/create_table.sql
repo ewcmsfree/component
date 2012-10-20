@@ -248,6 +248,7 @@ CREATE TABLE plugin_interaction (
     counter integer NOT NULL DEFAULT 0,
     date timestamp without time zone NOT NULL DEFAULT now(),
     replay_date timestamp without time zone,
+    tel varchar(255),
     CONSTRAINT pk_plugin_interaction PRIMARY KEY (id)
 );
 
