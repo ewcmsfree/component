@@ -74,12 +74,11 @@ public class QueryDAO implements QueryDAOable {
 		}
 		
 		if (endDate != null && !endDate.trim().equals("")){
-			Date _endDate;
 			try {
-				_endDate = DATE_FORMAT.parse(endDate);
+				Date _endDate = DATE_FORMAT.parse(endDate);
 				sql += " And a.published <= ? ";
 				isIf = true;
-				params.add(endDate);
+				params.add(_endDate);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

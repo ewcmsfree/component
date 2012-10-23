@@ -123,10 +123,10 @@
                  <s:if test="page.pagePrev == -1">上一页</s:if>
                  <s:else>
                  <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                   <s:param name="matterId" value="matterId"/>
-                   <s:param name="organId" value="organId"/>
-                 <s:param name="title" value="%{title}"/>
-                 <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
+                   <s:param name="matterId" value="%{matterId}"/>
+                   <s:param name="organId" value="%{organId}"/>
+                  <s:param name="title" value="%{title}"/>
+                  <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
                  </s:url>
                  <a href="<s:property value="pageUrl"/>">上一页</a>
                  </s:else>
@@ -136,8 +136,8 @@
                  </s:if>
                  <s:else>
                  <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                   <s:param name="matterId" value="matterId"/>
-                   <s:param name="organId" value="organId"/>
+                   <s:param name="matterId" value="%{matterId}"/>
+                   <s:param name="organId" value="%{organId}"/>
                    <s:param name="title" value="%{title}"/>
                    <s:param name="pageNumber" value="%{top-1}"/>
                  </s:url>
@@ -147,8 +147,8 @@
                  <s:if test="page.pageNext == -1">下一页</s:if>
                  <s:else>
                  <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                   <s:param name="matterId" value="matterId"/>
-                   <s:param name="organId" value="organId"/>
+                   <s:param name="matterId" value="%{matterId}"/>
+                   <s:param name="organId" value="%{organId}"/>
                    <s:param name="title" value="%{title}"/>
                    <s:param name="pageNumber" value="%{page.pageNext-1}"/>
                  </s:url>

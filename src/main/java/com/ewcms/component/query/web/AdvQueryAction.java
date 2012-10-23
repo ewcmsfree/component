@@ -12,6 +12,7 @@ package com.ewcms.component.query.web;
 import com.ewcms.component.online.web.PageAction;
 import com.ewcms.component.query.dao.QueryDAOable;
 import com.ewcms.component.query.vo.Article;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.vo.Page;
 
 import java.util.ArrayList;
@@ -92,7 +93,13 @@ public class AdvQueryAction extends PageAction {
     public String execute() {
 		row = DEFAULT_ROW;
 		List<Article> articleAlls = queryDAO.findArtilce(title, channelId, beginDate, endDate, isContent);
-		page = new Page.Builder(articleAlls.size(), pageNumber + 1).setPageSize(row).build();
+		Integer iPageNumber = 0;
+		try{
+			iPageNumber = StringToNumber.ToInteger(pageNumber);
+		}catch(Exception e){
+		}
+
+		page = new Page.Builder(articleAlls.size(), iPageNumber + 1).setPageSize(row).build();
 		articles = pageList(articleAlls, page);
         return SUCCESS;
     }

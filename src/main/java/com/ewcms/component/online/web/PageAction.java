@@ -22,11 +22,11 @@ public class PageAction extends ActionSupport {
 
 	private static final long serialVersionUID = -1428739857990085101L;
 
-	protected int pageNumber = 0;
+	protected String pageNumber = "0";
     protected Page page;
     protected int row = 10;
 
-    public void setPageNumber(int pageNumber) {
+    public void setPageNumber(String pageNumber) {
         this.pageNumber = pageNumber;
     }
 

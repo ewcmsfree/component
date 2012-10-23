@@ -13,6 +13,7 @@ import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Citizen;
 import com.ewcms.component.online.vo.Organ;
 import com.ewcms.component.online.vo.Working;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.vo.Page;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,11 @@ public class OrganAction extends PageAction {
 	private static final long serialVersionUID = -4256197746683119957L;
 
 	private static final int DEFAULT_ROW = 12;
-    private List<Organ> organs;
-    private List<Working> matters;
-    private Organ organ;
-    private Integer organId;
-    private List<Working> parents;
+    private List<Organ> organs = new ArrayList<Organ>();
+    private List<Working> matters = new ArrayList<Working>();
+    private Organ organ = new Organ();
+    private String organId;
+    private List<Working> parents = new ArrayList<Working>();
     @Autowired
     private OnlineService service;
 
@@ -49,7 +50,7 @@ public class OrganAction extends PageAction {
         return organ;
     }
 
-    public void setOrganId(Integer organId) {
+    public void setOrganId(String organId) {
         this.organId = organId;
     }
 
@@ -66,21 +67,32 @@ public class OrganAction extends PageAction {
     public String execute() {
         row = DEFAULT_ROW;
         organs = service.findOrganForWorking();
-        if (organId == null) {
+        Integer iOrganId = null;
+        try{
+        	iOrganId = StringToNumber.ToInteger(organId);
+        }catch(Exception e){
+        	iOrganId = null;
+        }
+        if (iOrganId == null) {
             List<Organ> list = service.findOrganForWorking();
             if (list.isEmpty()) {
                 return SUCCESS;
             }
-            organId = list.get(0).getId();
+            iOrganId = list.get(0).getId();
         }
-        organ = service.getOrgan(organId);
+        setOrganId(String.valueOf(iOrganId));
+        organ = service.getOrgan(iOrganId);
         if (organ == null) {
             matters = new ArrayList<Working>();
             return SUCCESS;
         }
         parents = service.getWorkingChilren(null);
-        List<Working> matterAll = service.findWorkingByOrgan(organId);
-        page = new Page.Builder(matterAll.size(), pageNumber + 1).setPageSize(row).build();
+        List<Working> matterAll = service.findWorkingByOrgan(iOrganId);
+        Integer iPageNumber = 0;
+        try{
+        	iPageNumber = StringToNumber.ToInteger(pageNumber);
+        }catch(Exception e){}
+        page = new Page.Builder(matterAll.size(), iPageNumber + 1).setPageSize(row).build();
         matters = pageList(matterAll, page);
 
         return SUCCESS;

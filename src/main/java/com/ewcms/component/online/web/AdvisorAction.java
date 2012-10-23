@@ -15,7 +15,10 @@ import com.ewcms.component.auth.web.LoginAction;
 import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Advisor;
 import com.ewcms.component.online.vo.Working;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.util.Struts2Util;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +32,9 @@ public class AdvisorAction extends LoginAction {
 
 	private static final long serialVersionUID = 5026276432881452389L;
 
-	private Integer workingId;
-    private Integer organId;
-    private Advisor advisor;
+	private String workingId;
+    private String organId;
+    private Advisor advisor = new Advisor();
     @Autowired
     private OnlineService service;
 
@@ -44,19 +47,19 @@ public class AdvisorAction extends LoginAction {
         this.advisor = advisor;
     }
 
-    public Integer getWorkingId() {
+    public String getWorkingId() {
         return workingId;
     }
 
-    public void setWorkingId(Integer workingId) {
+    public void setWorkingId(String workingId) {
         this.workingId = workingId;
     }
 
-    public Integer getOrganId() {
+    public String getOrganId() {
         return organId;
     }
 
-    public void setOrganId(Integer organId) {
+    public void setOrganId(String organId) {
         this.organId = organId;
     }
 
@@ -69,11 +72,21 @@ public class AdvisorAction extends LoginAction {
     }
 
     public Working getWorking() {
-        return this.service.getWorking(workingId);
+    	try{
+    		Integer iWorkingId = StringToNumber.ToInteger(workingId);
+    		return service.getWorking(iWorkingId);
+    	}catch(Exception e){
+    		return new Working();
+    	}
     }
 
     public List<Working> getPosition() {
-        return service.getWorkingPosition(workingId);
+    	try{
+    		Integer iWorkingId = StringToNumber.ToInteger(workingId);
+    		return service.getWorkingPosition(iWorkingId);
+    	}catch(Exception e){
+    		return new ArrayList<Working>();
+    	}
     }
 
     @Override
@@ -89,17 +102,23 @@ public class AdvisorAction extends LoginAction {
                 return INPUT;
             }
         }
-        int matterId =  this.service.getMatterId(workingId);
-        advisor.setMatterId(matterId);
-        advisor.setOrganId(organId);
-        advisor.setUsername(getUser().getUsername());
-        advisor.setName(getUser().getName());
-        advisor.setIp(Struts2Util.getIp());
-        service.addAdvisor(advisor);
-
-        advisor = new Advisor();
-        super.setCheckcode("");
-        this.addActionMessage("咨询成功，请等待回复。");
+        try{
+        	Integer iWorkingId = StringToNumber.ToInteger(workingId);
+        	Integer iOrganId = StringToNumber.ToInteger(organId);
+	        int matterId =  this.service.getMatterId(iWorkingId);
+	        advisor.setMatterId(matterId);
+	        advisor.setOrganId(iOrganId);
+	        advisor.setUsername(getUser().getUsername());
+	        advisor.setName(getUser().getName());
+	        advisor.setIp(Struts2Util.getIp());
+	        service.addAdvisor(advisor);
+	
+	        advisor = new Advisor();
+	        super.setCheckcode("");
+	        this.addActionMessage("咨询成功，请等待回复。");
+        }catch(Exception e){
+        	this.addActionMessage("咨询不成功，请重试。");
+        }
         return SUCCESS;
     }
 

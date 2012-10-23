@@ -13,7 +13,10 @@ import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Article;
 import com.ewcms.component.online.vo.Citizen;
 import com.ewcms.component.online.vo.Working;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.vo.Page;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,10 +31,10 @@ public class CitizenAction extends PageAction {
 	private static final long serialVersionUID = 9165624150125156068L;
 
 	private static final int DEFAULT_ROW = 12;
-    private Integer citizenId;
-    private List<Working> matters;
-    private List<Article> articles;
-    private Citizen citizen;
+    private String citizenId;
+    private List<Working> matters = new ArrayList<Working>();
+    private List<Article> articles = new ArrayList<Article>();
+    private Citizen citizen = new Citizen();
     @Autowired
     private OnlineService service;
 
@@ -43,11 +46,11 @@ public class CitizenAction extends PageAction {
         this.articles = articles;
     }
 
-    public Integer getCitizenId() {
+    public String getCitizenId() {
         return citizenId;
     }
 
-    public void setCitizenId(Integer citizenId) {
+    public void setCitizenId(String citizenId) {
         this.citizenId = citizenId;
     }
 
@@ -87,12 +90,23 @@ public class CitizenAction extends PageAction {
 	@Override
     public String execute() {
         row = DEFAULT_ROW;
-        if (citizenId == null) {
-            citizenId = service.getCitizenAll().get(0).getId();
+        Integer iCitizenId;
+        try{
+        	iCitizenId = StringToNumber.ToInteger(citizenId);
+        }catch(Exception e){
+        	iCitizenId = null;
         }
-        citizen = service.getCitizen(citizenId);
-        List<Working> matterAll = service.findWorkingByCitizen(citizenId);
-        page = new Page.Builder(matterAll.size(), pageNumber + 1).setPageSize(row).build();
+        if (iCitizenId == null) {
+        	iCitizenId = service.getCitizenAll().get(0).getId();
+        }
+        setCitizenId(String.valueOf(iCitizenId));
+        citizen = service.getCitizen(iCitizenId);
+        List<Working> matterAll = service.findWorkingByCitizen(iCitizenId);
+        Integer iPageNumber = 0;
+        try{
+        	iPageNumber = StringToNumber.ToInteger(pageNumber);
+        }catch(Exception e){}
+        page = new Page.Builder(matterAll.size(), iPageNumber + 1).setPageSize(row).build();
         matters = pageList(matterAll, page);
 
         return SUCCESS;

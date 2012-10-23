@@ -12,6 +12,7 @@ package com.ewcms.component.online.web;
 import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Citizen;
 import com.ewcms.component.online.vo.Working;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.vo.Page;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class SearchAction extends PageAction {
 	private static final long serialVersionUID = 1836374198039253085L;
 
 	private static final int DEFAULT_ROW = 10;
-    private List<Working> workings;
+    private List<Working> workings = new ArrayList<Working>();
     private String key = "" ;
     
     @Autowired
@@ -64,7 +65,11 @@ public class SearchAction extends PageAction {
         }else{
             workingAll = service.findWorkingByName(key);
         }
-        page = new Page.Builder(workingAll.size(), pageNumber + 1).setPageSize(row).build();
+        Integer iPageNumber = 0;
+        try{
+        	iPageNumber = StringToNumber.ToInteger(pageNumber);
+        }catch(Exception e){}
+        page = new Page.Builder(workingAll.size(), iPageNumber + 1).setPageSize(row).build();
         workings = pageList(workingAll, page);
         
         return SUCCESS;

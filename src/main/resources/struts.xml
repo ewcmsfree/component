@@ -5,6 +5,9 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+
+	<constant name="webwork.devMode" value="false"/>
+	
     <package name="interaction"  extends="struts-default" namespace="/interaction">
     	<action name="gwhsearch" class="com.ewcms.component.gwh.web.SearchAction">
             <result name="success">/WEB-INF/page/gwh/search.jsp</result>

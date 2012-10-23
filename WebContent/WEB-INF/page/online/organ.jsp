@@ -14,6 +14,10 @@
       eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
       if (restore) selObj.selectedIndex=0;
     }
+    function jumpPage(obj){
+      	var page = obj.options[obj.selectedIndex].text -1 ;
+      	window.location = '<s:url action="organ"/>?organId=<s:property value="organ.id"/>&pageNumber=' + page;
+  	  }
     </script>
   </head>
   <body>
@@ -99,7 +103,7 @@
                     <s:if test="page.pagePrev == -1">上一页</s:if>
                     <s:else>
                     <s:url action="organ" id="pageUrl" escapeAmp="false">
-                      <s:param name="organId" value="organ.id"/>
+                      <s:param name="organId" value="%{organ.id}"/>
                       <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
                     </s:url>
                     <a href="<s:property value="pageUrl"/>">上一页</a>
@@ -110,7 +114,7 @@
                     </s:if>
                     <s:else>
                     <s:url action="organ" id="pageUrl" escapeAmp="false">
-                      <s:param name="organId" value="organ.id"/>
+                      <s:param name="organId" value="%{organ.id}"/>
                       <s:param name="pageNumber" value="%{top-1}"/>
                     </s:url>
                     <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
@@ -119,7 +123,7 @@
                     <s:if test="page.pageNext == -1">下一页</s:if>
                     <s:else>
                     <s:url action="organ" id="pageUrl" escapeAmp="false">
-                      <s:param name="organId" value="organ.id"/>
+                      <s:param name="organId" value="%{organ.id}"/>
                       <s:param name="pageNumber" value="%{page.pageNext-1}"/>
                     </s:url>
                     <a href="<s:property value="pageUrl"/>">下一页</a>

@@ -14,6 +14,8 @@ import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Citizen;
 import com.ewcms.component.online.vo.Working;
 import com.opensymphony.xwork2.ActionSupport;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,8 +29,8 @@ public class OnlineAction extends ActionSupport {
 
 	private static final long serialVersionUID = 6914636421075953659L;
 
-	private List<Working> workings;
-    private List<Organ> organs;
+	private List<Working> workings = new ArrayList<Working>();
+    private List<Organ> organs = new ArrayList<Organ>();
     @Autowired
     private OnlineService service;
 

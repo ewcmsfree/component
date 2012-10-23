@@ -14,6 +14,7 @@ import com.ewcms.component.auth.vo.User;
 import com.ewcms.component.auth.web.LoginAction;
 import com.ewcms.component.interaction.service.InteractionServiceable;
 import com.ewcms.component.interaction.vo.Speak;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.util.Struts2Util;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,7 +28,7 @@ public class SpeakAction extends LoginAction {
 
 	private static final String refreshHtml;
 
-    private Integer interactionId;
+    private String interactionId;
     private String content;
 
     static{
@@ -47,11 +48,11 @@ public class SpeakAction extends LoginAction {
     @Autowired
     private InteractionServiceable interactionService;
 
-    public Integer getInteractionId() {
+    public String getInteractionId() {
         return interactionId;
     }
 
-    public void setInteractionId(Integer interactionId) {
+    public void setInteractionId(String interactionId) {
         this.interactionId = interactionId;
     }
 
@@ -83,17 +84,23 @@ public class SpeakAction extends LoginAction {
                 return INPUT;
             }
         }
-
-        Speak speak = new Speak();
-        speak.setChecked(false);
-        speak.setContent(content);
-        speak.setInteractionId(interactionId);
-        speak.setUsername(getUser().getUsername());
-        speak.setName(getUser().getName());
-        speak.setIp(Struts2Util.getIp());
-
-        interactionService.addSpeak(speak);
-        content = "";
+        
+        try{
+        	Integer iInteractionId = StringToNumber.ToInteger(interactionId);
+        	
+	        Speak speak = new Speak();
+	        speak.setChecked(false);
+	        speak.setContent(content);
+	        speak.setInteractionId(iInteractionId);
+	        speak.setUsername(getUser().getUsername());
+	        speak.setName(getUser().getName());
+	        speak.setIp(Struts2Util.getIp());
+	
+	        interactionService.addSpeak(speak);
+	        content = "";
+        }catch(Exception e){
+        	
+        }
         Struts2Util.renderHtml(refreshHtml);
         return NONE;
     }

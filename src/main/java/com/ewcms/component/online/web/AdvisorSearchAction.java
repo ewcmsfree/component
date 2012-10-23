@@ -12,7 +12,10 @@ package com.ewcms.component.online.web;
 import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Advisor;
 import com.ewcms.component.online.vo.Working;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.vo.Page;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,18 +29,18 @@ public class AdvisorSearchAction extends PageAction {
 
 	private static final long serialVersionUID = 6887179447170182042L;
 
-	private Integer organId;
-    private Integer workingId;
+	private String organId;
+    private String workingId;
     private String title;
-    private List<Advisor> advisors;
+    private List<Advisor> advisors = new ArrayList<Advisor>();
     @Autowired
     private OnlineService service;
 
-    public Integer getOrganId() {
+    public String getOrganId() {
         return organId;
     }
 
-    public void setOrganId(Integer organId) {
+    public void setOrganId(String organId) {
         this.organId = organId;
     }
 
@@ -53,32 +56,49 @@ public class AdvisorSearchAction extends PageAction {
         return advisors;
     }
 
-    public Integer getWorkingId() {
+    public String getWorkingId() {
         return workingId;
     }
 
-    public void setWorkingId(Integer workingId) {
+    public void setWorkingId(String workingId) {
         this.workingId = workingId;
     }
 
     public Working getWorking() {
-        return this.service.getWorking(workingId);
+    	try{
+    		Integer iWorkingId = StringToNumber.ToInteger(workingId);
+    		return service.getWorking(iWorkingId);
+    	}catch(Exception e){
+    		return new Working();
+    	}
     }
 
     public List<Working> getPosition() {
-        return service.getWorkingPosition(workingId);
+    	try{
+    		Integer iWorkingId = StringToNumber.ToInteger(workingId);
+    		return service.getWorkingPosition(iWorkingId);
+    	}catch(Exception e){
+    		return new ArrayList<Working>();
+    	}
     }
 
     @SuppressWarnings("unchecked")
 	@Override
     public String execute() {
-        Integer matterId = service.getMatterId(workingId);
-        if (matterId != null) {
-            List<Advisor> all = service.findAdvisorByMatter(matterId, title);
-            page = new Page.Builder(all.size(), pageNumber + 1).setPageSize(row).build();
-            advisors = pageList(all, page);
-        }
-
+    	try{
+    		Integer iWorkingId = StringToNumber.ToInteger(workingId);
+	        Integer matterId = service.getMatterId(iWorkingId);
+	        if (matterId != null) {
+	        	Integer iPageNumber = 0;
+	        	try{
+	        		iPageNumber = StringToNumber.ToInteger(pageNumber);
+	        	}catch(Exception e){
+	        	}
+	            List<Advisor> all = service.findAdvisorByMatter(matterId, title);
+	            page = new Page.Builder(all.size(), iPageNumber + 1).setPageSize(row).build();
+	            advisors = pageList(all, page);
+	        }
+    	}catch(Exception e){}
         return SUCCESS;
     }
 }

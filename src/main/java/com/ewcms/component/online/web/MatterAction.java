@@ -13,7 +13,10 @@ package com.ewcms.component.online.web;
 import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Matter;
 import com.ewcms.component.online.vo.Working;
+import com.ewcms.component.util.StringToNumber;
 import com.opensymphony.xwork2.ActionSupport;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,12 +30,12 @@ public class MatterAction extends ActionSupport{
 
 	private static final long serialVersionUID = 2326960346830541551L;
 
-	private Working working;
-    private Matter matter;
-    private Integer organId;
-    private Integer workingId;
-    private List<Working> workings;
-    private List<Working> position;
+	private Working working = new Working();
+    private Matter matter = new Matter();
+    private String organId;
+    private String workingId;
+    private List<Working> workings = new ArrayList<Working>();
+    private List<Working> position = new ArrayList<Working>();
     
     @Autowired
     private OnlineService service;
@@ -45,19 +48,19 @@ public class MatterAction extends ActionSupport{
         return matter;
     }
 
-    public Integer getWorkingId() {
+    public String getWorkingId() {
         return workingId;
     }
 
-    public void setWorkingId(Integer workingId) {
+    public void setWorkingId(String workingId) {
         this.workingId = workingId;
     }
 
-    public Integer getOrganId() {
+    public String getOrganId() {
         return organId;
     }
 
-    public void setOrganId(Integer organId) {
+    public void setOrganId(String organId) {
         this.organId = organId;
     }
 
@@ -71,13 +74,15 @@ public class MatterAction extends ActionSupport{
 
     @Override
     public String execute(){
-        position = service.getWorkingPosition(workingId);
-        Integer  matterId = service.getMatterId(workingId);
-        if(matterId != null){
-            this.matter = service.getMatter(matterId);
-            this.working = service.getWorking(workingId);
-        }
-
+    	try{
+    		Integer iWorkingId = StringToNumber.ToInteger(workingId);
+	        position = service.getWorkingPosition(iWorkingId);
+	        Integer  matterId = service.getMatterId(iWorkingId);
+	        if(matterId != null){
+	            this.matter = service.getMatter(matterId);
+	            this.working = service.getWorking(iWorkingId);
+	        }
+    	}catch(Exception e){}
         return SUCCESS;
     }
 }

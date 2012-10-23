@@ -13,7 +13,10 @@ import com.ewcms.component.auth.AuthUtil;
 import com.ewcms.component.auth.vo.User;
 import com.ewcms.component.online.service.OnlineService;
 import com.ewcms.component.online.vo.Advisor;
+import com.ewcms.component.util.StringToNumber;
 import com.ewcms.component.vo.Page;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,7 +28,7 @@ public class UserAction extends PageAction {
 
 	private static final long serialVersionUID = -3873722630471555850L;
 
-	private List<Advisor> advisors;
+	private List<Advisor> advisors = new ArrayList<Advisor>();
     @Autowired
     private OnlineService service;
 
@@ -42,7 +45,11 @@ public class UserAction extends PageAction {
     public String execute(){
         User user = getUser();
         List<Advisor> all = service.findAdvisorByUsernam(user.getUsername());
-        page = new Page.Builder(all.size(), pageNumber + 1).setPageSize(row).build();
+        Integer iPageNumber = 0;
+        try{
+        	iPageNumber = StringToNumber.ToInteger(pageNumber);
+        }catch(Exception e){}
+        page = new Page.Builder(all.size(), iPageNumber + 1).setPageSize(row).build();
         advisors = pageList(all, page);
 
         return SUCCESS;
