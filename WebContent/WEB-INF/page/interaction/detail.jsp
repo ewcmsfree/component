@@ -26,27 +26,27 @@
       <!--内容-->
         <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url action='index'/>">民声通道</a>＞在线咨询</span></p></div>
         <div id="letter_detail">
-          <p class="title"><s:property value="interaction.title"/></p>
-          <p class="source">
+          <div class="title"><s:property value="interaction.title"/></div>
+          <div class="source">
             <span><strong>编号：</strong><s:property value="interaction.formatId"/></span>
             <span><strong>咨询人：</strong><s:property value="interaction.name"/></span>
             <span><strong>咨询类型：</strong><s:if test = "interaction.type==1">在线咨询</s:if><s:if test = "interaction.type==2">投诉监督</s:if><s:if test = "interaction.type==3">建言献策</s:if></span>
             <span><strong>提交时间：</strong><s:date format="yyyy-MM-dd" name="interaction.date"/></span><span>
             <strong>受理单位：</strong><s:property value="interaction.organ.name"/></span>
-          </p>
-          <p class="text_detail">
+          </div>
+          <div class="text_detail">
           <strong>信件内容：</strong><s:property value="interaction.content" escape="false"/>
-          </p>
-          <p class="text_detail">
+          </div>
+          <div class="text_detail">
             <strong>受理状态：</strong>
             <s:if test="interaction.state.ordinal() == 1">已回复</s:if>
             <s:else>办理中</s:else>
-          </p>
-          <p class="text_detail">
+          </div>
+          <div class="text_detail">
             <strong>回复单位：</strong><s:property value="interaction.organ.name"/><br />
             <strong>回复时间：</strong><s:date format="yyyy-MM-dd" name="interaction.replayDate"/>
             <s:if test="interaction.state.ordinal()==1"><div class="text_detail"><s:property value="interaction.replay" escape="false"/></div></s:if>
-          </p>
+          </div>
         </div>
       </div>
       <!--内容结束-->
