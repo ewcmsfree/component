@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
     <script type="text/javascript">
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -24,7 +24,7 @@
       <div id="content">
       <s:include value="../header.jsp"/>
       <!--内容-->
-        <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url action='index'/>">民声通道</a>＞在线咨询</span></p></div>
+        <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url value='/interaction/index.html'/>">民声通道</a>＞在线咨询</span></p></div>
         <div id="letter_detail">
           <div class="title"><s:property value="interaction.title"/></div>
           <div class="source">

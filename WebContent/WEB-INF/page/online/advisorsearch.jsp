@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
     <script type="text/javascript">
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -16,7 +16,7 @@
       }
       function jumpPage(obj){
           var page = obj.options[obj.selectedIndex].text -1 ;
-          window.location = ' <s:url action="advisorSearch"/>?matterId=<s:property value="matterId"/>&organId=<s:property value="organId"/>&title=<s:property value="title" escape="false"/>&pageNumber=' + page ;
+          window.location = '<s:url value="/online/advisorsearch/page/%{matterId}_%{organId}_' + page + '_%{title}" id="pageUrl" escapeAmp="false"/>';
       }
     </script>
   </head>
@@ -34,26 +34,26 @@
           </iframe>
         </div>
         <div class="wsbs_main">
-          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url action='index'/>">在线服务</a>＞<s:property value="working.name"/></span></p></div>
+          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url value='/online/index.html'/>">在线服务</a>＞<s:property value="working.name"/></span></p></div>
           <div class="clearfloat"></div>
           <h5><s:property value="working.name"/></h5><!--具体办件标题-->
           <ul class="pro">
             <s:if test="working.matter!=null">
             <li>
-              <s:url action="matter" id="url" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <s:url value="/online/matter/%{organId}_%{workingId}.html" id="url" escapeAmp="false"/>
               <a href="<s:property value="url"/>">办事指南</a>
             </li>
             </s:if>
             <li><a href="http://218.87.91.208:8008/outportal">网上申报</a></li>
             <s:if test="working.matter!=null">
             <li>
-              <s:url action = "advisor" id="annexUrl" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
-              <a href="<s:property value="annexUrl"/>">网上咨询</a>
+              <s:url value="/online/advisor/%{organId}_%{workingId}.html" id="matterUrl" escapeAmp="false"/>
+              <a href="<s:property value="matterUrl"/>">网上咨询</a>
             </li>
             <li><a class="current" href="#">在线查询</a></li>
             <s:if test="!working.matter.matterAnnexs.isEmpty()">
             <li>
-              <s:url action="matterannex" id="annexUrl" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <s:url value="/online/matterannex/%{organId}_%{workingId}.html" id="annexUrl" escapeAmp="false"/>
               <a href="<s:property value="annexUrl"/>">表格下载</a>
             </li>
             </s:if>
@@ -69,10 +69,10 @@
                       &nbsp;&nbsp;&nbsp;&nbsp;标题：<s:textfield name="title" size="20"/>
                     </td>
                     <td  width="60" align="center" valign="middle">
-                      <img src="images/search.gif" width="51" height="35" onclick="document.advisorSearch.submit();"/>
+                      <img src="<s:url value='/online/images/search.gif'/>" width="51" height="35" onclick="document.advisorSearch.submit();"/>
                     </td>
                     <td>
-                      &nbsp;&nbsp;&nbsp;&nbsp;<a href="<s:url action="advisor" namespace="/user"/>" class="hui style39" target="_blank">我的咨询</a>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<a href="<s:url action='advisor' namespace='/user'/>" class="hui style39" target="_blank">我的咨询</a>
                     </td>
                   </tr>
                 </table>
@@ -122,12 +122,7 @@
                  <td height="30" bgcolor="#F2F2F2" class="li_line"><div align="center" class="hui">共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
                  <s:if test="page.pagePrev == -1">上一页</s:if>
                  <s:else>
-                 <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                   <s:param name="matterId" value="%{matterId}"/>
-                   <s:param name="organId" value="%{organId}"/>
-                  <s:param name="title" value="%{title}"/>
-                  <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
-                 </s:url>
+                 <s:url value="/online/advisorsearch/page/%{matterId}_%{organId}_%{page.pagePrev-1}_%{title}" id="pageUrl" escapeAmp="false"/>
                  <a href="<s:property value="pageUrl"/>">上一页</a>
                  </s:else>
                  <s:iterator value="page.pageList">
@@ -135,23 +130,13 @@
                  <strong><s:property value="top"/></strong>
                  </s:if>
                  <s:else>
-                 <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                   <s:param name="matterId" value="%{matterId}"/>
-                   <s:param name="organId" value="%{organId}"/>
-                   <s:param name="title" value="%{title}"/>
-                   <s:param name="pageNumber" value="%{top-1}"/>
-                 </s:url>
+                 <s:url value="/online/advisorsearch/page/%{matterId}_%{organId}_%{top-1}_%{title}" id="pageUrl" escapeAmp="false"/>
                  <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
                  </s:else>&nbsp;
                  </s:iterator>
                  <s:if test="page.pageNext == -1">下一页</s:if>
                  <s:else>
-                 <s:url action="advisorSearch" id="pageUrl" escapeAmp="false">
-                   <s:param name="matterId" value="%{matterId}"/>
-                   <s:param name="organId" value="%{organId}"/>
-                   <s:param name="title" value="%{title}"/>
-                   <s:param name="pageNumber" value="%{page.pageNext-1}"/>
-                 </s:url>
+                 <s:url value="/online/advisorsearch/page/%{matterId}_%{organId}_%{page.pageNext-1}_%{title}" id="pageUrl" escapeAmp="false"/>
                  <a href="<s:property value="pageUrl"/>">下一页</a>
                  </s:else>&nbsp;转到
                  <select name="select" class="hui" onchange="jumpPage(this)">

@@ -5,40 +5,21 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
-    <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
+    <script type="text/javascript" src="<s:url value='/source/js/jquery-1.4.2.min.js'/>"></script>
     <script language="JavaScript" type="text/javascript" src="<s:url value="/datepicker/WdatePicker.js"/>"></script>
-        <script type="text/JavaScript">
-                $(function(){
-                   
-                });
-                function jumpPage(obj){
-                    var page = obj.options[obj.selectedIndex].text -1 ;
-                    window.location = ' <s:url action="index"/>?type=<s:property value="type"/>&pageNumber=' + page ;
-                }
-                function findAll(){
-                    window.location = '<s:url action="index"/>?type=0' ;
-                }
-                function findReplay(){
-                    window.location = '<s:url action="index"/>?type=1' ;
-                }
-                function findNoReplay(){
-                    window.location = '<s:url action="index"/>?type=2' ;
-                }
-        </script>
-    </head>
-    <body>
-        <s:include value="../top.jsp"/>
-    	<div id="whole_bg">
-  			<div id="content">
-            <s:include value="../header.jsp"/>
-	<s:form action="searchresult" namespace="/interaction" target="_blank">
-	<div class="article_box1">
-     <div class="art_text">
-     <table width="80%" align="center">
-
+   </head>
+   <body>
+     <s:include value="../top.jsp"/>
+     <div id="whole_bg">
+  	   <div id="content">
+       <s:include value="../header.jsp"/>
+	   <s:form action="searchresult" namespace="/interaction" target="_blank">
+	     <div class="article_box1">
+          <div class="art_text">
+            <table width="80%" align="center">
 			<tr>
 				<td>检索时间:</td>
 				<td>从<input type="text"  name="beginDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>至<input type="text"  name="endDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/></td>
@@ -66,12 +47,12 @@
 		</table>
 		<br/>
 		<hr/>
-		<center><input type="submit" value="提  交 "/>    <input type="reset" value="重  置 "/></center></div>
-  </div>
-		
-	</s:form>
-	</div>
-            <s:include value="../footer.jsp"/>
-	</div>
-</body>
+		<center><input type="submit" value="提  交 "/><input type="reset" value="重  置 "/></center>
+		</div>
+       </div>
+	 </s:form>
+	 </div>
+     <s:include value="../footer.jsp"/>
+     </div>
+  </body>
 </html>

@@ -6,12 +6,13 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>component</name>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<java.home>D:\Java\jdk1.6.0_35\lib</java.home>
 	</properties>
-	
+
 	<repositories>
 		<repository>
 			<id>jboss</id>
@@ -123,49 +124,20 @@
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
-					<!-- 
-					<webResources>
-						<resource>
-							<directory>target/${project.artifactId}-${project.version}/</directory>
-							<includes>
-								<include>**/*.js</include>
-								<include>**/*.css</include>
-							</includes>
-						</resource>
-					</webResources>
-					 -->
+					<!-- <webResources> <resource> <directory>target/${project.artifactId}-${project.version}/</directory> 
+						<includes> <include>**/*.js</include> <include>**/*.css</include> </includes> 
+						</resource> </webResources> -->
 				</configuration>
 			</plugin>
-			<!-- 
-			<plugin>
-				<groupId>net.alchim31.maven</groupId>
-				<artifactId>yuicompressor-maven-plugin</artifactId>
-				<version>1.1</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>compress</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<nosuffix>true</nosuffix>
-					<jswarn>false</jswarn>
-					<preserveAllSemiColons>true</preserveAllSemiColons>
-					<nomunge>true</nomunge>
-					<encoding>UTF-8</encoding>
-					<linebreakpos>-1</linebreakpos>
-					<failOnWarning>false</failOnWarning>
-					<sourceDirectory>${basedir}/WebContent/</sourceDirectory>
-					<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/</outputDirectory>
-					<excludes>
-						<exclude>source/js/jquery-1.4.2.min.js</exclude>
-						<exclude>source/js/dynatree/jquery.dynatree.min.js</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			 -->
+			<!-- <plugin> <groupId>net.alchim31.maven</groupId> <artifactId>yuicompressor-maven-plugin</artifactId> 
+				<version>1.1</version> <executions> <execution> <phase>generate-sources</phase> 
+				<goals> <goal>compress</goal> </goals> </execution> </executions> <configuration> 
+				<nosuffix>true</nosuffix> <jswarn>false</jswarn> <preserveAllSemiColons>true</preserveAllSemiColons> 
+				<nomunge>true</nomunge> <encoding>UTF-8</encoding> <linebreakpos>-1</linebreakpos> 
+				<failOnWarning>false</failOnWarning> <sourceDirectory>${basedir}/WebContent/</sourceDirectory> 
+				<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/</outputDirectory> 
+				<excludes> <exclude>source/js/jquery-1.4.2.min.js</exclude> <exclude>source/js/dynatree/jquery.dynatree.min.js</exclude> 
+				</excludes> </configuration> </plugin> -->
 			<plugin>
 				<inherited>false</inherited>
 				<groupId>com.mycila.maven-license-plugin</groupId>
@@ -202,7 +174,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -362,6 +335,11 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>4.0.3</version>
 		</dependency>
 	</dependencies>
 </project>

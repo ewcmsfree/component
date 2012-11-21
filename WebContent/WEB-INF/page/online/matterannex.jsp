@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
     <script type="text/javascript">
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -30,13 +30,13 @@
           </iframe>
         </div>
         <div class="wsbs_main">
-          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url action='index'/>">在线服务</a>＞<s:property value="working.name"/></span></p></div>
+          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url value='/online/index.html'/>">在线服务</a>＞<s:property value="working.name"/></span></p></div>
           <div class="clearfloat"></div>
           <h5><s:property value="working.name"/></h5>
           <ul class="pro">
             <s:if test="working.matter!=null">
             <li class="nobg">
-              <s:url action="matter" id="url" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <s:url value="/online/matter/%{organId}_%{workingId}.html" id="url" escapeAmp="false"/>
               <a href="<s:property value="url"/>">办事指南</a>
             </li>
             </s:if>
@@ -45,11 +45,11 @@
             </li>
             <s:if test="working.matter!=null && organId != 0">
             <li>
-              <s:url action="advisor" id="annexUrl" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <s:url value="/online/advisor/%{organId}_%{workingId}.html" id="annexUrl" escapeAmp="false"/>
               <a href="<s:property value="annexUrl"/>">网上咨询</a>
             </li>
             <li>
-              <s:url action="advisorSearch" id="annexUrl" escapeAmp="false"><s:param name="workingId" value="workingId"/><s:param name="organId" value="organId"/></s:url>
+              <s:url value="/online/advisorsearch/%{organId}_%{workingId}.html" id="annexUrl" escapeAmp="false"/>
               <a href="<s:property value="annexUrl"/>">在线查询</a>
             </li>
             </s:if>

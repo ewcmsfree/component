@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
     <script type="text/javascript">
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -16,7 +16,7 @@
       }
       function jumpPage(obj){
       	var page = obj.options[obj.selectedIndex].text -1 ;
-      	window.location = ' <s:url action="working"/>?workingId=<s:property value="workingId"/>&parentId=<s:property value="parentId" escape="false"/>&pageNumber=' + page ;
+      	window.location = '<s:url value="/online/working/page/%{workingId}_%{parentId}_' + page + '.html" escapeAmp="false"/>';
   	  }
     </script>
   </head>
@@ -34,7 +34,7 @@
           </iframe>
         </div>
         <div class="wsbs_main">
-          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url action='index'/>">在线服务</a>＞<s:property value="parent.name"/></span></p></div>
+          <div class="current_position"><p><span><strong>当前位置：</strong><a href="/">首页</a>＞<a href="<s:url value='/online/index.html'/>">在线服务</a>＞<s:property value="parent.name"/></span></p></div>
           <div class="clearfloat"></div>
           <div class="detail_list">
             <div class="detail_son">
@@ -42,7 +42,7 @@
               <ul class="bs_list">
               <s:iterator value="workings" status="st">
                <s:if test="id != null">
-                 <s:url action="working" id="aurl" escapeAmp="false"><s:param name="parentId" value="%{parent.id}"/><s:param name="workingId" value="id"/></s:url>
+                 <s:url value="/online/working/%{id}_%{parent.id}.html" id="aurl" escapeAmp="false"/>
                  <li><a href="<s:property value="aurl"/>"><s:property value="name"/></a></li>
                </s:if>
               </s:iterator>
@@ -58,7 +58,7 @@
               </s:if>
               <ul>
                 <li class="nobg">
-                  <s:url action="matter" id="matterUrl" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="id"/></s:url>
+                  <s:url value="/online/matter/%{organ.id}_%{id}.html" id="matterUrl" escapeAmp="false"/>
                   <a href="<s:property value="matterUrl"/>" target="_blank">办事指南</a>
                 </li>
                 <li>
@@ -66,31 +66,23 @@
                 </li>
                 <s:if test="organ.name != null">
                 <li>
-                  <s:url action = "advisor" id="advisoryUrl" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="id"/></s:url>
+                  <s:url value="/online/advisor/%{organ.id}_%{id}.html" id="advisoryUrl" escapeAmp="false"/>
                   <a href="<s:property value="advisoryUrl"/>" target="_blank">网上咨询</a>
                 </li>
                 <li>
-                  <s:url action = "advisorSearch" id="advisorySearchUrl" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="id"/></s:url>
+                  <s:url value="/online/advisorSearch/%{organ.id}_%{id}.html" id="advisorySearchUrl" escapeAmp="false"/>
                   <a href="<s:property value="advisorySearchUrl"/>"  target="_blank">在线查询</a>
                 </li>
                 </s:if>
                 <s:if test="!matter.matterAnnexs.isEmpty()">
                 <li>
-                  <s:url action = "matterannex" id="annexUrl" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="id"/></s:url>
+                  <s:url value="/online/matterannex/%{organ.id}_%{id}.html" id="annexUrl" escapeAmp="false"/>
                   <a href="<s:property value="annexUrl"/>"  target="_blank">表格下载</a>
                 </li>
                 </s:if>
               </ul>
               <div class="clearfloat"></div>
               </s:if>
-              <!-- 
-              <s:else>
-              <ul>
-                <s:url action="article" id="url" escapeAmp="false"><s:param name="organId" value="organ.id"/><s:param name="workingId" value="#matter.id"/><s:param name="childId" value="#matter.id"/></s:url>
-              	<li><a href="<s:property value="url"/>"  target="_blank"><s:property value="name"/></a></li>
-              </ul>
-              </s:else>
-               -->
               </s:iterator>
             </div>
             <div class="clearfloat"></div>
@@ -101,11 +93,7 @@
                     <div align="center" class="hui">共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
                     <s:if test="page.pagePrev == -1">上一页</s:if>
                     <s:else>
-                    <s:url action="working" id="pageUrl" escapeAmp="false">
-                      <s:param name="workingId" value="%{workingId}"/>
-                      <s:param name="parentId" value="%{parentId}"/>
-                      <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
-                    </s:url>
+                    <s:url value="/online/working/page/%{workingId}_%{parentId}_%{page.pagePrev-1}.html" id="pageUrl" escapeAmp="false"/>
                     <a href="<s:property value="pageUrl"/>">上一页</a>
                     </s:else>
                     <s:iterator value="page.pageList">
@@ -113,21 +101,13 @@
                     <strong><s:property value="top"/></strong>
                     </s:if>
                     <s:else>
-                    <s:url action="working" id="pageUrl" escapeAmp="false">
-                      <s:param name="workingId" value="%{workingId}"/>
-                      <s:param name="parentId" value="%{parentId}"/>
-                      <s:param name="pageNumber" value="%{top-1}"/>
-                    </s:url>
+                    <s:url value="/online/working/page/%{workingId}_%{parentId}_%{top-1}.html" id="pageUrl" escapeAmp="false"/>
                     <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
                     </s:else>&nbsp;
                     </s:iterator>
                     <s:if test="page.pageNext == -1">下一页</s:if>
                     <s:else>
-                    <s:url action="working" id="pageUrl" escapeAmp="false">
-                      <s:param name="workingId" value="%{workingId}"/>
-                      <s:param name="parentId" value="%{parentId}"/>
-                      <s:param name="pageNumber" value="%{page.pageNext-1}"/>
-                    </s:url>
+                    <s:url value="/online/working/page/%{workingId}_%{parentId}_%{page.pageNext-1}.html" id="pageUrl" escapeAmp="false"/>
                     <a href="<s:property value="pageUrl"/>">下一页</a>
                     </s:else>&nbsp;转到
                     <select name="select" class="hui" onchange="jumpPage(this)">

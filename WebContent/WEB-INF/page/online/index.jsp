@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
     <script type="text/javascript">
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -48,7 +48,7 @@
               <ul class="bs_list">
               <s:iterator value="children" id="child" status="st">
                 <s:if test="id != null">
-                <s:url action="working" id="url" escapeAmp="false"><s:param name="workingId" value="#child.id"/><s:param name="parentId" value="#working.id"/></s:url>
+                <s:url value="/online/working/%{#child.id}_%{#working.id}.html" id="url" escapeAmp="false"/>
                 <li><a href="<s:property value="url"/>" target="_blank" ><s:property value="#child.name"/></a></li>
                 </s:if>
               </s:iterator>
@@ -59,7 +59,7 @@
             <ul class="bs_list">
             <s:iterator value="organs" status="st">
               <s:if test="id != null">
-                <s:url action="organ" id="url" escapeAmp="false"><s:param name="organId" value="id"/></s:url>
+              	<s:url value="/online/organ/%{id}.html" id="url" escapeAmp="false"/>
                 <li><a href="<s:property value="url"/>" target="_blank"><s:property value="name"/></a></li>
               </s:if>
             </s:iterator>
@@ -68,7 +68,7 @@
             <div class="detail_r">
               <ul>
               <s:iterator value="citizens" status="st">
-                <s:url action ="citizen" id="url" escapeAmp="false"><s:param name="citizenId" value="id"/></s:url>
+              	<s:url value="/online/citizen/%{id}.html" id="url" escapeAmp="false"/>
                 <li><a href="<s:property value="url"/>" target="_blank"><s:property value="name"/></a></li>
               </s:iterator>
               </ul>

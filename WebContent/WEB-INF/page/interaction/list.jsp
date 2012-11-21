@@ -6,10 +6,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<s:url value="/source/js/jquery-1.4.2.min.js"/>"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
+    <script type="text/javascript" src="<s:url value='/source/js/jquery-1.4.2.min.js'/>"></script>
     <script type="text/javascript">
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
@@ -17,7 +17,7 @@
       }
       function jumppage(obj){
           var page = obj.options[obj.selectedIndex].text - 1 ;
-          window.location = '<s:url action="list"/>?type=0&pageNumber=' + page + '&currentTable=' + $('#currentTable').val();
+          window.location = '<s:url value="/interaction/list/page/0_' + page + '_' + $('#currentTable').val() +  '.html"/>';
       }
     </script>
   </head>
@@ -62,7 +62,7 @@
                 <tr>
                   <td><s:property value="formatId"/></td>
                   <td class="ct">
-                    <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                  	<s:url value="/interaction/detail/%{id}.html" id="detailUrl"/>
                     <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
                   </td>
                   <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
@@ -79,31 +79,19 @@
                   <div align="center">共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
                   <s:if test="page.pagePrev == -1">上一页</s:if>
                   <s:else>
-                  <s:url action="list" id="pageUrl" escapeAmp="false">
-                    <s:param name="type" value="%{type}"/>
-                    <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
-                    <s:param name="currentTable" value="%{currentTable}"/>
-                  </s:url>
+                  <s:url id="pageUrl" value="/interaction/list/page/%{type}_%{page.pagePrev-1}_%{currentTable}.html" escapeAmp="false"/>
                   <a href="<s:property value="pageUrl"/>">上一页</a>
                   </s:else>
                   <s:iterator value="page.pageList">
                   <s:if test = "page.page == top"><strong><s:property value="top"/></strong></s:if>
                   <s:else>
-                  <s:url action="list" id="pageUrl" escapeAmp="false">
-                    <s:param name="type" value="%{type}"/>
-                    <s:param name="pageNumber" value="%{top-1}"/>
-                    <s:param name="currentTable" value="%{currentTable}"/>
-                  </s:url>
+                  <s:url id="pageUrl" value="/interaction/list/page/%{type}_%{top-1}_%{currentTable}.html" escapeAmp="false"/>
                   <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
                   </s:else>&nbsp;
                   </s:iterator>
                   <s:if test="page.pageNext == -1">下一页</s:if>
                   <s:else>
-                  <s:url action="list" id="pageUrl" escapeAmp="false">
-                    <s:param name="type" value="%{type}"/>
-                    <s:param name="pageNumber" value="%{page.pageNext-1}"/>
-                    <s:param name="currentTable" value="%{currentTable}"/>
-                  </s:url>
+                  <s:url id="pageUrl" value="/interaction/list/page/%{type}_%{page.pageNext-1}_%{currentTable}.html" escapeAmp="false"/>
                   <a href="<s:property value="pageUrl"/>">下一页</a>
                   </s:else>&nbsp;转到
                   <select name="select" class="hui" onchange="jumppage(this)">

@@ -6,10 +6,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中国瑞昌网欢迎您！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
-    <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
+    <script type="text/javascript" src="<s:url value='/source/js/jquery-1.4.2.min.js'/>"></script>
     <script type="text/javascript">
       $(function(){
     	if ($('#currentTable').val() == '1'){
@@ -47,18 +47,6 @@
     		ChangeFoldern(this,'dmndividb','3','current','');
     	});
       });
-      function jumpPageXc(obj){
-          var page = obj.options[obj.selectedIndex].text - 1 ;
-          window.location = '<s:url action="index"/>?type=0&pageNumberXc=' + page ;
-      }
-      function jumpPageTs(obj){
-          var page = obj.options[obj.selectedIndex].text - 1 ;
-          window.location = '<s:url action="index"/>?type=0&pageNumberTs=' + page ;
-      }
-      function jumpPageZx(obj){
-          var page = obj.options[obj.selectedIndex].text - 1 ;
-          window.location = '<s:url action="index"/>?type=0&pageNumberZx=' + page ;
-      }
       function MM_jumpMenu(targ,selObj,restore){ //v3.0
         eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
         if (restore) selObj.selectedIndex=0;
@@ -83,18 +71,18 @@
             <p><span><strong>当前位置：</strong><a href="/">首页</a>＞政民互动</span></p>
             <p class="mail"><a href="<s:url action='interaction'/>">我要写信</a></p>
             <span class="srh1">
-              <s:form action="search" name="zmhdsearchform" method="post">
+              <form action="<s:url value='/interaction/search.html'/>" name="zmhdsearchform" method="post">
                 <input class="srh_t" name="title" type="text" value="信件检索" size="20" onclick="this.value=''"/>
                 <input type="submit" value="搜索"/>
-              </s:form>
+              </form>
             </span>
           </div>
           <div class="letter_box">
             <ul class="letter_menu">
               <li class="blank"></li>
-              <li id="dmndividb1" style="cursor:hand;" class="current"><a href="<s:url action='list'/>?currentTable=3">建言献策</a></li>
-              <li id="dmndividb2" style="cursor:hand;"><a href="<s:url action='list'/>?currentTable=1">在线咨询</a></li>
-              <li id="dmndividb3" style="cursor:hand;"><a href="<s:url action='list'/>?currentTable=2">投诉监督</a></li>
+              <li id="dmndividb1" style="cursor:hand;" class="current"><a href="<s:url value='/interaction/list/3.html'/>">建言献策</a></li>
+              <li id="dmndividb2" style="cursor:hand;"><a href="<s:url value='/interaction/list/1.html'/>">在线咨询</a></li>
+              <li id="dmndividb3" style="cursor:hand;"><a href="<s:url value='/interaction/list/2.html'/>">投诉监督</a></li>
               <s:hidden id="currentTable" name="currentTable"/>
             </ul>
             <div class="clearfloat"></div>
@@ -111,62 +99,14 @@
                   <tr>
                     <td><s:property value="formatId"/></td>
                     <td class="ct">
-                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <s:url value="/interaction/detail/%{id}.html" id="detailUrl"/>
                       <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
                     </td>
-                    <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
+                    <td><a href="<s:url value='/interaction/organ/search/%{organ.id}.html'/>" target="_blank"><s:property value="organ.name"/></a></td>
                     <td><s:property value="state.title"/></td>
                     <td><s:date format="yyyy-MM-dd" name="date"/></td>
                   </tr>
                 </s:iterator>
-                <tr>
-                  <td colspan="5">
-                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td height="30" bgcolor="#F2F2F2">
-                          <div align="center">
-                                                                           共<s:property value="pageXc.pageCount"/>页&nbsp;当前为第<s:property value="pageXc.page"/>页&nbsp;
-                            <s:if test="pageXc.pagePrev == -1">上一页</s:if>
-                            <s:else>
-                              <s:url action="index" id="pageUrl" escapeAmp="false">
-                                <s:param name="type" value="%{type}"/>
-                                <s:param name="pageNumberXc" value="%{pageXc.pagePrev-1}"/>
-                                <s:param name="currentTable" value="1"/>
-                              </s:url>
-                              <a href="<s:property value="pageUrl"/>">上一页</a>
-                            </s:else>
-                            <s:iterator value="pageXc.pageList">
-                              <s:if test = "pageXc.page == top"><strong><s:property value="top"/></strong></s:if>
-                              <s:else>
-                                <s:url action="index" id="pageUrl" escapeAmp="false">
-                                  <s:param name="type" value="%{type}"/>
-                                  <s:param name="pageNumberXc" value="%{top-1}"/>
-                                  <s:param name="currentTable" value="1"/>
-                                </s:url>
-                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
-                              </s:else>&nbsp;
-                            </s:iterator>
-                            <s:if test="pageXc.pageNext == -1">下一页</s:if>
-                            <s:else>
-                              <s:url action="index" id="pageUrl" escapeAmp="false">
-                                <s:param name="type" value="%{type}"/>
-                                <s:param name="pageNumberXc" value="%{pageXc.pageNext-1}"/>
-                                <s:param name="currentTable" value="1"/>
-                              </s:url>
-                              <a href="<s:property value="pageUrl"/>">下一页</a>
-                            </s:else>&nbsp;转到
-                            <select name="select" class="hui" onchange="jumpPageXc(this)">
-                              <s:iterator value="pageXc.pageListAll">
-                                <s:if test = "pageXc.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
-                                <s:else><option><s:property value="top"/></option></s:else>
-                              </s:iterator>
-                            </select>页
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
               </table>
               <table width="100%" id="tdmndividb2" style="display:none" border="0" cellpadding="0" cellspacing="3">
                 <tr>
@@ -180,62 +120,14 @@
                   <tr>
                     <td><s:property value="formatId"/></td>
                     <td class="ct">
-                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <s:url value="/interaction/detail/%{id}.html" id="detailUrl"/>
                       <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
                     </td>
-                    <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
+                    <td><a href="<s:url value='/interaction/organ/search/%{organ.id}.html'/>" target="_blank"><s:property value="organ.name"/></a></td>
                     <td><s:property value="state.title"/></td>
                     <td><s:date format="yyyy-MM-dd" name="date"/></td>
                   </tr>
                 </s:iterator>
-                <tr>
-                  <td colspan="5">
-                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td height="30" bgcolor="#F2F2F2">
-                          <div align="center">
-                                                                           共<s:property value="pageZx.pageCount"/>页&nbsp;当前为第<s:property value="pageZx.page"/>页&nbsp;
-                            <s:if test="pageZx.pagePrev == -1">上一页</s:if>
-                            <s:else>
-                              <s:url action="index" id="pageUrl" escapeAmp="false">
-                                <s:param name="type" value="%{type}"/>
-                                <s:param name="pageNumberZx" value="%{pageZx.pagePrev-1}"/>
-                                <s:param name="currentTable" value="2"/>
-                              </s:url>
-                              <a href="<s:property value="pageUrl"/>">上一页</a>
-                            </s:else>
-                            <s:iterator value="pageZx.pageList">
-                              <s:if test = "pageZx.page == top"><strong><s:property value="top"/></strong></s:if>
-                              <s:else>
-                                <s:url action="index" id="pageUrl" escapeAmp="false">
-                                  <s:param name="type" value="%{type}"/>
-                                  <s:param name="pageNumberZx" value="%{top-1}"/>
-                                  <s:param name="currentTable" value="2"/>
-                                </s:url>
-                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
-                              </s:else>&nbsp;
-                            </s:iterator>
-                            <s:if test="pageZx.pageNext == -1">下一页</s:if>
-                            <s:else>
-                              <s:url action="index" id="pageUrl" escapeAmp="false">
-                                <s:param name="type" value="%{type}"/>
-                                <s:param name="pageNumberZx" value="%{pageZx.pageNext-1}"/>
-                                <s:param name="currentTable" value="2"/>
-                              </s:url>
-                              <a href="<s:property value="pageUrl"/>">下一页</a>
-                            </s:else>&nbsp;转到
-                            <select name="select" class="hui" onchange="jumpPageZx(this)">
-                              <s:iterator value="pageZx.pageListAll">
-                                <s:if test = "pageZx.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
-                                <s:else><option><s:property value="top"/></option></s:else>
-                              </s:iterator>
-                            </select>页
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
               </table>
               <table width="100%" id="tdmndividb3" style="display:none" border="0" cellpadding="0" cellspacing="3">
                 <tr>
@@ -249,62 +141,14 @@
                   <tr>
                     <td><s:property value="formatId"/></td>
                     <td class="ct">
-                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <s:url value="/interaction/detail/%{id}.html" id="detailUrl"/>
                       <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
                     </td>
-                    <td><a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank"><s:property value="organ.name"/></a></td>
+                    <td><a href="<s:url value='/interaction/organ/search/%{organ.id}.html'/>" target="_blank"><s:property value="organ.name"/></a></td>
                     <td><s:property value="state.title"/></td>
                     <td><s:date format="yyyy-MM-dd" name="date"/></td>
                   </tr>
                 </s:iterator>
-                <tr>
-                  <td colspan="5">
-                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td height="30" bgcolor="#F2F2F2">
-                          <div align="center">
-                                                                           共<s:property value="pageTs.pageCount"/>页&nbsp;当前为第<s:property value="pageTs.page"/>页&nbsp;
-                            <s:if test="pageTs.pagePrev == -1">上一页</s:if>
-                            <s:else>
-                              <s:url action="index" id="pageUrl" escapeAmp="false">
-                                <s:param name="type" value="%{type}"/>
-                                <s:param name="pageNumberTs" value="%{pageTs.pagePrev-1}"/>
-                                <s:param name="currentTable" value="3"/>
-                              </s:url>
-                              <a href="<s:property value="pageUrl"/>">上一页</a>
-                            </s:else>
-                            <s:iterator value="pageTs.pageList">
-                              <s:if test = "pageTs.page == top"><strong><s:property value="top"/></strong></s:if>
-                              <s:else>
-                                <s:url action="index" id="pageUrl" escapeAmp="false">
-                                  <s:param name="type" value="%{type}"/>
-                                  <s:param name="pageNumberTs" value="%{top-1}"/>
-                                  <s:param name="currentTable" value="3"/>
-                                </s:url>
-                                <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
-                              </s:else>&nbsp;
-                            </s:iterator>
-                            <s:if test="pageTs.pageNext == -1">下一页</s:if>
-                            <s:else>
-                              <s:url action="index" id="pageUrl" escapeAmp="false">
-                                <s:param name="type" value="%{type}"/>
-                                <s:param name="pageNumberTs" value="%{pageTs.pageNext-1}"/>
-                                <s:param name="currentTable" value="3"/>
-                              </s:url>
-                              <a href="<s:property value="pageUrl"/>">下一页</a>
-                            </s:else>&nbsp;转到
-                            <select name="select" class="hui" onchange="jumpPageTs(this)">
-                              <s:iterator value="pageTs.pageListAll">
-                                <s:if test = "pageTs.page == top"><option selected="selected"><s:property value="top"/></option></s:if>
-                                <s:else><option><s:property value="top"/></option></s:else>
-                              </s:iterator>
-                            </select>页
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
               </table>
             </div>
             <div class="ph_box">
@@ -313,7 +157,7 @@
                 <ul class="list10">
                   <s:iterator value="hots" status="st">
                     <li>
-                      <s:url action="detail" id="detailUrl"><s:param name="id" value="%{id}"/></s:url>
+                      <s:url value="/interaction/detail/%{id}.html" id="detailUrl"/>
                       <a href="<s:property value="detailUrl"/>" target="_blank"><s:property value="title"/></a>
                     </li>
                   </s:iterator>
@@ -338,7 +182,7 @@
             </tr>
             <s:iterator value="backCount" status="st">
               <tr>
-                <td align="center"><a href="<s:url action="organsearch"/>?id=<s:property value="id"/>" target="_blank"><s:property value="name"/></a></td>
+                <td align="center"><a href="<s:url value='/interaction/organ/search/%{id}.html'/>" target="_blank"><s:property value="name"/></a></td>
                 <td align="center"><s:property value="backRatio"/></td>
               </tr>
             </s:iterator>
@@ -356,8 +200,8 @@
   </body>
 </html>
 <script type="text/javascript">
-        function closeShutManager1(){
-var targetObj =document.getElementById('ranking_list1');
-targetObj.style.display="none";
+function closeShutManager1(){
+  var targetObj =document.getElementById('ranking_list1');
+  targetObj.style.display="none";
 }
-      </script>
+</script>

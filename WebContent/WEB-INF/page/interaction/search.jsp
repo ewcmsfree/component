@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>中国瑞昌网为您服务！</title>
-    <link href="../css/ruichang.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
-    <script src="../js/changdiv.js" type="text/javascript"></script>
-    <script src="../source/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="<s:url value='/css/ruichang.css'/>" rel="stylesheet" type="text/css" />
+    <script src="<s:url value='/Scripts/swfobject_modified.js'/>" type="text/javascript"></script>
+    <script src="<s:url value='/js/changdiv.js'/>" type="text/javascript"></script>
+    <script type="text/javascript" src="<s:url value='/source/js/jquery-1.4.2.min.js'/>"></script>
      <style type="text/css">
       <!--
       body {
@@ -31,7 +31,7 @@
     <script type="text/JavaScript">
       function jumpPage(obj){
         var page = obj.options[obj.selectedIndex].text -1 ;
-        window.location = '<s:url action="search"/>?type=<s:property value="type"/>&title=<s:property value="title" escape="false"/>&pageNumber=' + page ;
+        window.location = '<s:url value="/interaction/search/page/%{type}_' + page + '_'  + $('#title').val() + '.html" escapeAmp="false"/>';
       }
     </script>
    </head>
@@ -43,7 +43,7 @@
        <div id="content">
          <s:include value="../header.jsp"/>
          <!--内容-->
-         <div id="list01">
+         <div id="list01" style="height:100%;">
            <table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
              <tr>
                <td width="750" valign="top">
@@ -51,7 +51,7 @@
                    <tr>
                      <td class="di_line">
                        <div align="center" class="hui">
-                         <s:form action="search" method="post" name="zmhdsearchform" id="zmhdsearchform">
+                         <form action="<s:url value='/interaction/search.html'/>" method="post" name="zmhdsearchform" id="zmhdsearchform">
                          <table border="0" cellpadding="0" cellspacing="0">
                            <tr>
                              <td>
@@ -66,7 +66,7 @@
                              </td>
                            </tr>
                          </table>
-                         </s:form>
+                         </form>
                        </div>
                      </td>
                    </tr>
@@ -112,7 +112,7 @@
                              </td>
                              <td width="110" class="xu_di_line">
                                <div align="center" class="hui">
-                                 <a href="<s:url action="organsearch"/>?id=<s:property value="organ.id"/>" target="_blank">
+                                 <a href="<s:url value='/interaction/organ/search/%{organ.id}.html'/>" target="_blank">
                                  <s:property value="organ.name"/>
                                  </a>
                                </div>
@@ -129,11 +129,7 @@
                                <div align="center" class="hui">共<s:property value="page.pageCount"/>页&nbsp;当前为第<s:property value="page.page"/>页&nbsp;
                                <s:if test="page.pagePrev == -1">上一页</s:if>
                                <s:else>
-                               <s:url action="search" id="pageUrl" escapeAmp="false">
-                                 <s:param name="type" value="%{type}"/>
-                                 <s:param name="title" value="%{title}"/>
-                                 <s:param name="pageNumber" value="%{page.pagePrev-1}"/>
-                               </s:url>
+                               <s:url value="/interaction/search/page/%{type}_%{page.pagePrev-1}_%{title}.html" id="pageUrl" escapeAmp="false"/>
                                  <a href="<s:property value="pageUrl"/>">上一页</a>
                                </s:else>
                                <s:iterator value="page.pageList">
@@ -141,21 +137,13 @@
                                  <strong><s:property value="top"/></strong>
                                  </s:if>
                                  <s:else>
-                                   <s:url action="search" id="pageUrl" escapeAmp="false">
-                                     <s:param name="type" value="%{type}"/>
-                                     <s:param name="title" value="%{title}"/>
-                                     <s:param name="pageNumber" value="%{top-1}"/>
-                                   </s:url>
+                                   <s:url value="/interaction/search/page/%{type}_%{top-1}_%{title}.html" id="pageUrl" escapeAmp="false"/>
                                    <a href="<s:property value="pageUrl"/>"><s:property value="top"/></a>
                                  </s:else>&nbsp;
                                </s:iterator>
                               <s:if test="page.pageNext == -1">下一页</s:if>
                               <s:else>
-                                <s:url action="search" id="pageUrl" escapeAmp="false">
-                                  <s:param name="type" value="%{type}"/>
-                                  <s:param name="title" value="%{title}"/>
-                                  <s:param name="pageNumber" value="%{page.pageNext-1}"/>
-                                </s:url>
+                                <s:url value="/interaction/search/page/%{type}_%{page.pageNext-1}_%{title}.html" id="pageUrl" escapeAmp="false"/>
                                 <a href="<s:property value="pageUrl"/>">下一页</a>&nbsp;转到
                               </s:else>
                               <select name="select" class="hui" onchange="jumpPage(this)">
