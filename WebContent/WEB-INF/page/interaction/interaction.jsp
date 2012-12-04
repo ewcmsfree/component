@@ -209,9 +209,10 @@
                                     </td>
                                   </tr>
                                   <tr>
-                                  	<td width="90px">联系电话：</td>
-                                  	<td>
+                                  	<td width="90px">*联系电话：</td>
+                                  	<td class="formFieldError">
                                   		<s:textfield id="tel" name="tel" maxLength="15"></s:textfield>
+                                  		<s:fielderror ><s:param value="%{'tel'}" /></s:fielderror>
                                   	</td>
                                   </tr>
                                   <tr>
