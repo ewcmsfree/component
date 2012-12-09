@@ -45,7 +45,7 @@
               	<li><a href=""><span style="font-weight: bold;"><s:property value="name"/></span></a></li>
               </s:if>
               <s:else>
-                <s:url value="/online/citizen/%{id}" id="url" escapeAmp="false"/>
+                <s:url value="/online/citizen/%{id}.html" id="url" escapeAmp="false"/>
                 <li><a href="<s:property value="url"/>"><s:property value="name"/></a></li>
               </s:else>
               </s:iterator>
@@ -59,9 +59,10 @@
             <s:if test="organ.name != null">
             <s:url value="/online/organ/%{organ.id}.html" id="url" escapeAmp="false"/>
              <p class="bs_tit"><s:property value="name"/>[办理部门： <a href="<s:property value="url"/>" target="_blank"><s:property value="organ.name"/></a>]</p>
-            <s:url value="/online/matter/%{organ.id}_%{id}.html" id="matterUrl" escapeAmp="false"/>
+            
             <ul>
               <li class="nobg">
+                <s:url value="/online/matter/%{organ.id}_%{id}.html" id="matterUrl" escapeAmp="false"/>
                 <a href="<s:property value="matterUrl"/>" target="_blank">办事指南</a>
               </li>
               <li>

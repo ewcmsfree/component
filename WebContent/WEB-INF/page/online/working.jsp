@@ -54,7 +54,7 @@
               <s:if test="matter != null">
               <h5><s:property value="name"/></h5>
               <s:if test="organ.name != null">
-              <p class="bs_tit"><s:url action="organ" id="url" escapeAmp="false"><s:param name="organId" value="organ.id"/></s:url>[办理部门： <a href="<s:property value="url"/>" target="_blank"><s:property value="organ.name"/></a>]</p>
+              <p class="bs_tit"><s:url value="/online/organ/%{organ.id}.html" id="url" escapeAmp="false"/>[办理部门： <a href="<s:property value="url"/>" target="_blank"><s:property value="organ.name"/></a>]</p>
               </s:if>
               <ul>
                 <li class="nobg">
